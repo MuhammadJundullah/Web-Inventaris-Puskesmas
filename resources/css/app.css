@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#preview-image {
+    margin: auto;
+    width: 30%; /* Lebar 100% dari elemen induk */
+    height: auto; /* Tinggi otomatis untuk mempertahankan rasio aspek */
+}
+
+#preview {
+    display: none; /* Awalnya sembunyikan preview */
+}

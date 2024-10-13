@@ -333,8 +333,8 @@ class ComposerStaticInit8c804e4a8c3c1ea0e6dd61980c279cdd
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -505,8 +505,15 @@ class ComposerStaticInit8c804e4a8c3c1ea0e6dd61980c279cdd
 
     public static $classMap = array (
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\InventoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/InventoryController.php',
+        'App\\Models\\Inventory' => __DIR__ . '/../..' . '/app/Models/Inventory.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
+        'App\\View\\Components\\footer' => __DIR__ . '/../..' . '/app/View/Components/footer.php',
+        'App\\View\\Components\\header' => __DIR__ . '/../..' . '/app/View/Components/header.php',
+        'App\\View\\Components\\layout' => __DIR__ . '/../..' . '/app/View/Components/layout.php',
+        'App\\View\\Components\\nav-link' => __DIR__ . '/../..' . '/app/View/Components/nav-link.php',
+        'App\\View\\Components\\navbar' => __DIR__ . '/../..' . '/app/View/Components/navbar.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',

@@ -1,32 +1,34 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
-<div class="mx-auto max-w-7xl px-6 lg:px-8 mt-11 text-center">
-    <table class="table-fixed w-full">
+
+<div class="mx-auto pl-20 mt-11 text-center">
+    <table class="w-full border-collapse">
         <thead>
             <tr>
-                <th>No</th>
-                <th>Barang</th>
-                <th>Sumber Dana</th>
-                <th>Tanggal Masuk</th>
-                <th>Gambar</th>
-                <th>Aksi</th>
+                <th class="border-b py-2">No</th>
+                <th class="border-b py-2">Barang</th>
+                <th class="border-b py-2">Sumber Dana</th>
+                <th class="border-b py-2">Tanggal Masuk</th>
+                <th class="border-b py-2"></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Komputer</td>
-                <td>Pemerintah</td>
-                <td>10 Januari 2024</td>
-                <td>Komputer.jpg</td>
-                <td>
-                    <a href="/auditData"><button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded">Ubah</button></a>
-                    <a href=""><button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded">Hapus</button></a>
-                </td>
+            @php
+                $i = 1;
+            @endphp
+            @foreach ($posts as $post)
+            <tr class="border-b hover:bg-gray-100">
+                <td class="py-2">{{$i}}</td>
+                <td class="py-2">{{$post->nama_barang}}</td>
+                <td class="py-2">{{$post->sumber_dana}}</td>
+                <td class="py-2">{{$post->tanggal}}</td>
+                <td class="py-2"><a href="#" class="text-blue-500 hover:underline">Details</a></td>
             </tr>
-       
+            @php $i++ @endphp
+            @endforeach 
         </tbody>
     </table>
 </div>
+
 
 </x-layout>
