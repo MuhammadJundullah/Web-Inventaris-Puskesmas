@@ -13,7 +13,7 @@ class DashboardController extends Controller
     {
         $years = Inventory::selectRaw('YEAR(tanggal) as year')
                         ->distinct()
-                        ->orderBy('year', 'desc') // Urutkan dari yang terbesar
+                        ->orderBy('year', 'desc') 
                         ->pluck('year');
 
         $title = "Data Inventaris Puskesmas";

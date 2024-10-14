@@ -20,7 +20,7 @@
                             <td class="py-2">{{$i}}</td>
                             <td class="py-2">{{$account->username}}</td>
                             <td class="py-2">*****</td>
-                            <td class="py-2"><a href="#" class="text-red-500 hover:underline">Hapus akun</a></td>
+                            <td class="py-2"><a href="/hapus/{{$account->id}}" class="text-red-500 hover:underline">Hapus akun</a></td>
                         </tr>
 
                         @php $i++; @endphp

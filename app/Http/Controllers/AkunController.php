@@ -63,7 +63,22 @@ class AkunController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Temukan user berdasarkan ID
+        $user = User::find($id);
+
+        // Jika user tidak ditemukan, kembalikan respons dengan error
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
+
+        // Hapus user
+        $user->delete();
+
+        // Kembalikan respons sukses
+        return "<script>
+            alert('Akun berhasil di hapus !');
+            window.location.href = '/registered-account';
+        </script>";
     }
 
     public function showRegistrationForm()

@@ -50,13 +50,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/signup', function() {
-        return view('signup', ['title' => 'Tambah Akun untuk Masuk']); 
+        return view('signup', ['title' => 'Tambah akun untuk masuk']); 
     });
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/signup', function() {
-        return view('signup', ['title' => 'Tambah Akun untuk Masuk']); 
+        return view('signup'); 
     });
 });
 
@@ -66,6 +66,14 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/registered-account', [AkunController::class, 'index']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/hapus/{id?}', [AkunController::class, 'destroy']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/inventory/{tahun?}/{id?}', [InventoryController::class, 'show']);
 });
 
 

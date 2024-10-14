@@ -48,13 +48,20 @@
                         @php $i = 1; @endphp
 
                         @foreach ($posts as $post)
+
+                        {{-- parse tanggal untuk mengambil tahun --}}
+                        @php
+                            $tahun = \Carbon\Carbon::parse($post->tanggal)->format('Y'); // Ambil tahun
+                        @endphp
+                        {{-- parse tanggal untuk mengambil tahun --}}
+
                         <tr class="border-b hover:bg-gray-100" data-date="{{ \Carbon\Carbon::parse($post->tanggal)->format('Y-m') }}">
                             <td class="py-2">{{$i}}</td>
                             <td class="py-2">{{$post->nama_barang}}</td>
                             <td class="py-2">1</td>
                             <td class="py-2">{{$post->sumber_dana}}</td>
                             <td class="py-2">{{$post->tanggal}}</td>
-                            <td class="py-2"><a href="/inventory/tahun/{{ $post->id }}" class="text-blue-500 hover:underline">Details</a></td>
+                            <td class="py-2"><a href="/inventory/{{$tahun}}/{{ $post->id }}" class="text-blue-500 hover:underline">Details</a></td>
                         </tr>
 
                         @php $i++; @endphp
