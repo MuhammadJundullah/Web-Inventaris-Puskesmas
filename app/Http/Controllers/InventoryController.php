@@ -33,12 +33,14 @@ class InventoryController extends Controller
         // Cari data berdasarkan ID
         $inventory = Inventory::find($id);
 
+        $title = 'Details';
+
         // Jika data tidak ditemukan, kembalikan respons 404
         if (!$inventory) {
             return response()->json(['message' => 'Data not found.'], 404);
         }
 
         // Kembalikan data yang ditemukan
-        return view('details', compact('inventory'));
+        return view('details', compact('inventory', 'title'));
     }
 }
