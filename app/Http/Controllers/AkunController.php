@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class AkunController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $accounts = User::All();
+        $title = 'Akun yang terdaftar';
+        return view('akun', compact('accounts', 'title'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        // Validasi data
+        $validator = Validator::make($request->all(), [
+            'username' => 'required',
+            'password' => 'required',
+            'konfirmasi' => 'required|same:password',
+        ]);
+
+        // Jika validasi gagal, kembalikan script alert
+        if ($validator->fails()) {
+            return response("<script>
+                    alert('Konfirmasi password salah !');
+                    window.location.href = '/signup';
+                </script>")->header('Contaent-Type', 'text/html');
+        }
+
+        // Buat user baru
+        $user = User::create([
+            'username' => $request->username,
+            'password' => bcrypt($request->password), // Enkripsi password
+        ]);
+
+        return "<script>
+            alert('Akun berhasil di daftarkan!');
+            window.location.href = '/signup';
+        </script>";
+    }
+}

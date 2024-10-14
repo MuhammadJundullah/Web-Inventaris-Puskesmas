@@ -9,7 +9,7 @@ class Inventory extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+protected $fillable = [
         'nama_barang',
         'sumber_dana',
         'tanggal',

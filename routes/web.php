@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\Auth\LoginController;
@@ -34,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/inventory', [InventoryController::class, 'index']);
+    Route::get('/inventory/{year?}', [InventoryController::class, 'index']);
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -52,3 +53,20 @@ Route::middleware(['auth'])->group(function () {
         return view('signup', ['title' => 'Tambah Akun untuk Masuk']); 
     });
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/signup', function() {
+        return view('signup', ['title' => 'Tambah Akun untuk Masuk']); 
+    });
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/signup', [AkunController::class, 'register']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/registered-account', [AkunController::class, 'index']);
+});
+
+
+

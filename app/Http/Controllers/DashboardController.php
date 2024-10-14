@@ -11,10 +11,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // // Mengambil tahun dan kolom lainnya
         $years = Inventory::selectRaw('YEAR(tanggal) as year')
-                    ->distinct()
-                    ->pluck('year');
+                        ->distinct()
+                        ->orderBy('year', 'desc') // Urutkan dari yang terbesar
+                        ->pluck('year');
+
         $title = "Data Inventaris Puskesmas";
 
         return view('dashboard', compact('years', 'title'));
