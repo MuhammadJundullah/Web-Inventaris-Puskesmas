@@ -13,16 +13,18 @@ Route::get('login', [LoginController::class, 'showloginform'])->name('login');
 
 Route::post('login', [LoginController::class, 'login']);
 
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware(['auth'])->group(function () {
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
-        return view('dashboard');
+        return view('title');
     });
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+        Route::get('/dashboard', [DashboardController::class, 'index']);
     });
 
 Route::middleware(['auth'])->group(function () {
@@ -45,5 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/audit/tambah-data', [AuditController::class, 'insert']);
 });
 
-
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('/signup', function() {
+        return view('signup', ['title' => 'Tambah Akun untuk Masuk']); 
+    });
+});
