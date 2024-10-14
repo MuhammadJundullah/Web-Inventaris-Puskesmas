@@ -1,9 +1,9 @@
     <x-layout>
-        <x-slot:title>{{$title}}</x-slot:title>
+        <x-slot:title>{{$title}}</x-slot:title> 
 
         {{-- content --}}
     <div class="mt-10 mx-10">
-        <form class="mb-10" action="/audit" method="POST" enctype="multipart/form-data">
+        <form class="mb-10" action="/audit/tambah-data" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="space-y-5">
                 <div class="border-b border-gray-900/10 pb-12">

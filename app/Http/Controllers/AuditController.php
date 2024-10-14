@@ -43,7 +43,7 @@ class AuditController extends Controller
 
     return "<script>
         alert('Data berhasil ditambahkan!');
-        window.location.href = '/audit';
+        window.location.href = '/audit/tambah-data';
     </script>";
 
 } catch (\Exception $e) {

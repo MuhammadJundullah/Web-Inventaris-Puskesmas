@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\inventory;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
-        public function index() {
+        public function index() 
+    {
        // Mengambil semua data dari tabel posts
-        $posts = inventory::all();
+        $posts = Inventory::all();
 
         // Menambahkan variabel title
         $title = "Audit Data Inventaris";
