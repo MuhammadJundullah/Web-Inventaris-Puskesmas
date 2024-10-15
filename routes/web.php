@@ -25,8 +25,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index']);
-    });
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/about', function () {
@@ -49,14 +49,14 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/signup', function() {
-        return view('signup', ['title' => 'Tambah akun untuk masuk']); 
+    Route::get('/signup', function () {
+        return view('signup', ['title' => 'Tambah akun untuk masuk']);
     });
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/signup', function() {
-        return view('signup'); 
+    Route::post('/signup', function () {
+        return view('signup');
     });
 });
 
@@ -75,6 +75,3 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/inventory/{tahun?}/{id?}', [InventoryController::class, 'show']);
 });
-
-
-

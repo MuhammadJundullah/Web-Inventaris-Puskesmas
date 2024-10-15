@@ -76,18 +76,3 @@ document.getElementById('monthDropdown').addEventListener('change', function() {
         }
     });
 });
-// untuk memfilter sumber dana
-function filterBySumberDana() {
-    const input = document.getElementById("sumberDanaInput");
-    const filter = input.value.toLowerCase();
-    const rows = document.querySelectorAll("#tableBody tr");
-
-    rows.forEach(row => {
-        const sumberDana = row.getAttribute("data-sumber");
-        if (sumberDana.includes(filter)) {
-            row.style.display = ""; // Tampilkan jika cocok
-        } else {
-            row.style.display = "none"; // Sembunyikan jika tidak cocok
-        }
-    });
-}
