@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
     
     // route insert data 
     Route::post('/audit/tambah-data', [AuditController::class, 'insert']);
-    
+
     // route halaman daftar 
     Route::get('/signup', function() {
         return view('signup', ['title' => 'Tambah akun untuk masuk']); 
@@ -61,7 +61,4 @@ Route::middleware(['auth'])->group(function () {
     // route halaman detail inventory
     Route::get('/inventory/{tahun?}/{id?}', [InventoryController::class, 'show']);
 });
-
-
-
 
