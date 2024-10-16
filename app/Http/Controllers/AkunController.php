@@ -111,7 +111,7 @@ class AkunController extends Controller
 
         return "<script>
             alert('Akun berhasil di daftarkan!');
-            window.location.href = '/signup';
+            window.location.href = '/registered-account';
         </script>";
     }
 }

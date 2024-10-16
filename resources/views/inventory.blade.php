@@ -1,7 +1,16 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:p">
-        <div class="my-10 sm:mx-auto sm:w-full">
+    <div class="flex min-h-full flex-col justify-center px-20 mx-8 py-12 lg:p">
+        
+        {{-- tombol tambah data --}}
+        <div class="flex items-baseline">
+          <div>
+            <a href="/audit/tambah-data" type="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">+ Tambah Data</a>
+          </div>
+        </div>
+        {{-- tombol tambah data --}}
+
+        <div class="my-5 sm:mx-auto sm:w-full">
             <div class="mx-auto mt-11 text-center">
                 <div class="overflow-x-auto">
                     <table class="min-w-full border-collapse">
@@ -63,26 +72,32 @@
         </div>
     </div>
 
-    <!-- Script untuk filter berdasarkan input -->
-    <script>
-        function filterTable() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            table = document.querySelector("tbody");
-            tr = table.getElementsByTagName("tr");
 
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[3]; // Kolom Sumber Dana
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }       
+{{-- javascripts --}}
+
+{{-- Script untuk filter berdasarkan input --}}
+<script>
+function filterTable() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.querySelector("tbody");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[3]; // Kolom Sumber Dana
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
             }
         }
-    </script>
+    }
+}
+
+ </script>
+
+ 
 </x-layout>

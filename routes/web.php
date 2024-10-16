@@ -9,6 +9,9 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InventoryControllerController;
 use Illuminate\Support\Facades\Auth;
 
+Route::get('/', function () {
+    return view('/login', [LoginController::class, 'showloginform']);
+});
 
 Route::get('/login', [LoginController::class, 'showloginform']);
 
@@ -21,9 +24,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
     
     // route login kalau blm login 
-    Route::get('/', function () {
-        return view('login');
-    });
     
     // route dashboard 
     Route::get('/dashboard', [DashboardController::class, 'index']);
