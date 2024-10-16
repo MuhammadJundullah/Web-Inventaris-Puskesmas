@@ -8,28 +8,28 @@
     <div class="mt-6 border-t border-gray-100">
         <dl class="divide-y divide-gray-100">
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-gray-900">Nama</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->nama_barang}}</dd>
+            <dt class="font-medium leading-6 text-gray-900">Nama</dt>
+            <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->nama_barang}}</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-gray-900">Sumber dana</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->sumber_dana}}</dd>
+            <dt class="font-medium leading-6 text-gray-900">Sumber dana</dt>
+            <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->sumber_dana}}</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-gray-900">Tanggal masuk</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->tanggal}}</dd>
+            <dt class="font-medium leading-6 text-gray-900">Tanggal masuk</dt>
+            <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->tanggal}}</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-gray-900">Tanggal di input</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->created_at}}</dd>
+            <dt class="font-medium leading-6 text-gray-900">Tanggal di input</dt>
+            <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->created_at}}</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-gray-900">Terakhir di ubah</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->updated_at}}</dd>
+            <dt class="font-medium leading-6 text-gray-900">Terakhir di ubah</dt>
+            <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->updated_at}}</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt class="text-sm font-medium leading-6 text-gray-900">Foto Inventaris</dt>
-            <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+            <dt class="font-medium leading-6 text-gray-900">Foto Inventaris</dt>
+            <dd class="mt-2 text-gray-900 sm:col-span-2 sm:mt-0">
             <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
                 <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
                     <img src="{{ asset('storage/' . $inventory->gambar) }}" alt="gambar inventaris">
