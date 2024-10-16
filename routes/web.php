@@ -21,7 +21,7 @@ Route::post('login', [LoginController::class, 'login']);
 Route::middleware(['auth'])->group(function () {
     
     // route logout
-    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/logout', [LoginController::class, 'logout']);
     
     // route login kalau blm login 
     
@@ -37,13 +37,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inventory/{year?}', [InventoryController::class, 'index']);
     
     // route halaman tambah data 
-    Route::get('/audit/tambah-data', function () {
-        return view('audit', ["title" => "Tambah Data Inventaris"], ['button' => ' + Tambah Data']);
+    Route::get('/audit/tambah', function () {
+        return view('create', ["title" => "Tambah Data Inventaris"], ['button' => ' + Tambah Data']);
+    });
+  
+    // route halaman tambah data 
+    Route::get('/audit/edit', function () {
+        return view('create', ["title" => "Tambah Data Inventaris"], ['button' => ' + Tambah Data']);
     });
     
     // route insert data 
-    Route::post('/audit/tambah-data', [AuditController::class, 'insert']);
-
+    Route::post('/audit/tambah', [AuditController::class, 'insert']);
+  
     // route halaman daftar 
     Route::get('/signup', function() {
         return view('signup', ['title' => 'Tambah akun untuk masuk']); 

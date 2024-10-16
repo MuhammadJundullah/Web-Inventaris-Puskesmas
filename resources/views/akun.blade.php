@@ -77,6 +77,8 @@
 
 {{-- table --}}
 
+{{-- javascript untuk mengirimkan data id ke modal --}}
+
 <script>
     let accountIdToDelete;
 
@@ -91,5 +93,6 @@
     }
 </script>
 
+{{-- javascript untuk mengirimkan data id ke modal --}}
 
 </x-layout>

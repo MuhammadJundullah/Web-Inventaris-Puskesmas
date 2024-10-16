@@ -5,7 +5,7 @@
         {{-- tombol tambah data --}}
         <div class="flex items-baseline">
           <div>
-            <a href="/audit/tambah-data" type="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">+ Tambah Data</a>
+            <a href="/audit/tambah" type="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">+ Tambah Data</a>
           </div>
         </div>
         {{-- tombol tambah data --}}
@@ -75,8 +75,9 @@
 
 {{-- javascripts --}}
 
-{{-- Script untuk filter berdasarkan input --}}
 <script>
+
+    //  Script untuk filter berdasarkan input
 function filterTable() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchInput");
@@ -96,6 +97,8 @@ function filterTable() {
         }
     }
 }
+
+
 
  </script>
 

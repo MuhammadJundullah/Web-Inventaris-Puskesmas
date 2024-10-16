@@ -71,12 +71,23 @@ class AkunController extends Controller
             return response()->json(['message' => 'User not found.'], 404);
         }
 
+        // Cek jumlah user yang tersisa
+        $userCount = User::count();
+
+        // Jika hanya tinggal 1 user, tidak boleh menghapus
+        if ($userCount <= 1) {
+            return "<script>
+                alert(' ⚠️ Akun satu satunya, tidak bisa di hapus !');
+                window.location.href = '/registered-account';
+            </script>";
+        }
+
         // Hapus user
         $user->delete();
 
         // Kembalikan respons sukses
         return "<script>
-            // alert('Akun berhasil di hapus !');
+            alert('Akun berhasil di hapus!');
             window.location.href = '/registered-account';
         </script>";
     }
@@ -109,9 +120,7 @@ class AkunController extends Controller
             'password' => bcrypt($request->password), // Enkripsi password
         ]);
 
-        return "<script>
-            alert('Akun berhasil di daftarkan!');
-            window.location.href = '/registered-account';
-        </script>";
+        // Set pesan sukses ke session
+        return session()->flash('success', 'Akun berhasil didaftarkan!');
     }
 }
