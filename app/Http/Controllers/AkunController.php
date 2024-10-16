@@ -76,7 +76,7 @@ class AkunController extends Controller
 
         // Kembalikan respons sukses
         return "<script>
-            alert('Akun berhasil di hapus !');
+            // alert('Akun berhasil di hapus !');
             window.location.href = '/registered-account';
         </script>";
     }
