@@ -38,7 +38,7 @@
 
             {{-- parse tanggal untuk mengambil tahun --}}
             @php
-                $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y'); // Ambil tahun
+                $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y');
             @endphp
             {{-- parse tanggal untuk mengambil tahun --}}
 

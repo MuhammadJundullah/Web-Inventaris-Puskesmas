@@ -99,3 +99,42 @@ function filterBySumberDana() {
         }
     });
 }
+
+// membuka modal hapus akun
+document.addEventListener("DOMContentLoaded", function () {
+    const openModalButton = document.getElementById("openModal");
+    const modal = document.querySelector(".relative.z-10");
+    const cancelButton = modal.querySelector(".bg-white");
+    const deactivateButton = modal.querySelector(".bg-red-600");
+
+    // Fungsi untuk membuka modal
+    openModalButton.addEventListener("click", function () {
+        modal.classList.remove("hidden");
+    });
+
+    // Fungsi untuk menutup modal
+    cancelButton.addEventListener("click", function () {
+        modal.classList.add("hidden");
+    });
+
+    // Fungsi untuk menghapus akun
+    deactivateButton.addEventListener("click", function () {
+        // Lakukan aksi penghapusan akun di sini, misalnya dengan melakukan AJAX atau mengarah ke rute tertentu
+        // Contoh menggunakan AJAX:
+        fetch("/delete-account", {
+            method: "DELETE",
+            headers: {
+                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                "Content-Type": "application/json",
+            },
+        }).then((response) => {
+            if (response.ok) {
+                // Tindakan setelah berhasil menghapus akun
+                window.location.href = "/"; // Redirect ke halaman lain
+            } else {
+                // Tindakan jika terjadi kesalahan
+                alert("Gagal menghapus akun.");
+            }
+        });
+    });
+});
