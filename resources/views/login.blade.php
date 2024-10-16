@@ -17,8 +17,15 @@
   {{-- form --}}
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 
+@php
+    if (isset($salah)) {
+      echo "<p>username dan password tidak sesuai</p>";
+    }
+@endphp
+
+
     {{-- input username --}}
-    <form class="space-y-6" action="{{ route('login') }}" method="POST">
+    <form id='loginForm' class="space-y-6" action="/login" method="POST">
       @csrf
       <div>
         <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username :</label>
@@ -41,8 +48,9 @@
       </div>
 
       <div>
-        <button type="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Masuk</button>
+        <button type="submit" name="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Masuk</button>
       </div>
+
     </form>
   </div>
 </div>
