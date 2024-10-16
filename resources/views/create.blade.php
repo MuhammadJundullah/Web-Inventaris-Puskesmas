@@ -1,13 +1,40 @@
     <x-layout>
         <x-slot:title>{{$title}}</x-slot:title> 
 
-        {{-- content --}}
-    <div class="mt-10 mx-10">
+    
+    <div class="mt-10 mx-8 px-20">
         <form class="mb-10" action="/audit/tambah" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="space-y-5">
+
+                {{-- modal success --}}
+                  @if (session('success'))
+                      <div role="alert" class="rounded-xl border border-gray-100 bg-white p-4 mb-4">
+                          <div class="flex items-start gap-4">
+                              <span class="text-green-600">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                              </span>
+                  
+                              <div class="flex-1">
+                                  <strong class="block font-medium text-gray-900">Data berhasil di input !</strong>
+                                  {{-- <p class="mt-1 text-sm text-gray-700">{{ session('success') }}</p> --}}
+                              </div>
+                  
+                              <button class="text-gray-500 transition hover:text-gray-600" onclick="this.closest('div[role=\'alert\']').style.display='none'">
+                                  <span class="sr-only">Dismiss popup</span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                  </svg>
+                              </button>
+                          </div>
+                      </div>
+                  @endif
+                {{-- modal success --}}
+
                 <div class="border-b border-gray-900/10 pb-12">
-                <h2 class="text-base font-semibold leading-7 text-gray-900">Tambah Data Inventaris</h2>
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">Tambah Data Inventaris</h2>
                 <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
 
                     {{-- container --}}
@@ -54,12 +81,12 @@
                                     <div id="preview" class="mt-4">
                                         <img id="preview-image" class="rounded-md" src="" alt="Preview">
                                     </div>
-                                    <div class="mt-4 flex text-sm leading-6 text-gray-600" id="upload-area">
+                                    <div class="mt-4 text-sm leading-6 text-gray-600" id="upload-area">
                                         <label for="gambar" class="relative cursor-pointer rounded-md bg-white font-semibold text-green-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-green-600 focus-within:ring-offset-2 hover:text-green-500">
                                             <span id="uploadFile" >Upload a file</span>
                                             <input id="gambar" name="gambar" type="file" class="sr-only" accept="image/*" onchange="previewImage(event)">
                                         </label>
-                                        <p class="pl-1">or drag and drop</p>
+                                        {{-- <p class="pl-1">or drag and drop</p> --}}
                                     </div>
                                     <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 2MB</p>
                                 </div>
@@ -96,7 +123,9 @@
                 previewImage.src = e.target.result;
                 preview.style.display = "block"; 
                 uploadFile.innerHTML = "Ganti File"
+                uploadFile.style = "margin-auto"
                 thumbnail.style.display = "none";
+                uploadArea.text= "center";
             };
 
             reader.onerror = function () {

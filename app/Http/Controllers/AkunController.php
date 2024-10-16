@@ -75,7 +75,7 @@ class AkunController extends Controller
         $userCount = User::count();
 
         // Jika hanya tinggal 1 user, tidak boleh menghapus
-        if ($userCount <= 1) {
+        if ($userCount == 1) {
             return "<script>
                 alert(' ⚠️ Akun satu satunya, tidak bisa di hapus !');
                 window.location.href = '/registered-account';
@@ -85,11 +85,9 @@ class AkunController extends Controller
         // Hapus user
         $user->delete();
 
-        // Kembalikan respons sukses
         return "<script>
-            alert('Akun berhasil di hapus!');
-            window.location.href = '/registered-account';
-        </script>";
+                window.location.href = '/registered-account';
+            </script>";
     }
 
     public function showRegistrationForm()
@@ -108,8 +106,9 @@ class AkunController extends Controller
 
         // Jika validasi gagal, kembalikan script alert
         if ($validator->fails()) {
-            return response("<script>
-                    alert('Konfirmasi password salah !');
+             session()->flash('failed');
+            
+        return response("<script>
                     window.location.href = '/signup';
                 </script>")->header('Contaent-Type', 'text/html');
         }
@@ -117,10 +116,15 @@ class AkunController extends Controller
         // Buat user baru
         $user = User::create([
             'username' => $request->username,
-            'password' => bcrypt($request->password), // Enkripsi password
+            'password' => bcrypt($request->password), 
         ]);
 
         // Set pesan sukses ke session
-        return session()->flash('success', 'Akun berhasil didaftarkan!');
+        session()->flash('success', 'Akun berhasil didaftarkan!');
+        
+        return response("<script>
+                    window.location.href = '/signup';
+                </script>")->header('Contaent-Type', 'text/html');
+
     }
 }

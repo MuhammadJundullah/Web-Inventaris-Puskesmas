@@ -7,8 +7,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InventoryControllerController;
+use App\Models\Inventory;
 use Illuminate\Support\Facades\Auth;
 
+// route login kalau blm login 
 Route::get('/', function () {
     return view('/login', [LoginController::class, 'showloginform']);
 });
@@ -22,8 +24,6 @@ Route::middleware(['auth'])->group(function () {
     
     // route logout
     Route::post('/logout', [LoginController::class, 'logout']);
-    
-    // route login kalau blm login 
     
     // route dashboard 
     Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -49,9 +49,17 @@ Route::middleware(['auth'])->group(function () {
     // route insert data 
     Route::post('/audit/tambah', [AuditController::class, 'insert']);
   
+    // route insert data 
+    Route::post('/audit/hapus/{tahun?}/{id?}', [InventoryController::class, 'destroy']);
+  
     // route halaman daftar 
     Route::get('/signup', function() {
         return view('signup', ['title' => 'Tambah akun untuk masuk']); 
+    });
+
+    // route halaman edit 
+    Route::get('/audit/edit/{tahun?}/{id?}', function() {
+        return view('update', ['title' => 'Edit data inventaris']); 
     });
     
     // route insert data pendaftaran

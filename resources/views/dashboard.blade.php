@@ -3,13 +3,14 @@
     <div class="bg-white">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
-        {{-- tombol tambah data --}}
-        <div class="mt-12 flex items-baseline">
+        {{-- tombol tambah edit data --}}
+        <div class="mt-12 items-baseline">
           <div>
-            <a href="/audit/tambah" type="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">+ Tambah Data</a>
+            <a href="/audit/tambah" type="submit" class=" py-2 w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">+ Tambah Data</a>
+            <a href="#" type="submit" class="ml-5 py-2 w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Cetak Data</a>
           </div>
         </div>
-        {{-- tombol tambah data --}}
+        {{-- tombol tambah edit data --}}
         
             <div class="mx-auto mt-10 mb-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:mt-5 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-5 ">
   

@@ -28,9 +28,12 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        return back()->withErrors([
-            'username' => 'Username atau password salah.',
-        ]);
+        // Set pesan sukses ke session
+        session()->flash('failed');
+        
+        return response("<script>
+                    window.location.href = '/login';
+                </script>")->header('Contaent-Type', 'text/html');
     }
 
     public function logout(Request $request)

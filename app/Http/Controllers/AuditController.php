@@ -41,10 +41,13 @@ class AuditController extends Controller
         'gambar' => $imagePath, 
     ]);
 
-    return "<script>
-        alert('Data berhasil ditambahkan!');
-        window.location.href = '/audit/tambah-data';
-    </script>";
+    // Set pesan sukses ke session
+    session()->flash('success');
+        
+    return response("<script>
+                window.location.href = '/audit/tambah';
+            </script>")->header('Contaent-Type', 'text/html');
+
 
 } catch (\Exception $e) {
     return "<script>

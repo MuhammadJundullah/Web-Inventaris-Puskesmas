@@ -44,5 +44,25 @@ class InventoryController extends Controller
         // Kembalikan data yang ditemukan
         return view('details', compact('inventory', 'title'));
     }
+
+    public function destroy($tahun = null, $id = null)
+    {
+        $inventory = Inventory::find($id);
+        
+        // Jika data tidak ditemukan, kembalikan respons 404
+        if (!$inventory) {
+            return response()->json(['message' => 'Data tahun not found.'], 404);
+        }
+
+        $inventory->delete();
+
+        response()->json(['message' => 'Data deleted successfully.'], 200);
+
+        return response("<script>
+                    window.location.href = '/inventory/$tahun/';
+                </script>")->header('Contaent-Type', 'text/html');
+
+
+    }
     
 }

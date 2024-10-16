@@ -1,6 +1,6 @@
 <x-layout>
      <x-slot:title>{{$title}}</x-slot:title>
-<div class="m-10">
+<div class="m-10 mx-20 px-8">
     <div class="px-4 sm:px-0">
         <h3 class="text-base font-semibold leading-7 text-gray-900">Detail informasi data inventaris</h3>
         <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
@@ -42,13 +42,17 @@
             @endphp
             {{-- parse tanggal untuk mengambil tahun --}}
 
-            <div class="mt-6 flex items-center justify-end gap-x-6">
+            <div class="mt-6 flex items-center justify-end gap-x-2">
                 <a href="/inventory/{{$tahun}}"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
-                <button type="submit" class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Edit</button>
+
+                <form action="/audit/hapus/{{$tahun}}/{{$inventory->id}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus?');">
+                    @csrf
+                    <button type="submit" class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Hapus</button>
+                </form>
+
+                <a href="/audit/edit/{{$tahun}}/{{$inventory->id}}"><button type="submit" class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Edit</button></a>
             </div>
             </dd>
-
-
         </dl>
     </div>
 </div>
