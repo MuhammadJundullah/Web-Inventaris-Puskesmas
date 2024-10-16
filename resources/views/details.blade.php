@@ -32,11 +32,23 @@
             <dd class="mt-2 text-gray-900 sm:col-span-2 sm:mt-0">
             <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
                 <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                    <img src="{{ asset('storage/' . $inventory->gambar) }}" alt="gambar inventaris">
+                    <img class="rounded" src="{{ asset('storage/' . $inventory->gambar) }}" alt="gambar inventaris">
                 </li>
             </ul>
+
+            {{-- parse tanggal untuk mengambil tahun --}}
+            @php
+                $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y'); // Ambil tahun
+            @endphp
+            {{-- parse tanggal untuk mengambil tahun --}}
+
+            <div class="mt-6 flex items-center justify-end gap-x-6">
+                <a href="/inventory/{{$tahun}}"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
+                <button type="submit" class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Edit</button>
+            </div>
             </dd>
-        </div>
+
+
         </dl>
     </div>
 </div>

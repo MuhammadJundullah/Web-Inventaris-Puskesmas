@@ -10,71 +10,58 @@ use App\Http\Controllers\InventoryControllerController;
 use Illuminate\Support\Facades\Auth;
 
 
-Route::get('login', [LoginController::class, 'showloginform'])->name('login');
+Route::get('/login', [LoginController::class, 'showloginform']);
 
 Route::post('login', [LoginController::class, 'login']);
 
+//  rute yang dilindungin oleh auth
 Route::middleware(['auth'])->group(function () {
+    
+    // route logout
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route login kalau blm login 
     Route::get('/', function () {
-        return view('title');
+        return view('login');
     });
-});
-
-Route::middleware(['auth'])->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index']);
-    });
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route dashboard 
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    
+    // route about 
     Route::get('/about', function () {
         return view('about', ["title" => "About This Site"]);
     });
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route halaman inventory per tahun 
     Route::get('/inventory/{year?}', [InventoryController::class, 'index']);
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route halaman tambah data 
     Route::get('/audit/tambah-data', function () {
         return view('audit', ["title" => "Tambah Data Inventaris"], ['button' => ' + Tambah Data']);
     });
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route insert data 
     Route::post('/audit/tambah-data', [AuditController::class, 'insert']);
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route halaman daftar 
     Route::get('/signup', function() {
         return view('signup', ['title' => 'Tambah akun untuk masuk']); 
     });
-});
-
-Route::middleware(['auth'])->group(function () {
-    Route::post('/signup', function() {
-        return view('signup'); 
-    });
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route insert data pendaftaran
     Route::post('/signup', [AkunController::class, 'register']);
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route halaman akun yang terdaftar
     Route::get('/registered-account', [AkunController::class, 'index']);
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route hapus akun yang terdaftar
     Route::get('/hapus/{id?}', [AkunController::class, 'destroy']);
-});
-
-Route::middleware(['auth'])->group(function () {
+    
+    // route halaman detail inventory
     Route::get('/inventory/{tahun?}/{id?}', [InventoryController::class, 'show']);
 });
+
 
 
 
