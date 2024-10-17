@@ -1,6 +1,7 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
     <style>
+        /* Table Styling */
         table {
             margin: 0 auto;
             border-collapse: collapse;
@@ -9,8 +10,6 @@
             box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             overflow: hidden;
-            border-radius: 15px;
-            max-height: none;
         }
 
         th,
@@ -21,6 +20,7 @@
             min-width: 100px;
         }
 
+        /* Set Minimum Widths */
         th:nth-child(1),
         td:nth-child(1) {
             min-width: 50px;
@@ -46,12 +46,7 @@
             min-width: 150px;
         }
 
-        tr:hover td:first-child {
-            transform-origin: 35% 50%;
-            transform: scale(2);
-            transition: transform 0.2s ease-in-out;
-        }
-
+        /* Row Hover Effect */
         tr:hover {
             background-color: #f5f5f5;
             transform: scale(1.02);
@@ -85,53 +80,33 @@
             color: #fff;
         }
 
-        /* Tambahan: Ubah warna teks dropdown dan input */
-        #searchInput {
-            color: black;
-        }
-
-        #monthDropdown {
-            color: black;
-            /* Ubah warna teks di dropdown */
-            display: none;
-            position: absolute;
-            z-index: 100;
-            background: white;
+        /* Dropdown Styling */
+        select#monthDropdown {
+            margin-left: 10px;
+            padding: 5px;
+            border-radius: 5px;
             border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 3px;
-        }
-
-        .month-option {
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .month-option:hover {
-            background-color: #f0f0f0;
-        }
-
-        .dropdown-button {
-            background-color: #16a085;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            position: relative;
+            min-width: 150px;
+            color: black;
+            /* Ubah warna teks dropdown menjadi hitam */
         }
 
         @media only screen and (max-width: 768px) {
-            table {
-                width: 90%;
+            select#monthDropdown {
+                margin-left: 5px;
+                padding: 5px;
             }
         }
-    </style>
 
-    <!-- <h1 class="font-bold text-center bg-teal-600 text-white py-4">Inventaris Barang</h1> -->
+        /* Ubah warna teks input pencarian menjadi hitam */
+        #searchInput {
+            color: black;
+            /* Ubah warna teks yang diketik menjadi hitam */
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
 
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:p">
         <div class="my-10 sm:mx-auto sm:w-full">
@@ -152,8 +127,7 @@
                                 <th class="border-b py-2">
                                     <div class="relative inline-flex items-center justify-center">
                                         <span class="ml-2">Tanggal Masuk</span>
-                                        <button id="dropdownButton" class="ml-2">▼</button>
-                                        <select id="monthDropdown" class="ml-2 border border-gray-300 rounded absolute left-full top-0 transform translate-x-4/5 -translate-y-1/4 z-10 hidden">
+                                        <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
                                             <option value="">--Pilih Bulan--</option>
                                             <option value="01">Januari</option>
                                             <option value="02">Februari</option>

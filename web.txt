@@ -1,0 +1,30 @@
+nampilin data bisa di kelompokan per tahun, per bulan, 
+dan bisa di kategorikan berdasarkan sumber dana
+
+detail [
+	Deskripsi : Penjelasan lebih rinci tentang item tersebut (misalnya, spesifikasi, fitur).
+	Tanggal Garansi/Kedaluwarsa : Sebutkan apakah ada garansi atau apakah barang tersebut mudah rusak.
+	Pedoman Penggunaan : Petunjuk atau ketentuan penggunaan barang.
+	Dokumen Terlampir : Sertakan tautan ke manual, tanda terima, atau sertifikat terkait.
+	]
+
+user akun 
+	akun admin [bisa semua (CRUD)]
+	akun pelihat [cuman bisa lihat tampilan ga bisa otak atik]
+
+
+function filterBySumberDana() {
+    const input = document.getElementById("sumberDanaInput");
+    const filter = input.value.toLowerCase();
+    const rows = document.querySelectorAll("#tableBody tr");
+
+    rows.forEach(row => {
+        const sumberDana = row.getAttribute("data-sumber");
+        if (sumberDana.includes(filter)) {
+            row.style.display = ""; // Tampilkan jika cocok
+        } else {
+            row.style.display = "none"; // Sembunyikan jika tidak cocok
+        }
+    });
+
+ <select id="monthDropdown" class="ml-2 border border-gray-300 rounded absolute left-full top-0 transform translate-x-4/5 -translate-y-1/4 z-10 hidden">
