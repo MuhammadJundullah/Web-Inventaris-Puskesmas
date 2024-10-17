@@ -38,7 +38,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/audit/tambah', [AuditController::class, 'index']);
    
     // route halaman tambah data 
-    Route::get('/audit/edit/{tahun}/{id}', [AuditController::class, 'showUpdatePage']);
+    Route::get('/audit/edit/{tahun?}/{id?}', [AuditController::class, 'showUpdatePage']);
+    
+    // route halaman tambah data 
+    Route::post('/audit/edit/{tahun?}/{id?}', [AuditController::class, 'Update']);
     
     // route insert data 
     Route::post('/audit/tambah', [AuditController::class, 'insert']);

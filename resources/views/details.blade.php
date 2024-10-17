@@ -33,7 +33,7 @@
     </div>
 {{-- modal --}}
 
-{{-- form --}}
+{{-- isi --}}
     <div class="m-10 mx-5 ">
         <div class="px-4 sm:px-0">
             <h3 class="text-base font-semibold leading-7 text-gray-900">Detail informasi data inventaris</h3>
@@ -101,7 +101,7 @@
             </dl>
         </div>
     </div>
-{{-- form --}}
+{{-- isi --}}
 
 
   {{-- javascript untuk mengirimkan data id ke modal --}}

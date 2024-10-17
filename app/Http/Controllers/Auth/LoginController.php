@@ -25,10 +25,10 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            // Simpan username di session
+            // simpan username ke session
             session(['username' => $request->username]); 
 
-            // Redirect ke halaman yang diinginkan setelah login berhasil
+            // redirect ke halaman ke dashboard
             return redirect()->intended('/dashboard');
         }
 
@@ -37,7 +37,7 @@ class LoginController extends Controller
 
         return response("<script>
                     window.location.href = '/login';
-                </script>")->header('Contaent-Type', 'text/html');
+                </script>");
     }
 
     public function logout(Request $request)

@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Monolog\Processor\WebProcessor;
-
 use function Laravel\Prompts\alert;
+
+use Monolog\Processor\WebProcessor;
+use Illuminate\Support\Facades\Storage;
 
 class AuditController extends Controller
 {
 
     public function insert(Request $request)
     {
-        // Validasi data yang diterima
         $request->validate([
             'nama_barang' => 'required|string',
             'sumber_dana' => 'required|string',
@@ -23,19 +23,16 @@ class AuditController extends Controller
             'gambar' => 'nullable',
         ]);
 
-        // Simpan gambar jika ada
         $imagePath = $request->hasFile('gambar') ? $request->file('gambar')->store('images', 'public') : null;
 
         try {
-        // Validasi manual
-        if ($request->file('gambar')->getSize() > 2048000) { 
-            return "<script>
-                alert('Ukuran file tidak boleh lebih dari 2 MB.');
-                window.history.back();
-            </script>";
+            if ($request->file('gambar')->getSize() > 2048000) { 
+                return "<script>
+                    alert('Ukuran file tidak boleh lebih dari 2 MB.');
+                    window.history.back();
+                </script>";
         }
 
-        // Menggunakan Eloquent untuk menyisipkan data
         Inventory::create([
             'nama_barang' => $request->input('nama_barang'),
             'sumber_dana' => $request->input('sumber_dana'),
@@ -45,13 +42,11 @@ class AuditController extends Controller
             'gambar' => $imagePath, 
         ]);
 
-        // Set pesan sukses ke session
         session()->flash('success');
             
         return response("<script>
                     window.location.href = '/audit/tambah';
                 </script>")->header('Contaent-Type', 'text/html');
-
 
         } catch (\Exception $e) {
             return "<script>
@@ -71,16 +66,64 @@ class AuditController extends Controller
     
     }
 
-        public function showUpdatePage($id = null) {
+    public function showUpdatePage($tahun = null, $id = null) {
         
         $inventory = Inventory::find($id);
 
-        dd($inventory);
-
         $title = "Edit data inventaris";
+
         $username = session("username");
 
-        return view("update", compact("title", "username"));
+        return view("update", compact( "inventory", "title", "username"));
     }
+    
+    public function update(Request $request, $tahun = null, $id = null) 
+    
+    {    
+        $request->validate([
+            'nama_barang' => 'required',
+            'sumber_dana' => 'required',
+            'jumlah' => 'required',
+            'tanggal' => 'required',
+            'gambar' => 'nullable',
+            'gambarLama' => 'nullable', 
+        ]);
+
+        $inventory = Inventory::find($id);
+
+        if (!$inventory) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan.');
+        }
+
+        $inventory->nama_barang = $request->input('nama_barang');
+        $inventory->sumber_dana = $request->input('sumber_dana');
+        $inventory->editor = session('username');
+        $inventory->jumlah = $request->input('jumlah');
+        $inventory->tanggal = $request->input('tanggal');
+
+        if ($request->hasFile('gambar')) {
+            if ($inventory->gambar) {
+                Storage::delete($inventory->gambar);
+            }
+
+            $gambarPath = $request->file('gambar')->store('images', 'public'); 
+            $inventory->gambar = $gambarPath; 
+
+        } else {
+
+            $inventory->gambar = $request->input('gambarLama');
+        }
+
+        $inventory->save();
+
+        $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y');
+
+        return redirect("/inventory/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
+
+
+    }
+
+
+
 
 }
