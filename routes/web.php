@@ -11,9 +11,7 @@ use App\Models\Inventory;
 use Illuminate\Support\Facades\Auth;
 
 // route login kalau blm login 
-Route::get('/', function () {
-    return view('/login', [LoginController::class, 'showloginform']);
-});
+Route::get('/', [LoginController::class, 'showloginform']);
 
 Route::get('/login', [LoginController::class, 'showloginform']);
 
@@ -38,9 +36,9 @@ Route::middleware(['auth'])->group(function () {
     
     // route halaman tambah data 
     Route::get('/audit/tambah', [AuditController::class, 'index']);
-  
+   
     // route halaman tambah data 
-    Route::get('/audit/edit/{tahun}/{id}', [InventoryController::class, 'showUpdatePage']);
+    Route::get('/audit/edit/{tahun}/{id}', [AuditController::class, 'showUpdatePage']);
     
     // route insert data 
     Route::post('/audit/tambah', [AuditController::class, 'insert']);
@@ -50,12 +48,7 @@ Route::middleware(['auth'])->group(function () {
   
     // route halaman daftar 
     Route::get('/signup', [AkunController::class, 'showRegistrationForm']);
-
-    // route halaman edit 
-    Route::get('/audit/edit/{tahun?}/{id?}', function() {
-        return view('update', ['title' => 'Edit data inventaris']); 
-    });
-    
+     
     // route insert data pendaftaran
     Route::post('/signup', [AkunController::class, 'register']);
     

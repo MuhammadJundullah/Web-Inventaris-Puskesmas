@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Monolog\Processor\WebProcessor;
 
 use function Laravel\Prompts\alert;
 
@@ -68,6 +69,18 @@ class AuditController extends Controller
 
         return view('create', compact("title", "username"));
     
+    }
+
+        public function showUpdatePage($id = null) {
+        
+        $inventory = Inventory::find($id);
+
+        dd($inventory);
+
+        $title = "Edit data inventaris";
+        $username = session("username");
+
+        return view("update", compact("title", "username"));
     }
 
 }
