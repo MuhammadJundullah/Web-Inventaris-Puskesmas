@@ -44,6 +44,7 @@
                 <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
               </div>
             </div>
+            <p class="text-white ml-3">{{ $slot }}</p>
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">
@@ -83,7 +84,7 @@
             <a href="/dashboard"><img class="h-10 w-10 rounded-full" src="{{ asset('img/akun.jpg') }}" alt="Logo Puskesmas"></a>
           </div>
           <div class="ml-3">
-            <div class="text-base font-medium leading-none text-white">Username</div>
+            <div class="text-base font-medium leading-none text-white">{{$slot}}</div>
 
             {{-- <div class="text-sm font-medium leading-none text-gray-400">Username@gmail.com</div> --}}
           </div>

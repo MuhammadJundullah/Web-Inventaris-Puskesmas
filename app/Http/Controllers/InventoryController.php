@@ -24,8 +24,10 @@ class InventoryController extends Controller
         // Menambahkan variabel title
         $title = "Audit Data Inventaris";
 
+        $username = session("username");
+
         // Mengirim data ke view
-        return view('inventory', compact('posts', 'title', 'years'));
+        return view('inventory', compact('posts', 'title', 'years', 'username'));
     }
 
     // Metode untuk menampilkan data berdasarkan ID
@@ -36,13 +38,15 @@ class InventoryController extends Controller
 
         $title = 'Details';
 
+        $username = session('username');
+
         // Jika data tidak ditemukan, kembalikan respons 404
         if (!$inventory) {
             return response()->json(['message' => 'Data not found.'], 404);
         }
 
         // Kembalikan data yang ditemukan
-        return view('details', compact('inventory', 'title'));
+        return view('details', compact('inventory', 'title', 'username'));
     }
 
     public function destroy($tahun = null, $id = null)

@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <x-navbar></x-navbar>
+    <x-navbar>{{$username}}</x-navbar>
     <x-header>{{$title}}</x-header>
     <main>
         {{$slot}}

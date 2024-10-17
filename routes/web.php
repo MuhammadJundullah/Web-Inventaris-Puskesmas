@@ -29,17 +29,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     
     // route about 
-    Route::get('/about', function () {
-        return view('about', ["title" => "About This Site"]);
-    });
+    Route::get('/about', [DashboardController::class, 'showAbout']);
     
     // route halaman inventory per tahun 
     Route::get('/inventory/{year?}', [InventoryController::class, 'index']);
     
     // route halaman tambah data 
-    Route::get('/audit/tambah', function () {
-        return view('create', ["title" => "Tambah Data Inventaris"], ['button' => ' + Tambah Data']);
-    });
+    Route::get('/audit/tambah', [AuditController::class, 'index']);
   
     // route halaman tambah data 
     Route::get('/audit/edit', function () {
@@ -53,9 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/audit/hapus/{tahun?}/{id?}', [InventoryController::class, 'destroy']);
   
     // route halaman daftar 
-    Route::get('/signup', function() {
-        return view('signup', ['title' => 'Tambah akun untuk masuk']); 
-    });
+    Route::get('/signup', [AkunController::class, 'showRegistrationForm']);
 
     // route halaman edit 
     Route::get('/audit/edit/{tahun?}/{id?}', function() {

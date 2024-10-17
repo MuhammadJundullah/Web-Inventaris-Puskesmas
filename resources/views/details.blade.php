@@ -1,5 +1,7 @@
 <x-layout>
      <x-slot:title>{{$title}}</x-slot:title>
+     <x-slot:username>{{$username}}</x-slot:username>
+
 <div class="m-10 mx-20 px-8">
     <div class="px-4 sm:px-0">
         <h3 class="text-base font-semibold leading-7 text-gray-900">Detail informasi data inventaris</h3>
@@ -18,6 +20,14 @@
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt class="font-medium leading-6 text-gray-900">Tanggal masuk</dt>
             <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->tanggal}}</dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="font-medium leading-6 text-gray-900">Jumlah barang</dt>
+            <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->jumlah}}</dd>
+        </div>
+        <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="font-medium leading-6 text-gray-900">Editor</dt>
+            <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$inventory->editor}}</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt class="font-medium leading-6 text-gray-900">Tanggal di input</dt>

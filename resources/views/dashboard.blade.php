@@ -1,5 +1,7 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-slot:username>{{$username}}</x-slot:username>
+ 
     <div class="bg-white">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
 

@@ -1,5 +1,6 @@
     <x-layout>
         <x-slot:title>{{$title}}</x-slot:title> 
+        <x-slot:username>{{$username}}</x-slot:username>
 
     
     <div class="mt-10 mx-8 px-20">
@@ -56,6 +57,16 @@
                             <div class="mt-2">
                                 <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
                                     <input type="text" name="sumber_dana" id="sumber_dana" autocomplete="sumber_dana" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan sumber dana ">
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- input jumlah barang --}}
+                        <div class="sm:col-span-4">
+                            <label for="jumlah" class="block text-sm font-medium leading-6 text-gray-900">Jumlah :</label>
+                            <div class="mt-2">
+                                <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
+                                    <input type="text" name="jumlah" id="jumlah" autocomplete="jumlah" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan jumlah barang ">
                                 </div>
                             </div>
                         </div>

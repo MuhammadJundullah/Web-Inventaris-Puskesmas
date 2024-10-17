@@ -18,7 +18,10 @@ class DashboardController extends Controller
 
         $title = "Data Inventaris Puskesmas";
 
-        return view('dashboard', compact('years', 'title'));
+        $username = session('username');
+        
+
+        return view('dashboard', compact('years', 'title', 'username'));
     }
 
     /**
@@ -40,9 +43,13 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showAbout()
     {
-        //
+        $title = "About this site";
+
+        $username = session("username");
+
+        return view("about", compact("title", "username"));
     }
 
     /**

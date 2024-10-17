@@ -14,8 +14,9 @@ class AkunController extends Controller
     public function index()
     {
         $accounts = User::All();
+        $username = session("username");
         $title = 'Akun yang terdaftar';
-        return view('akun', compact('accounts', 'title'));
+        return view('akun', compact('accounts', 'title', 'username'));
     }
 
     /**
@@ -66,6 +67,16 @@ class AkunController extends Controller
         // Temukan user berdasarkan ID
         $user = User::find($id);
 
+        // cek apakah user sedang berada di akun ini
+        $username = session('username');
+
+        if ($username === $user->username) {
+            return "<script>
+                alert(' ⚠️ Anda sedang menggunakan akun ini !');
+                window.location.href = '/registered-account';
+            </script>";
+        }
+
         // Jika user tidak ditemukan, kembalikan respons dengan error
         if (!$user) {
             return response()->json(['message' => 'User not found.'], 404);
@@ -92,7 +103,11 @@ class AkunController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        $title = "Tambahkan akun untuk masuk";
+
+        $username = session("username");
+
+        return view('signup', compact('title', 'username'));
     }
 
     public function register(Request $request)

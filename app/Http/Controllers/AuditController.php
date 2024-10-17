@@ -11,50 +11,63 @@ use function Laravel\Prompts\alert;
 class AuditController extends Controller
 {
 
-   public function insert(Request $request)
-{
-    // Validasi data yang diterima
-    $request->validate([
-        'nama_barang' => 'required|string',
-        'sumber_dana' => 'required|string',
-        'tanggal' => 'required|date',
-        'gambar' => 'nullable',
-    ]);
+    public function insert(Request $request)
+    {
+        // Validasi data yang diterima
+        $request->validate([
+            'nama_barang' => 'required|string',
+            'sumber_dana' => 'required|string',
+            'jumlah' => 'required|string',
+            'tanggal' => 'required|date',
+            'gambar' => 'nullable',
+        ]);
 
-    // Simpan gambar jika ada
-    $imagePath = $request->hasFile('gambar') ? $request->file('gambar')->store('images', 'public') : null;
+        // Simpan gambar jika ada
+        $imagePath = $request->hasFile('gambar') ? $request->file('gambar')->store('images', 'public') : null;
 
-    try {
-    // Validasi manual
-    if ($request->file('gambar')->getSize() > 2048000) { 
-        return "<script>
-            alert('Ukuran file tidak boleh lebih dari 2 MB.');
-            window.history.back();
-        </script>";
+        try {
+        // Validasi manual
+        if ($request->file('gambar')->getSize() > 2048000) { 
+            return "<script>
+                alert('Ukuran file tidak boleh lebih dari 2 MB.');
+                window.history.back();
+            </script>";
+        }
+
+        // Menggunakan Eloquent untuk menyisipkan data
+        Inventory::create([
+            'nama_barang' => $request->input('nama_barang'),
+            'sumber_dana' => $request->input('sumber_dana'),
+            'jumlah' => $request->input('jumlah'),
+            'editor' => session('username'),
+            'tanggal' => $request->input('tanggal'),
+            'gambar' => $imagePath, 
+        ]);
+
+        // Set pesan sukses ke session
+        session()->flash('success');
+            
+        return response("<script>
+                    window.location.href = '/audit/tambah';
+                </script>")->header('Contaent-Type', 'text/html');
+
+
+        } catch (\Exception $e) {
+            return "<script>
+                alert('Gagal menyimpan data: " . addslashes($e->getMessage()) . "');
+                window.history.back();
+            </script>";
+        }
     }
 
-    // Menggunakan Eloquent untuk menyisipkan data
-    Inventory::create([
-        'nama_barang' => $request->input('nama_barang'),
-        'sumber_dana' => $request->input('sumber_dana'),
-        'tanggal' => $request->input('tanggal'),
-        'gambar' => $imagePath, 
-    ]);
+    public function index() 
+    {
+        $title = "Tambah Data Inventaris";
 
-    // Set pesan sukses ke session
-    session()->flash('success');
-        
-    return response("<script>
-                window.location.href = '/audit/tambah';
-            </script>")->header('Contaent-Type', 'text/html');
+        $username = session('username');
 
-
-} catch (\Exception $e) {
-    return "<script>
-        alert('Gagal menyimpan data: " . addslashes($e->getMessage()) . "');
-        window.history.back();
-    </script>";
-}
-}
+        return view('create', compact("title", "username"));
+    
+    }
 
 }

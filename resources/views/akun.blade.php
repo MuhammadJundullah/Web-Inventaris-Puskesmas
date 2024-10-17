@@ -1,5 +1,6 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-slot:username>{{$username}}</x-slot:username>
 
 {{-- modal --}}
 <div class="relative z-10 hidden" id="deleteModal" aria-labelledby="modal-title" role="dialog" aria-modal="true">

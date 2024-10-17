@@ -1,5 +1,7 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-slot:username>{{$username}}</x-slot:username>
+    
     <div class="flex min-h-full flex-col justify-center px-20 mx-8 py-12 lg:p">
         
         {{-- tombol tambah edit data --}}
