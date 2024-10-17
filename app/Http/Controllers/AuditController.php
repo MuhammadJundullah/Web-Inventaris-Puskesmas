@@ -6,7 +6,6 @@ use App\Models\Inventory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use function Laravel\Prompts\alert;
-
 use Monolog\Processor\WebProcessor;
 use Illuminate\Support\Facades\Storage;
 
@@ -120,10 +119,6 @@ class AuditController extends Controller
 
         return redirect("/inventory/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
 
-
     }
-
-
-
 
 }
