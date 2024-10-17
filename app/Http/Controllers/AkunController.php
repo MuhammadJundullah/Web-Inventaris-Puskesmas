@@ -121,7 +121,10 @@ class AkunController extends Controller
 
         // Jika validasi gagal, kembalikan script alert
         if ($validator->fails()) {
-             session()->flash('failed');
+            session()->flash('info', [
+            'pesan' => 'Konfirmasi Password tidak sesuai !',
+            'warna' => 'red',
+        ]);
             
         return response("<script>
                     window.location.href = '/signup';
@@ -131,11 +134,17 @@ class AkunController extends Controller
           // Cek apakah username yang akan dihapus sudah ada di database
         $username = $request->username;
         if (User::where('username', $username)->exists()) {
-            return "<script>
-                alert('⚠️ Username sudah terpakai!');
-                window.location.href = '/registered-account';
-            </script>";
-        }
+        session()->flash('info', [
+            'pesan' => 'Username sudah terdaftar !',
+            'warna' => 'red',
+        ]);
+            
+        return response("<script>
+            window.location.href = '/signup';
+        </script>");
+        
+    }
+
 
         // Buat user baru
         $user = User::create([
@@ -144,7 +153,10 @@ class AkunController extends Controller
         ]);
 
         // Set pesan sukses ke session
-        session()->flash('success', 'Akun berhasil didaftarkan!');
+        session()->flash('info', [
+            'pesan' => 'Akun berhasil di daftarkan !',
+            'warna' => 'green',
+        ]);
         
         return response("<script>
                     window.location.href = '/signup';
