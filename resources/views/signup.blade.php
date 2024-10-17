@@ -10,8 +10,15 @@
   
     {{-- modal --}}
       @if (session("info"))
-          <div role="alert" class="rounded border-s-4 border-{{session('info.warna')}}-500 bg-{{session('info.warna')}}-50 p-4">
-            <strong class="block font-medium text-{{session('info.warna')}}-800">{{session('info.pesan')}}</strong>
+      <div role="alert" class="rounded border-s-4 border-{{session('info.warna')}}-500 bg-{{session('info.warna')}}-50 p-4">
+            @if (session('info.warna') == 'green')
+            <span class="text-green-600 flex">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <strong class="block font-medium text-{{session('info.warna')}}-600 ml-2">{{session('info.pesan')}}</strong>
+            </span>
+            @endif
           </div>
       @endif
     {{-- modal --}}

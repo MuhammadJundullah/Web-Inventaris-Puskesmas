@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
     <x-slot:username>{{$username}}</x-slot:username>
-    
+
 <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
   <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
   <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl" aria-hidden="true">
@@ -12,14 +12,14 @@
   </div>
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:mx-0">
-      <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Work with us anak KP unimal</h2>
-      <p class="mt-6 text-lg leading-8 text-gray-300">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+      <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Manajemen Inventaris Puskesmas Muara Satu</h2>
+      <p class="mt-6 text-lg leading-8 text-gray-300">Website ini dibuat oleh Mahasiswa Teknik Informatika Universitas Malikussaleh.</p>
     </div>
     <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
       <div class="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
-        <a href="#">Open roles <span aria-hidden="true">&rarr;</span></a>
-        <a href="#">Internship program <span aria-hidden="true">&rarr;</span></a>
-        <a href="#">Our values <span aria-hidden="true">&rarr;</span></a>
+        <a href="https://unimal.ac.id">Universitas Malikussaleh<span aria-hidden="true">&rarr;</span></a>
+        <a href="#">Internship program<span aria-hidden="true">&rarr;</span></a>
+        <a href="https://informatika.unimal.ac.id">Teknik Informatika<span aria-hidden="true">&rarr;</span></a>
         <a href="#">Meet our leadership <span aria-hidden="true">&rarr;</span></a>
       </div>
       <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">

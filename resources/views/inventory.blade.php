@@ -109,18 +109,18 @@
     </style>
 
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:p">
-        <div class="my-10 sm:mx-auto sm:w-full">
 
-            <div class="flex min-h-full flex-col justify-center px-20 mx-8 py-12 lg:p">
-                {{-- tombol tambah edit data --}}
-                <div class="items-baseline">
-                    <div>
-                        <a href="/audit/tambah" class="py-2 w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700">+ Tambah Data</a>
-                        <a href="#" class="ml-5 py-2 w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700">Cetak Data</a>
-                    </div>
-                </div>
-                {{-- tombol tambah edit data --}}
+        {{-- tombol tambah edit data --}}
+        <div class="items-baseline ml-11 pl-11">
+            <div>
+                <a href="/audit/tambah" class="py-2 w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700">+ Tambah Data</a>
+                <a href="#" class="ml-5 py-2 w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700">Cetak Data</a>
+            </div>
+        </div>
+        {{-- tombol tambah edit data --}}
 
+        <div class=" sm:mx-auto sm:w-full">
+            <div class="flex min-h-full flex-col justify-center mx-6 py-12 lg:p">
                 <div class="my-5 sm:mx-auto sm:w-full">
                     <div class="mx-auto mt-11 text-center">
                         <div class="overflow-x-auto">
@@ -181,6 +181,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
 
     <script>
         function filterTable() {
@@ -193,63 +196,63 @@
         }
 
 
-    // Fungsi untuk menampilkan atau menyembunyikan dropdown bulan
-    document.getElementById("dropdownButton").addEventListener("click", function() {
-        const dropdown = document.getElementById("monthDropdown");
-        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
-    });
+        // Fungsi untuk menampilkan atau menyembunyikan dropdown bulan
+        document.getElementById("dropdownButton").addEventListener("click", function() {
+            const dropdown = document.getElementById("monthDropdown");
+            dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+        });
 
-    // Script untuk filter berdasarkan input
-    function filterTable() {
-        var input, filter, monthValue, table, tr, td, dateCell, i, txtValue;
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        monthValue = document.getElementById("monthDropdown").value;
-        table = document.querySelector("tbody");
-        tr = table.getElementsByTagName("tr");
+        // Script untuk filter berdasarkan input
+        function filterTable() {
+            var input, filter, monthValue, table, tr, td, dateCell, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            monthValue = document.getElementById("monthDropdown").value;
+            table = document.querySelector("tbody");
+            tr = table.getElementsByTagName("tr");
 
-        let visibleCount = 0;
+            let visibleCount = 0;
 
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2]; // Kolom Sumber Dana
-            dateCell = tr[i].getElementsByTagName("td")[4]; // Kolom Tanggal
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2]; // Kolom Sumber Dana
+                dateCell = tr[i].getElementsByTagName("td")[4]; // Kolom Tanggal
 
-            let displayRow = true;
+                let displayRow = true;
 
-            // Filter berdasarkan Sumber Dana
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (filter && !txtValue.toUpperCase().includes(filter)) {
-                    displayRow = false;
-                }
-            }
-
-            // Filter berdasarkan bulan
-            if (dateCell) {
-                let dateValue = dateCell.textContent || dateCell.innerText;
-                if (monthValue !== "") {
-                    let monthFromDate = dateValue.substring(5, 7);
-                    if (monthFromDate !== monthValue) {
+                // Filter berdasarkan Sumber Dana
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (filter && !txtValue.toUpperCase().includes(filter)) {
                         displayRow = false;
                     }
                 }
-            }
 
-            // Tampilkan atau sembunyikan baris
-            if (displayRow) {
-                tr[i].style.display = "";
-                visibleCount++;
-                tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Update nomor urut
-            } else {
-                tr[i].style.display = "none";
+                // Filter berdasarkan bulan
+                if (dateCell) {
+                    let dateValue = dateCell.textContent || dateCell.innerText;
+                    if (monthValue !== "") {
+                        let monthFromDate = dateValue.substring(5, 7);
+                        if (monthFromDate !== monthValue) {
+                            displayRow = false;
+                        }
+                    }
+                }
+
+                // Tampilkan atau sembunyikan baris
+                if (displayRow) {
+                    tr[i].style.display = "";
+                    visibleCount++;
+                    tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Update nomor urut
+                } else {
+                    tr[i].style.display = "none";
+                }
             }
         }
-    }
 
-    // Event listeners
-    document.getElementById("searchInput").addEventListener("keyup", filterTable);
-    document.getElementById("monthDropdown").addEventListener("change", filterTable);
-</script>
+        // Event listeners
+        document.getElementById("searchInput").addEventListener("keyup", filterTable);
+        document.getElementById("monthDropdown").addEventListener("change", filterTable);
+    </script>
 
 
 

@@ -53,7 +53,7 @@
             {{-- parse tanggal untuk mengambil tahun --}}
 
             <div class="mt-6 flex items-center justify-end gap-x-2">
-                <a href="/inventory/{{$tahun}}"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
+                <a href="/inventory/{{$tahun}}"><button type="button" class="text-sm font-semibold leading-6 text-gray-900 mr-10">Kembali</button></a>
 
                 <form action="/audit/hapus/{{$tahun}}/{{$inventory->id}}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus?');">
                     @csrf

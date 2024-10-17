@@ -67,14 +67,27 @@ class AkunController extends Controller
         // Temukan user berdasarkan ID
         $user = User::find($id);
 
+        // Cek jumlah user yang tersisa
+        $userCount = User::count();
+
+        // Jika hanya tinggal 1 user, tidak boleh menghapus
+        if ($userCount == 1) {
+            session()->flash('failed', 'Tidak bisa menghapus akun satu satunya !');
+
+            return response("<script>
+                    window.location.href = '/registered-account';
+                </script>")->header('Contaent-Type', 'text/html');
+        }
+
         // cek apakah user sedang berada di akun ini
         $username = session('username');
 
         if ($username === $user->username) {
-            return "<script>
-                alert(' ⚠️ Anda sedang menggunakan akun ini !');
-                window.location.href = '/registered-account';
-            </script>";
+            session()->flash('failed', "Akun tidak bisa di hapus karena sedang digunakan !");
+
+            return response("<script>
+                    window.location.href = '/registered-account';
+                </script>")->header('Contaent-Type', 'text/html');
         }
 
         // Jika user tidak ditemukan, kembalikan respons dengan error
@@ -82,19 +95,10 @@ class AkunController extends Controller
             return response()->json(['message' => 'User not found.'], 404);
         }
 
-        // Cek jumlah user yang tersisa
-        $userCount = User::count();
-
-        // Jika hanya tinggal 1 user, tidak boleh menghapus
-        if ($userCount == 1) {
-            return "<script>
-                alert(' ⚠️ Akun satu satunya, tidak bisa di hapus !');
-                window.location.href = '/registered-account';
-            </script>";
-        }
-
         // Hapus user
         $user->delete();
+
+        session()->flash('berhasil', "Berhasil menghapus akun !");
 
         return "<script>
                 window.location.href = '/registered-account';
@@ -144,7 +148,6 @@ class AkunController extends Controller
         </script>");
         
     }
-
 
         // Buat user baru
         $user = User::create([

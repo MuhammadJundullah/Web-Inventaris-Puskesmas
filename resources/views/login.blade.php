@@ -13,18 +13,13 @@
     <img class="mx-auto h-20 w-auto" src="{{ asset('img/logo-puskesmas.png') }}" alt="Your Company">
     <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login ke Manajemen Inventaris Puskesmas Muara Satu</h2>
 
-    {{-- modal untuk password salah --}}
-    @if (session('failed')) 
-      <div role="alert" class="rounded border-s-4 border-red-500 bg-red-50 p-4 mt-5">
-        <strong class="block font-medium text-red-800"> Username atau Password tidak terdaftar. </strong>
-        
-        {{-- <p class="mt-2 text-sm text-red-700">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo quasi assumenda numquam deserunt
-          consectetur autem nihil quos debitis dolor culpa.
-        </p> --}}
-      </div>
-    @endif
-    {{-- modal untuk password salah --}}
+      {{-- modal untuk password salah --}}
+        @if (session('failed')) 
+          <div role="alert" class="rounded border-s-4 border-red-500 bg-red-50 p-4 mt-5">
+            <strong class="block font-medium text-red-800">{{session('failed')}}</strong>
+          </div>
+        @endif
+      {{-- modal untuk password salah --}}
     
   </div>
 
