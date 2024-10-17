@@ -52,7 +52,7 @@ class InventoryController extends Controller
     public function destroy($tahun = null, $id = null)
     {
         $inventory = Inventory::find($id);
-        
+
         // Jika data tidak ditemukan, kembalikan respons 404
         if (!$inventory) {
             return response()->json(['message' => 'Data tahun not found.'], 404);
@@ -65,8 +65,34 @@ class InventoryController extends Controller
         return response("<script>
                     window.location.href = '/inventory/$tahun/';
                 </script>")->header('Contaent-Type', 'text/html');
-
-
     }
-    
+
+    // cetak
+    public function cetak()
+    {
+        $posts = Inventory::all(); // Mengambil semua data dari model Inventory
+
+        // Mengembalikan view untuk mencetak
+        return view('cetak', [
+            'title' => 'Daftar Barang',
+            'username' => session('username'), // Ambil username dari session
+            'posts' => $posts
+        ]);
+    }
+
+    // Mengunduh PDF
+    public function downloadPDF()
+    {
+        $posts = Inventory::all(); // Mengambil semua data dari model Inventory
+
+        // Buat PDF menggunakan library seperti dompdf atau snappy
+        // Contoh dengan dompdf
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('pdf_view', [
+            'title' => 'Daftar Barang',
+            'posts' => $posts
+        ]);
+
+        return $pdf->download('daftar_barang.pdf');
+    }
 }

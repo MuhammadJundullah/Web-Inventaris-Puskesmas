@@ -111,6 +111,29 @@
             padding: 5px;
             border-radius: 5px;
         }
+
+        /* warna untuk kotak */
+        /* ga bisa wak */
+        th {
+            background-color: #16a085;
+            /* Warna latar belakang header */
+            color: white;
+            /* Warna teks */
+        }
+
+        /* biar table ada warna nya */
+        @media print {
+            th {
+                background-color: #16a085 !important;
+                /* Pastikan warna tetap saat cetak */
+                color: white !important;
+                /* Pastikan teks tetap terlihat */
+                -webkit-print-color-adjust: exact;
+                /* Pastikan warna dicetak di Chrome */
+                print-color-adjust: exact;
+                /* Pastikan warna dicetak di browser lain */
+            }
+        }
     </style>
 
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:p">
@@ -126,7 +149,10 @@
                         </svg>
                         <b>Tambah Data</b>
                 </a>
-                <button class="button p-2 rounded-lg flex items-center tombol text-white"><b>Cetak Data</b></button>
+                <button class="button p-2 rounded-lg flex items-center tombol text-white" onclick="printTable()">
+                    <b>Cetak Data</b>
+                </button>
+
             </div>
         </div>
         {{-- tombol tambah edit data --}}
@@ -240,6 +266,21 @@
                     tr[i].style.display = "none";
                 }
             }
+        }
+        // cetak
+        function printTable() {
+            // Optional: Menyembunyikan elemen yang tidak ingin dicetak
+            const originalContent = document.body.innerHTML;
+            const tableContent = document.querySelector("table").outerHTML;
+
+            // Memperbarui halaman dengan hanya tabel
+            document.body.innerHTML = tableContent;
+
+            // Memicu jendela cetak browser
+            window.print();
+
+            // Kembalikan halaman ke keadaan semula setelah cetak
+            document.body.innerHTML = originalContent;
         }
 
         // Event listeners for input and dropdown changes
