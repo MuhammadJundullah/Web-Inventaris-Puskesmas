@@ -128,6 +128,15 @@ class AkunController extends Controller
                 </script>")->header('Contaent-Type', 'text/html');
         }
 
+          // Cek apakah username yang akan dihapus sudah ada di database
+        $username = $request->username;
+        if (User::where('username', $username)->exists()) {
+            return "<script>
+                alert('⚠️ Username sudah terpakai!');
+                window.location.href = '/registered-account';
+            </script>";
+        }
+
         // Buat user baru
         $user = User::create([
             'username' => $request->username,
