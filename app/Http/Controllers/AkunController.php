@@ -14,8 +14,9 @@ class AkunController extends Controller
     public function index()
     {
         $accounts = User::All();
+        $username = session("username");
         $title = 'Akun yang terdaftar';
-        return view('akun', compact('accounts', 'title'));
+        return view('akun', compact('accounts', 'title', 'username'));
     }
 
     /**
@@ -66,24 +67,47 @@ class AkunController extends Controller
         // Temukan user berdasarkan ID
         $user = User::find($id);
 
+        // cek apakah user sedang berada di akun ini
+        $username = session('username');
+
+        if ($username === $user->username) {
+            return "<script>
+                alert(' ⚠️ Anda sedang menggunakan akun ini !');
+                window.location.href = '/registered-account';
+            </script>";
+        }
+
         // Jika user tidak ditemukan, kembalikan respons dengan error
         if (!$user) {
             return response()->json(['message' => 'User not found.'], 404);
         }
 
+        // Cek jumlah user yang tersisa
+        $userCount = User::count();
+
+        // Jika hanya tinggal 1 user, tidak boleh menghapus
+        if ($userCount == 1) {
+            return "<script>
+                alert(' ⚠️ Akun satu satunya, tidak bisa di hapus !');
+                window.location.href = '/registered-account';
+            </script>";
+        }
+
         // Hapus user
         $user->delete();
 
-        // Kembalikan respons sukses
         return "<script>
-            alert('Akun berhasil di hapus !');
-            window.location.href = '/registered-account';
-        </script>";
+                window.location.href = '/registered-account';
+            </script>";
     }
 
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        $title = "Tambahkan akun untuk masuk";
+
+        $username = session("username");
+
+        return view('signup', compact('title', 'username'));
     }
 
     public function register(Request $request)
@@ -97,8 +121,9 @@ class AkunController extends Controller
 
         // Jika validasi gagal, kembalikan script alert
         if ($validator->fails()) {
-            return response("<script>
-                    alert('Konfirmasi password salah !');
+             session()->flash('failed');
+            
+        return response("<script>
                     window.location.href = '/signup';
                 </script>")->header('Contaent-Type', 'text/html');
         }
@@ -106,12 +131,15 @@ class AkunController extends Controller
         // Buat user baru
         $user = User::create([
             'username' => $request->username,
-            'password' => bcrypt($request->password), // Enkripsi password
+            'password' => bcrypt($request->password), 
         ]);
 
-        return "<script>
-            alert('Akun berhasil di daftarkan!');
-            window.location.href = '/signup';
-        </script>";
+        // Set pesan sukses ke session
+        session()->flash('success', 'Akun berhasil didaftarkan!');
+        
+        return response("<script>
+                    window.location.href = '/signup';
+                </script>")->header('Contaent-Type', 'text/html');
+
     }
 }

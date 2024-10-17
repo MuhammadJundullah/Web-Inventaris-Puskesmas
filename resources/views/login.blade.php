@@ -12,17 +12,24 @@
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <img class="mx-auto h-20 w-auto" src="{{ asset('img/logo-puskesmas.png') }}" alt="Your Company">
     <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login ke Manajemen Inventaris Puskesmas Muara Satu</h2>
+
+    {{-- modal untuk password salah --}}
+    @if (session('failed')) 
+      <div role="alert" class="rounded border-s-4 border-red-500 bg-red-50 p-4 mt-5">
+        <strong class="block font-medium text-red-800"> Username atau Password tidak terdaftar. </strong>
+        
+        {{-- <p class="mt-2 text-sm text-red-700">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo quasi assumenda numquam deserunt
+          consectetur autem nihil quos debitis dolor culpa.
+        </p> --}}
+      </div>
+    @endif
+    {{-- modal untuk password salah --}}
+    
   </div>
 
   {{-- form --}}
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-
-@php
-    if (isset($salah)) {
-      echo "<p>username dan password tidak sesuai</p>";
-    }
-@endphp
-
+  <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
 
     {{-- input username --}}
     <form id='loginForm' class="space-y-6" action="/login" method="POST">
@@ -37,7 +44,7 @@
       {{-- input password --}}
       <div>
         <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password :</label>
           <div class="text-sm">
             <a href="#" class="font-semibold text-gray-600 hover:text-gray-500">Lupa Password?</a>
           </div>

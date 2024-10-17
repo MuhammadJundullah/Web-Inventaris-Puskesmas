@@ -24,13 +24,20 @@ class LoginController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
+
+            // Simpan username di session
+            session(['username' => $request->username]); 
+
             // Redirect ke halaman yang diinginkan setelah login berhasil
             return redirect()->intended('/dashboard');
         }
 
-        return back()->withErrors([
-            'username' => 'Username atau password salah.',
-        ]);
+        // Set pesan sukses ke session
+        session()->flash('failed');
+
+        return response("<script>
+                    window.location.href = '/login';
+                </script>")->header('Contaent-Type', 'text/html');
     }
 
     public function logout(Request $request)

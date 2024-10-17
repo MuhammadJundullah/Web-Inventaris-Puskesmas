@@ -8,13 +8,12 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <x-navbar></x-navbar>
+    <x-navbar>{{$username}}</x-navbar>
     <x-header>{{$title}}</x-header>
     <main>
         {{$slot}}
     </main>
     <script src="//unpkg.com/alpinejs" defer></script> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    @vite('resources/js/app.js')
 </body>
 </html>
