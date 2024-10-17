@@ -4,6 +4,8 @@
 
     
     <div class="mt-10 mx-5 sm:mx-5 sm:px-20">
+        
+    {{-- form --}}
         <form class="mb-10" action="/audit/tambah" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="space-y-5">
@@ -36,7 +38,7 @@
 
                 <div class="border-b border-gray-900/10 pb-12">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Tambah Data Inventaris</h2>
-                <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
 
                     {{-- container --}}
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -111,10 +113,13 @@
                 <button type="submit" class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Tambah</button>
             </div>
         </form>
+    {{-- form --}}
+    
     </div>
 
+
+{{--  custom js untuk menampilkan preview pada saat upload gambar --}}
     <script>
-    // menampilkan preview gambar saat upload di create
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("gambar").addEventListener("change", previewImage);
     });
@@ -151,5 +156,6 @@
         }
     }
     </script>
+{{--  custom js untuk menampilkan preview pada saat upload gambar --}}
 
     </x-layout>

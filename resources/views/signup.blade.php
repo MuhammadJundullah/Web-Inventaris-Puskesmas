@@ -25,6 +25,7 @@
     
         <p class="mt-1 text-sm leading-6 text-gray-600">Akun yang anda daftarkan akan dapat masuk dengan username dan password yang didaftarkan.</p>
 
+{{-- form --}}
     {{-- input username --}}
     <form class="space-y-6" action='/signup' method="POST">
       @csrf
@@ -60,18 +61,7 @@
         <button type="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Buat Akun</button>
       </div>
     </form>
-
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
+{{-- form --}}
 
   </div>
 </div>

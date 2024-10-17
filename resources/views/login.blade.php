@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full bg-white">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login - Manajemen Inventaris Puskesmas</title>
-    @vite('resources/css/app.css', 'resources/js/app.js')
-</head>
+{{-- heading --}}
+  <!DOCTYPE html>
+    <html lang="en" class="h-full bg-white">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login - Manajemen Inventaris Puskesmas</title>
+        @vite('resources/css/app.css', 'resources/js/app.js')
+    </head>
+{{-- heading --}}
+
 <body class="h-full">
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -23,7 +26,7 @@
     
   </div>
 
-  {{-- form --}}
+{{-- form --}}
   <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
 
     {{-- input username --}}
@@ -55,6 +58,7 @@
 
     </form>
   </div>
+{{-- form --}}
 </div>
 <script src="//unpkg.com/alpinejs" defer></script>
 </body>

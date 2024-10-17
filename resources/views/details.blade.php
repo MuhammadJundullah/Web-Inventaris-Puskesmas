@@ -2,7 +2,7 @@
     <x-slot:title>{{$title}}</x-slot:title>
     <x-slot:username>{{$username}}</x-slot:username>
 
-    {{-- modal --}}
+{{-- modal --}}
     <div class="relative z-10 hidden" id="deleteModal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity backdrop-filter backdrop-blur-sm" aria-hidden="true"></div>
         <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -33,6 +33,7 @@
     </div>
 {{-- modal --}}
 
+{{-- form --}}
     <div class="m-10 mx-5 ">
         <div class="px-4 sm:px-0">
             <h3 class="text-base font-semibold leading-7 text-gray-900">Detail informasi data inventaris</h3>
@@ -100,6 +101,7 @@
             </dl>
         </div>
     </div>
+{{-- form --}}
 
 
   {{-- javascript untuk mengirimkan data id ke modal --}}

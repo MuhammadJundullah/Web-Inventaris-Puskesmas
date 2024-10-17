@@ -2,6 +2,7 @@
     <x-slot:title>{{$title}}</x-slot:title>
     <x-slot:username>{{$username}}</x-slot:username>
 
+{{-- custom css --}}
     <style>
         /* Table Styling */
         table {
@@ -112,10 +113,11 @@
             border-radius: 5px;
         }
     </style>
+{{-- custom css --}}
 
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:p">
 
-        {{-- tombol tambah edit data --}}
+    {{-- tombol tambah edit data --}}
         <div class="items-baseline ml-11 pl-11">
             <div class="flex items-center space-x-4">
                 <a href="/audit/tambah" class="flex items-center">
@@ -129,9 +131,10 @@
                 {{-- <button class="button p-2 rounded-lg flex items-center tombol text-white"><b>Cetak Data</b></button> --}}
             </div>
         </div>
-        {{-- tombol tambah edit data --}}
+    {{-- tombol tambah edit data --}}
 
-        <div class=" sm:mx-auto sm:w-full">
+{{-- table --}}
+    <div class=" sm:mx-auto sm:w-full">
             <div class="flex min-h-full flex-col justify-center mx-6 py-12 lg:p">
                 <div class="my-5 sm:mx-auto sm:w-full">
                     <div class="mx-auto mt-11 text-center">
@@ -194,10 +197,11 @@
                 </div>
             </div>
         </div>
+{{-- table --}}
     </div>
 
+{{-- custom js untuk filtering data  --}}
     <script>
-        // Function to filter the table based on search input and month selection
         function filterTable() {
             const input = document.getElementById("searchInput");
             const filter = input.value.toUpperCase();
@@ -246,4 +250,5 @@
         document.getElementById("searchInput").addEventListener("keyup", filterTable);
         document.getElementById("monthDropdown").addEventListener("change", filterTable);
     </script>
+{{-- custom js untuk filtering data  --}}
 </x-layout>
