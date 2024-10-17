@@ -1,5 +1,6 @@
 <x-layout>
     <x-slot:title>{{$title}}</x-slot:title>
+    <x-slot:username>{{$username}}</x-slot:username>
 
     <style>
         table {
@@ -136,9 +137,7 @@
 
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:p">
         <div class="my-10 sm:mx-auto sm:w-full">
-=======
-    <x-slot:username>{{$username}}</x-slot:username>
-    
+
     <div class="flex min-h-full flex-col justify-center px-20 mx-8 py-12 lg:p">
         
         {{-- tombol tambah edit data --}}
@@ -213,83 +212,65 @@
     </div>
 
 
-    <script>
-        function filterTable() {
-            var input, filter, monthValue, table, tr, td, dateCell, i, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            monthValue = document.getElementById("monthDropdown").value;
-            table = document.querySelector("tbody");
-            tr = table.getElementsByTagName("tr");
+  <script>
+    // Fungsi untuk menampilkan atau menyembunyikan dropdown bulan
+    document.getElementById("dropdownButton").addEventListener("click", function() {
+        const dropdown = document.getElementById("monthDropdown");
+        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    });
 
-            let visibleCount = 0;
+    // Script untuk filter berdasarkan input
+    function filterTable() {
+        var input, filter, monthValue, table, tr, td, dateCell, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        monthValue = document.getElementById("monthDropdown").value;
+        table = document.querySelector("tbody");
+        tr = table.getElementsByTagName("tr");
 
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[2];
-                dateCell = tr[i].getElementsByTagName("td")[4];
-                let displayRow = true;
+        let visibleCount = 0;
 
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (filter && !txtValue.toUpperCase().includes(filter)) {
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2]; // Kolom Sumber Dana
+            dateCell = tr[i].getElementsByTagName("td")[4]; // Kolom Tanggal
+
+            let displayRow = true;
+
+            // Filter berdasarkan Sumber Dana
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (filter && !txtValue.toUpperCase().includes(filter)) {
+                    displayRow = false;
+                }
+            }
+
+            // Filter berdasarkan bulan
+            if (dateCell) {
+                let dateValue = dateCell.textContent || dateCell.innerText;
+                if (monthValue !== "") {
+                    let monthFromDate = dateValue.substring(5, 7);
+                    if (monthFromDate !== monthValue) {
                         displayRow = false;
                     }
                 }
-
-                if (dateCell) {
-                    let dateValue = dateCell.textContent || dateCell.innerText;
-                    if (monthValue !== "") {
-                        let monthFromDate = dateValue.substring(5, 7);
-                        if (monthFromDate !== monthValue) {
-                            displayRow = false;
-                        }
-                    }
-                }
-
-                if (displayRow) {
-                    tr[i].style.display = "";
-                    visibleCount++;
-                    tr[i].getElementsByTagName("td")[0].innerText = visibleCount;
-                } else {
-                    tr[i].style.display = "none";
-                }
             }
-        }
 
-        document.getElementById("searchInput").addEventListener("keyup", filterTable);
-        document.getElementById("monthDropdown").addEventListener("change", filterTable);
-    </script>
-</x-layout>
-
-
-{{-- javascripts --}}
-
-<script>
-
-    //  Script untuk filter berdasarkan input
-function filterTable() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    table = document.querySelector("tbody");
-    tr = table.getElementsByTagName("tr");
-
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[3]; // Kolom Sumber Dana
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            // Tampilkan atau sembunyikan baris
+            if (displayRow) {
                 tr[i].style.display = "";
+                visibleCount++;
+                tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Update nomor urut
             } else {
                 tr[i].style.display = "none";
             }
         }
     }
-}
 
+    // Event listeners
+    document.getElementById("searchInput").addEventListener("keyup", filterTable);
+    document.getElementById("monthDropdown").addEventListener("change", filterTable);
+</script>
 
-
- </script>
 
 
 </x-layout>
