@@ -68,5 +68,12 @@ class InventoryController extends Controller
 
 
     }
+
+    public function showUpdatePage() {
+        $title = "Edit data inventaris";
+        $username = session("username");
+
+        return view("update", compact("title", "username"));
+    }
     
 }

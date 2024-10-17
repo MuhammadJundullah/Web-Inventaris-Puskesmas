@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('/login', [LoginController::class, 'showloginform']);
 
+Route::get('login', [LoginController::class, 'showloginform'])->name('login');
+
 Route::post('login', [LoginController::class, 'login']);
 
 //  rute yang dilindungin oleh auth
@@ -38,15 +40,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/audit/tambah', [AuditController::class, 'index']);
   
     // route halaman tambah data 
-    Route::get('/audit/edit', function () {
-        return view('create', ["title" => "Tambah Data Inventaris"], ['button' => ' + Tambah Data']);
-    });
+    Route::get('/audit/edit/{tahun}/{id}', [InventoryController::class, 'showUpdatePage']);
     
     // route insert data 
     Route::post('/audit/tambah', [AuditController::class, 'insert']);
   
     // route insert data 
-    Route::post('/audit/hapus/{tahun?}/{id?}', [InventoryController::class, 'destroy']);
+    Route::get('/audit/hapus/{tahun?}/{id?}', [InventoryController::class, 'destroy']);
   
     // route halaman daftar 
     Route::get('/signup', [AkunController::class, 'showRegistrationForm']);

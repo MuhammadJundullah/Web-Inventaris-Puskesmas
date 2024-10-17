@@ -3,7 +3,7 @@
         <x-slot:username>{{$username}}</x-slot:username>
 
     
-    <div class="mt-10 mx-8 px-20">
+    <div class="mt-10 mx-5 sm:mx-5 sm:px-20">
         <form class="mb-10" action="/audit/tambah" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="space-y-5">

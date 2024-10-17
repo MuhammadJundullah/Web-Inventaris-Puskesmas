@@ -126,7 +126,7 @@
                         </svg>
                         <b>Tambah Data</b>
                 </a>
-                <button class="button p-2 rounded-lg flex items-center tombol text-white"><b>Cetak Data</b></button>
+                {{-- <button class="button p-2 rounded-lg flex items-center tombol text-white"><b>Cetak Data</b></button> --}}
             </div>
         </div>
         {{-- tombol tambah edit data --}}
@@ -181,7 +181,7 @@
                                         <td class="py-2 text-center">{{$i}}</td>
                                         <td class="py-2">{{$post->nama_barang}}</td>
                                         <td class="py-2 text-center">{{$post->sumber_dana}}</td>
-                                        <td class="py-2 text-center">1</td>
+                                        <td class="py-2 text-center">{{$post->jumlah}}</td>
                                         <td class="py-2 text-left pl-9">{{$post->tanggal}}</td>
                                         <td class="py-2"><a href="/inventory/{{$tahun}}/{{ $post->id }}" class="text-blue-500 hover:underline">Details</a></td>
                                     </tr>
