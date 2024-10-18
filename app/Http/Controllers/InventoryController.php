@@ -9,6 +9,7 @@ class InventoryController extends Controller
 {
     public function index($year = null)
     {
+        
         // ambil data berdasarkan tahun
         if ($year) {
             $posts = Inventory::whereYear('tanggal', $year)->get();
@@ -31,7 +32,14 @@ class InventoryController extends Controller
 
     public function show($tahun = null, $id = null)
     {
+
         $inventory = Inventory::find($id);
+        
+        if ($inventory == null) {
+            return "<script>alert('Data tidak ditemukan !')
+                window.location.href = '/dashboard'
+            </script>";
+        }
 
         $title = 'Details';
 
@@ -50,7 +58,7 @@ class InventoryController extends Controller
 
         return response("<script>
                     window.location.href = '/inventory/$tahun/';
-                </script>")->header('Contaent-Type', 'text/html');
+                </>")->header('Contaent-Type', 'text/html');
 
     }
 }
