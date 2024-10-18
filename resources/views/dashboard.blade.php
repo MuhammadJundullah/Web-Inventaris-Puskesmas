@@ -11,8 +11,7 @@
   {{-- custom css untuk tombol tambah/edit data--}}
  
     <div class="bg-white">
-      <div class="mx-auto max-w-7xl px
-      -6 lg:px-8">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
         
       {{-- tombol tambah edit data --}}
         {{-- <div class="items-baseline mt-10 pt-2">
