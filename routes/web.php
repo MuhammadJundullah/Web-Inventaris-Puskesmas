@@ -10,13 +10,15 @@ use App\Http\Controllers\InventoryControllerController;
 use App\Models\Inventory;
 use Illuminate\Support\Facades\Auth;
 
-// route login kalau blm login 
+// route untuk menampilkan halaman login
 Route::get('/', [LoginController::class, 'showloginform']);
 
-Route::get('/login', [LoginController::class, 'showloginform']);
-
+// route untuk menampilkan halaman /login
 Route::get('login', [LoginController::class, 'showloginform'])->name('login');
 
+// Route::get('/login', [LoginController::class, 'showloginform']);
+
+// rute untuk autentikasi
 Route::post('login', [LoginController::class, 'login']);
 
 //  rute yang dilindungin oleh auth

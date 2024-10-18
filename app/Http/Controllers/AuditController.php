@@ -26,8 +26,13 @@ class AuditController extends Controller
 
         try {
             if ($request->file('gambar')->getSize() > 2048000) { 
+                
+                session()->flash('info', [
+                    'pesan' => 'Data gagal ditambahkann, ukuran gambar lebih dari 2 mb.',
+                    'warna' => 'red',
+                ]);
+
                 return "<script>
-                    alert('Ukuran file tidak boleh lebih dari 2 MB.');
                     window.history.back();
                 </script>";
         }
@@ -41,7 +46,10 @@ class AuditController extends Controller
             'gambar' => $imagePath, 
         ]);
 
-        session()->flash('success');
+        session()->flash('info', [
+            'pesan' => 'Data berhasil ditambahkan.',
+            'warna' => 'green',
+        ]);
             
         return response("<script>
                     window.location.href = '/audit/tambah';
