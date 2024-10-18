@@ -28,19 +28,19 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin'),
         ]);
 
-        // $faker = Faker::create();
+        $faker = Faker::create();
 
-        // // Buat 50 entri data acak
-        // foreach (range(1, 1000) as $index) {
-        //     Inventory::create([
-        //         'nama_barang' => $faker->word(),
-        //         'sumber_dana' => $faker->word(),
-        //         'jumlah' => $faker->numberBetween(1, 100),
-        //         'editor' => $faker->name(),
-        //         'tanggal' => $faker->dateTimeBetween('2015-01-01', '2025-12-31'),
-        //         'gambar' => $faker->word(),
-        //     ]);
-        // }
+        // Buat 50 entri data acak
+        foreach (range(1, 10000) as $index) {
+            Inventory::create([
+                'nama_barang' => $faker->word(),
+                'sumber_dana' => $faker->word(),
+                'jumlah' => $faker->numberBetween(1, 100),
+                'editor' => $faker->name(),
+                'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('Y-m-d'),
+                'gambar' => $faker->word(),
+            ]);
+        }
 
     }
 }

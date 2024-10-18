@@ -85,48 +85,41 @@ class AuditController extends Controller
     }
     
     public function update(Request $request, $tahun = null, $id = null) 
-    
     {    
-        $request->validate([
-            'nama_barang' => 'required',
-            'sumber_dana' => 'required',
-            'jumlah' => 'required',
-            'tanggal' => 'required',
-            'gambar' => 'nullable',
-            'gambarLama' => 'nullable', 
-        ]);
+        // Mengambil inventory dengan pengecekan
+        $inventory = Inventory::findOrFail($id);
 
-        $inventory = Inventory::find($id);
-
-        if (!$inventory) {
-            return redirect()->back()->with('error', 'Data tidak ditemukan.');
-        }
-
+        // Mengupdate data
         $inventory->nama_barang = $request->input('nama_barang');
         $inventory->sumber_dana = $request->input('sumber_dana');
         $inventory->editor = session('username');
         $inventory->jumlah = $request->input('jumlah');
         $inventory->tanggal = $request->input('tanggal');
 
+        // Menangani gambar
         if ($request->hasFile('gambar')) {
+            // Menghapus gambar lama jika ada
             if ($inventory->gambar) {
                 Storage::delete($inventory->gambar);
             }
 
+            // Menyimpan gambar baru
             $gambarPath = $request->file('gambar')->store('images', 'public'); 
             $inventory->gambar = $gambarPath; 
-
         } else {
-
+            // Menggunakan gambar lama jika tidak ada gambar baru
             $inventory->gambar = $request->input('gambarLama');
         }
 
+        // Menyimpan perubahan
         $inventory->save();
 
+        // Mendapatkan tahun dari tanggal yang diupdate
         $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y');
 
+        // Redirect dengan pesan sukses
         return redirect("/inventory/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
-
     }
+
 
 }

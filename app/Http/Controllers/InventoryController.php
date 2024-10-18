@@ -54,11 +54,11 @@ class InventoryController extends Controller
 
         $inventory->delete();
 
-        response()->json(['message' => 'Data deleted successfully.'], 200);
+        session()->flash('success','Berhasil menghapus data.');
 
         return response("<script>
-                    window.location.href = '/inventory/$tahun/';
-                </>")->header('Contaent-Type', 'text/html');
-
+                    window.location.href = '/inventory/$tahun';
+                </script>")
+                ->header('Content-Type', 'text/html');
     }
 }

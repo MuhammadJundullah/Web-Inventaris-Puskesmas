@@ -35,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
     
     // route halaman inventory per tahun 
     Route::get('/inventory/{year?}', [InventoryController::class, 'index']);
+
+    // route halaman detail inventory
+    Route::get('/inventory/{tahun?}/{id?}', [InventoryController::class, 'show']);
     
     // route halaman tambah data 
     Route::get('/audit/tambah', [AuditController::class, 'index']);
@@ -48,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
     // route insert data 
     Route::post('/audit/tambah', [AuditController::class, 'insert']);
   
-    // route insert data 
+    // route hapus data 
     Route::get('/audit/hapus/{tahun?}/{id?}', [InventoryController::class, 'destroy']);
   
     // route halaman daftar 
@@ -62,8 +65,6 @@ Route::middleware(['auth'])->group(function () {
     
     // route hapus akun yang terdaftar
     Route::get('/hapus/{id?}', [AkunController::class, 'destroy']);
-    
-    // route halaman detail inventory
-    Route::get('/inventory/{tahun?}/{id?}', [InventoryController::class, 'show']);
+
 });
 
