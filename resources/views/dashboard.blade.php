@@ -11,10 +11,11 @@
   {{-- custom css untuk tombol tambah/edit data--}}
  
     <div class="bg-white">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl px
+      -6 lg:px-8">
         
       {{-- tombol tambah edit data --}}
-        <div class="items-baseline mt-10 pt-2">
+        {{-- <div class="items-baseline mt-10 pt-2">
           <div class="flex items-center space-x-4">
             <a href="/audit/tambah" class="flex items-center">
               <button class="button p-2 rounded-lg flex items-center tombol text-white">
@@ -23,10 +24,10 @@
                   <path d="M2 7v-.839c.457.432 1.004.751 1.49.972C4.722 7.693 6.318 8 8 8s3.278-.307 4.51-.867c.486-.22 1.033-.54 1.49-.972V7c0 .424-.155.802-.411 1.133a4.51 4.51 0 0 0-4.815 1.843A12 12 0 0 1 8 10c-1.573 0-3.022-.289-4.096-.777C2.875 8.755 2 8.007 2 7m6.257 3.998L8 11c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13h.027a4.55 4.55 0 0 1 .23-2.002m-.002 3L8 14c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-1.3-1.905" />
                 </svg>
                 <b>Tambah Data</b>
-              </a>
+              </a> --}}
               {{-- <button class="button p-2 rounded-lg flex items-center tombol text-white"><b>Cetak Data</b></button> --}}
-            </div>
-          </div>
+            {{-- </div>
+          </div> --}}
       {{-- tombol tambah edit data --}}
           
       {{-- data inventaris pertahun --}}

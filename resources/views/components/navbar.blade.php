@@ -9,7 +9,9 @@
             <div class="ml-10 flex items-baseline space-x-4">
               
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Home</x-nav-link>              
+              <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Data</x-nav-link>              
+              <x-nav-link href="/audit/tambah" :active="request()->is('audit/tambah')">Tambah Data</x-nav-link>              
+              <x-nav-link href="#" :active="request()->is('audit/edit/*')">Ubah Data</x-nav-link>              
               <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>         
             </div>
           </div>
@@ -73,10 +75,10 @@
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
 
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <x-nav-link href="/dashboard" :active="request()->is('/dashboard')">Home</x-nav-link>
-
-        {{-- <x-nav-link href="/audit/tambah-data" :active="request()->is('/audit/tambah-data')">Tambah Data</x-nav-link> --}}
-        <x-nav-link href="/about" :active="request()->is('/about')">About</x-nav-link>
+        <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Data</x-nav-link>
+        <x-nav-link href="/audit/tambah" :active="request()->is('/audit/tambah')">Tambah Data</x-nav-link>
+        <x-nav-link href="/audit/edit" :active="request()->is('/audit/edit/*')">Tambah Data</x-nav-link>
+        <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
      </div>
       <div class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">
@@ -85,8 +87,6 @@
           </div>
           <div class="ml-3">
             <div class="text-base font-medium leading-none text-white">{{$slot}}</div>
-
-            {{-- <div class="text-sm font-medium leading-none text-gray-400">Username@gmail.com</div> --}}
           </div>
         </div>
         <div class="mt-3 space-y-1 px-2">
