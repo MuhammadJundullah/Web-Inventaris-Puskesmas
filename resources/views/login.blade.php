@@ -26,8 +26,6 @@
     
   </div>
 
-   <div id="app"></div>
-
 {{-- form --}}
   <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
 
@@ -70,8 +68,6 @@
 
 </div>
 <script src="//unpkg.com/alpinejs" defer></script>
-{{-- @vite('resources/js/App.tsx') --}}
-@vite('resources/js/app.js')
 
 </body>
 </html>
