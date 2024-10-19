@@ -6,7 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login - Manajemen Inventaris Puskesmas</title>
-        @vite('resources/css/app.css', 'resources/js/app.js')
+        @vite('resources/css/app.css')
+        @vite('resources/js/App.tsx')
+        @vite('resources/js/app.js')
+
+         <style>
+        .centered-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            z-index: 1000; /* Pastikan di atas elemen lain */
+        }
+    </style>
+
     </head>
 {{-- heading --}}
 
@@ -38,7 +56,7 @@
       @csrf
       <div>
       <label for="username" class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-blue-600">
-        <input type="text" name='username' id="username" placeholder="Username" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"/>
+        <input type="text" name='username' id="username" placeholder="Username" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" required/>
           <span class="absolute start-0 top-2 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Username</span>
       </label>
       </div>
@@ -47,7 +65,7 @@
       <div>
         <div>
         <label for="password" class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-blue-600">
-          <input type="password" name='password' id="password" placeholder="password" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"/>
+          <input type="password" name='password' id="password" placeholder="password" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" required/>
             <span class="absolute start-0 top-2 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Password</span>
         </label>
         </div>
@@ -61,7 +79,11 @@
 {{-- form --}}
 </div>
 <script src="//unpkg.com/alpinejs" defer></script>
-<script src="{{ mix('js/app.js') }}"></script>
+
+<script>
+    window.sessionMessage = @json(session('failed'));
+</script>
+
 </body>
 </html>
 
