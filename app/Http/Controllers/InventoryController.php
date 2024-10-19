@@ -22,7 +22,7 @@ class InventoryController extends Controller
             ->orderBy('year', 'desc')
             ->pluck('year');
 
-        $title = "Audit Data Inventaris";
+        $title = "Data Inventaris tahun $year";
 
         $username = session("username");
 

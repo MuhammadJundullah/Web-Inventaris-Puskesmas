@@ -9,7 +9,7 @@
             <div class="ml-10 flex items-baseline space-x-4">
               
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Data</x-nav-link>              
+              <x-nav-link href="/dashboard" :active="request()->is('dashboard') || request()->is('inventory/*')">Data</x-nav-link>
               <x-nav-link href="/audit/tambah" :active="request()->is('audit/tambah')">Tambah Data</x-nav-link>              
               <x-nav-link href="#" :active="request()->is('audit/edit/*')">Ubah Data</x-nav-link>              
               <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>         
@@ -46,7 +46,16 @@
                 <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
               </div>
             </div>
-            <p class="text-white ml-3">{{ $slot }}</p>
+
+            <!-- Solid -->
+
+              <span class="whitespace-nowrap rounded-full bg-slate-200 px-2.5 py-0.5 text-sm text-dark ml-3 ">
+                {{ $slot }}
+              </span>
+
+            <!-- Outlined -->
+
+
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">
