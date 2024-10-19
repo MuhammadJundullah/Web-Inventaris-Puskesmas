@@ -88,13 +88,25 @@ class AuditController extends Controller
     {    
         // Mengambil inventory dengan pengecekan
         $inventory = Inventory::findOrFail($id);
-
+        
         // Mengupdate data
         $inventory->nama_barang = $request->input('nama_barang');
         $inventory->sumber_dana = $request->input('sumber_dana');
         $inventory->editor = session('username');
         $inventory->jumlah = $request->input('jumlah');
         $inventory->tanggal = $request->input('tanggal');
+
+        if ($request->file('gambar')->getSize() > 2048000) { 
+            
+            session()->flash('success', [
+                'pesan' => 'Data gagal diperbarui, ukuran gambar lebih dari 2 mb',
+                'warna' => 'red',
+            ]);
+
+            return "<script>
+                window.history.back();
+            </script>";
+        }
 
         // Menangani gambar
         if ($request->hasFile('gambar')) {
