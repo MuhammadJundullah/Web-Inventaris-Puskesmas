@@ -64,13 +64,13 @@ class AkunController extends Controller
      */
     public function destroy(string $id)
     {
-        // Temukan user berdasarkan ID
+        // cari dulu id dari url tadi ke database kayak pakai select * from user where id = id;
         $user = User::find($id);
 
-        // Cek jumlah user yang tersisa
+        // cek kita punya berapa akun
         $userCount = User::count();
 
-        // Jika hanya tinggal 1 user, tidak boleh menghapus
+        // kalo cuma tinggal 1, ga bole hapus akun
         if ($userCount == 1) {
             session()->flash('failed', 'Tidak bisa menghapus akun satu satunya !');
 
@@ -90,16 +90,18 @@ class AkunController extends Controller
                 </script>")->header('Contaent-Type', 'text/html');
         }
 
-        // Jika user tidak ditemukan, kembalikan respons dengan error
+        // kalau gada user dengan id itu keluarkan message error bre
         if (!$user) {
             return response()->json(['message' => 'User not found.'], 404);
         }
 
-        // Hapus user
+        // hapus user 
         $user->delete();
 
+        // keluarin session berhasil buat nampilin modal 
         session()->flash('berhasil', "Berhasil menghapus akun !");
 
+        // langsung redirect ae ke akun terdaftar
         return "<script>
                 window.location.href = '/registered-account';
             </script>";
@@ -148,19 +150,19 @@ class AkunController extends Controller
         </script>");
         
     }
-
-        // Buat user baru
+        // menginsert user baru ges
         $user = User::create([
             'username' => $request->username,
             'password' => bcrypt($request->password), 
         ]);
 
-        // Set pesan sukses ke session
+        // buat session dulu buat nampilin modal bre
         session()->flash('info', [
             'pesan' => 'Akun berhasil di daftarkan !',
             'warna' => 'green',
         ]);
         
+        // redirect balik aja abis signup
         return response("<script>
                     window.location.href = '/signup';
                 </script>")->header('Contaent-Type', 'text/html');

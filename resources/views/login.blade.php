@@ -26,6 +26,10 @@
     
   </div>
 
+{{-- coba react --}}
+<div id="app"></div>
+{{-- coba react --}}
+
 {{-- form --}}
   <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
 
@@ -57,6 +61,7 @@
 {{-- form --}}
 </div>
 <script src="//unpkg.com/alpinejs" defer></script>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
 

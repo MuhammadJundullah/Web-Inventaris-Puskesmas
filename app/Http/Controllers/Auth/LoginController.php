@@ -25,23 +25,25 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            // simpan username ke session
+            // simpan username ke session 
             session(['username' => $request->username]); 
 
             // redirect ke halaman ke dashboard
             return redirect()->intended('/dashboard');
         }
 
-        // Set pesan sukses ke session
+        // return pesan failed kalau salah password ato usernamenya
         session()->flash('failed', 'Username / Password tidak terdaftar !');
 
+        // redirect lagi ke login awokaowk
         return response("<script>
                     window.location.href = '/login';
                 </script>");
     }
-
+    
     public function logout(Request $request)
     {
+        // hapus sesi loginnya
         Auth::logout();
         return redirect('login');
     }
