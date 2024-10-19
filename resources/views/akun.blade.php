@@ -35,7 +35,7 @@
 
   {{-- table --}}
     <div class="flex min-h-full flex-col justify-center px-10 lg:p">      
-      <div class="my-10 sm:mx-auto sm:w-full">
+      <div class="my-10 sm:mx-auto sm:w-full"> 
 
           {{-- modal alert --}}
             @if (session('failed')) 
@@ -57,7 +57,7 @@
                 </div>
             @endif
           {{-- modal berhasil --}}
-          
+
             <div class="mx-auto mt-11 text-center">
                 <div class="overflow-x-auto">
                     <table class="min-w-full border-collapse">
@@ -77,10 +77,11 @@
                                 <td class="py-2">{{$account->username}}</td>
                                 <td class="py-2">*****</td>
                                 <td class="py-2">
-                                    <button 
-                                        class="text-red-500 hover:underline" 
-                                        onclick="openDeleteModal({{ $account->id }})">
-                                        Hapus akun
+                                    <button onclick="openDeleteModal({{ $account->id }})"type="submit" class="group inline-flex items-center gap-1 text-sm font-medium text-red-600">
+                                        Hapus
+                                        <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                                        &rarr;
+                                        </span>
                                     </button>
                                 </td>
                             </tr>

@@ -121,7 +121,12 @@
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
                 <a href="/dashboard"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
-                <button type="submit" class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Tambah</button>
+                <button type="submit" class="group inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                    Tambah data
+                    <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                    &rarr;
+                    </span>
+                </button>
             </div>
         </form>
     {{-- form --}}

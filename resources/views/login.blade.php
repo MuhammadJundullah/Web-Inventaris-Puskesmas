@@ -7,10 +7,11 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login - Manajemen Inventaris Puskesmas</title>
         @vite('resources/css/app.css')
+
     </head>
 {{-- heading --}}
 
-<body class="h-full">
+<body class="h-full" x-data="alertComponent()">
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <img class="mx-auto h-20 w-auto" src="{{ asset('img/logo-puskesmas.png') }}" alt="Your Company">
@@ -19,7 +20,17 @@
       {{-- modal untuk password salah --}}
         @if (session('failed')) 
           <div role="alert" class="rounded border-s-4 border-red-500 bg-red-50 p-4 mt-5">
-            <strong class="block font-medium text-red-800">{{session('failed')}}</strong>
+            <div class="flex items-center gap-2 text-red-800">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                <path
+                  fill-rule="evenodd"
+                  d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+
+              <strong class="block font-medium"> {{session('failed')}} </strong>
+            </div>
           </div>
         @endif
       {{-- modal untuk password salah --}}
@@ -49,25 +60,15 @@
         </div>
 
       <div class="mt-5">
-        <button type="submit" name="submit" class="flex m-auto justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Masuk</button>
+        <button type="submit" name="submit" class="flex m-auto w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Masuk</button>
       </div>
 
     </form>
   </div>
 {{-- form --}}
 
-    <div id="root">
-        <!-- Tempat untuk notifikasi -->
-    </div>
-
-    <script>
-        // Mengirim status ke JavaScript
-        window.failed = {{ json_encode(session('failed', false)) }};
-        window.message = "Password salah"; // Pesan bisa diubah sesuai kebutuhan
-    </script>
-
 </div>
-<script src="//unpkg.com/alpinejs" defer></script>
+{{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
 
 </body>
 </html>

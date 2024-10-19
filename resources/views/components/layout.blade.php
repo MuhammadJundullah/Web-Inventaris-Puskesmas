@@ -7,12 +7,13 @@
     <title>Inventaris - Puskesmas</title>
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
     <x-navbar>{{$username}}</x-navbar>
     <x-header>{{$title}}</x-header>
-    <main>
+    <main class="flex-grow">
         {{$slot}}
     </main>
+    <x-footer></x-footer>
     <script src="//unpkg.com/alpinejs" defer></script> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>

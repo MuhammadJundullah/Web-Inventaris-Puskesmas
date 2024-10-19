@@ -139,52 +139,56 @@
                     <div class="flex sm:ml-20">
                         <div class="relative">
                             <details class="group [&_summary::-webkit-details-marker]:hidden">
-                            <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
-                                <span class="text-sm font-medium"> Filter </span>
+                                <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+                                    <span class="text-sm font-medium"> Filter </span>
+                                    <span class="transition group-open:-rotate-180">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </span>
+                                </summary>
 
-                                <span class="transition group-open:-rotate-180">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"class="size-4">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                </svg>
-                                </span>
-                            </summary>
-
-                            <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
-                                <div class="w-96 rounded border border-gray-200 bg-white">
-                                <header class=" items-center justify-between p-4">
-                                    <span class="">Bulan</span>
-                                    <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
-                                        <option value="">--Pilih Bulan--</option>
-                                        <option value="01">Januari</option>
-                                        <option value="02">Februari</option>
-                                        <option value="03">Maret</option>
-                                        <option value="04">April</option>
-                                        <option value="05">Mei</option>
-                                        <option value="06">Juni</option>
-                                        <option value="07">Juli</option>
-                                        <option value="08">Agustus</option>
-                                        <option value="09">September</option>
-                                        <option value="10">Oktober</option>
-                                        <option value="11">November</option>
-                                        <option value="12">Desember</option>
-                                    </select>
-                                </header>
-                                <header class="flex items-center justify-between p-4">
-                                    <div class="items-center text-center">
-                                        <span class="mr-2">Sumber Dana</span>
-                                        <input type="text" id="searchInput" class="border border-gray-300 rounded p-1 w-32" placeholder="Cari" onkeyup="filterTable()">
+                                <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
+                                    <div class="w-96 rounded border border-gray-200 bg-white">
+                                        <header class="items-center justify-between p-4">
+                                            <span class="">Filter Bulan</span>
+                                            <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
+                                                <option value="">--Pilih Bulan--</option>
+                                                <option value="01">Januari</option>
+                                                <option value="02">Februari</option>
+                                                <option value="03">Maret</option>
+                                                <option value="04">April</option>
+                                                <option value="05">Mei</option>
+                                                <option value="06">Juni</option>
+                                                <option value="07">Juli</option>
+                                                <option value="08">Agustus</option>
+                                                <option value="09">September</option>
+                                                <option value="10">Oktober</option>
+                                                <option value="11">November</option>
+                                                <option value="12">Desember</option>
+                                            </select>
+                                        </header>
+                                        <header class="flex items-center justify-between p-4">
+                                            <div class="items-center text-center">
+                                                <span class="mr-2">Sumber Dana</span>
+                                                <input type="text" id="searchInput" class="border border-gray-300 rounded p-1 w-32" placeholder="Cari" onkeyup="filterTable()">
+                                            </div>
+                                        </header>
+                                        <div class="flex justify-end p-4">
+                                            <button id="resetButton" class="bg-gray-200 p-2 rounded hover:bg-gray-300" onclick="resetFilters()">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                                                    </svg>
+                                                </button>
+                                        </div>
                                     </div>
-                                </header>
                                 </div>
-                            </div>
                             </details>
                         </div>
                     </div>
-
                 {{-- data filter --}}
-
-
-
+                
                         <div class="my-5 sm:mx-auto sm:w-full">
                             <div class="mx-auto mt-11 text-center">
                                 <div class="overflow-x-auto">
@@ -216,7 +220,14 @@
                                                 <td class="py-2 text-center">{{$post->sumber_dana}}</td>
                                                 <td class="py-2 text-center">{{$post->jumlah}}</td>
                                                 <td class="py-2 text-center">{{$post->tanggal}}</td>
-                                                <td class="py-2"><a href="/inventory/{{$tahun}}/{{ $post->id }}" class="text-blue-500 hover:underline">Details</a></td>
+                                                <td class="py-2">
+                                                    <a href="/inventory/{{$tahun}}/{{$post->id}}" class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+                                                        Details
+                                                        <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                                                        &rarr;
+                                                        </span>
+                                                    </a>
+                                                </td>
                                             </tr>
                                             @php $i++; @endphp
                                             @endforeach
@@ -276,6 +287,15 @@
                 }
             }
         }
+            // reset filter data 
+            function resetFilters() {
+            
+                document.getElementById('monthDropdown').selectedIndex = 0;
+
+                document.getElementById('searchInput').value = '';
+
+                filterTable();
+            }
 
         // Event listeners for input and dropdown changes
         document.getElementById("searchInput").addEventListener("keyup", filterTable);
