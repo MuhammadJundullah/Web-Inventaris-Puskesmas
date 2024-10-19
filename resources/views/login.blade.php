@@ -33,27 +33,23 @@
     <form id='loginForm' class="space-y-6" action="/login" method="POST">
       @csrf
       <div>
-        <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username :</label>
-        <div class="mt-2">
-          <input id="username" name="username" type="text" autocomplete="username" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
-        </div>
+      <label for="username" class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-blue-600">
+        <input type="text" name='username' id="username" placeholder="Username" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"/>
+          <span class="absolute start-0 top-2 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Username</span>
+      </label>
       </div>
 
       {{-- input password --}}
       <div>
-        <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password :</label>
-          <div class="text-sm">
-            <a href="#" class="font-semibold text-gray-600 hover:text-gray-500">Lupa Password?</a>
-          </div>
+        <div>
+        <label for="password" class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-blue-600">
+          <input type="password" name='password' id="password" placeholder="password" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"/>
+            <span class="absolute start-0 top-2 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Password</span>
+        </label>
         </div>
-        <div class="mt-2">
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6">
-        </div>
-      </div>
 
-      <div>
-        <button type="submit" name="submit" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Masuk</button>
+      <div class="mt-5">
+        <button type="submit" name="submit" class="flex m-auto justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Masuk</button>
       </div>
 
     </form>
@@ -63,6 +59,7 @@
 <script src="//unpkg.com/alpinejs" defer></script>
 </body>
 </html>
+
 
 
 

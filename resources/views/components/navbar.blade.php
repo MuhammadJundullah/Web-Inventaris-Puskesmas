@@ -77,7 +77,7 @@
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Data</x-nav-link>
         <x-nav-link href="/audit/tambah" :active="request()->is('/audit/tambah')">Tambah Data</x-nav-link>
-        <x-nav-link href="/audit/edit" :active="request()->is('/audit/edit/*')">Tambah Data</x-nav-link>
+        <x-nav-link href="#" :active="request()->is('/audit/edit/*')">Ubah Data</x-nav-link>
         <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
      </div>
       <div class="border-t border-gray-700 pb-3 pt-4">

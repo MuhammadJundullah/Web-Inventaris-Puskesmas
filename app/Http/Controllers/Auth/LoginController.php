@@ -33,7 +33,7 @@ class LoginController extends Controller
         }
 
         // Set pesan sukses ke session
-        session()->flash('failed', 'Username atau Password tidak terdaftar !');
+        session()->flash('failed', 'Username / Password tidak terdaftar !');
 
         return response("<script>
                     window.location.href = '/login';
