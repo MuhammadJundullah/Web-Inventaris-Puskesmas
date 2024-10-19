@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
                 'nama_barang' => $faker->word(),
                 'sumber_dana' => $faker->word(),
                 'jumlah' => $faker->numberBetween(1, 100),
-                'editor' => $faker->name(),
+                'editor' => 'admin',
                 'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('Y-m-d'),
                 'gambar' => $faker->word(),
             ]);

@@ -7,24 +7,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login - Manajemen Inventaris Puskesmas</title>
         @vite('resources/css/app.css')
-        @vite('resources/js/App.tsx')
-        @vite('resources/js/app.js')
-
-         <style>
-        .centered-message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            text-align: center;
-            z-index: 1000; /* Pastikan di atas elemen lain */
-        }
-    </style>
-
     </head>
 {{-- heading --}}
 
@@ -44,9 +26,7 @@
     
   </div>
 
-{{-- coba react --}}
-<div id="app"></div>
-{{-- coba react --}}
+   <div id="app"></div>
 
 {{-- form --}}
   <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -77,12 +57,21 @@
     </form>
   </div>
 {{-- form --}}
+
+    <div id="root">
+        <!-- Tempat untuk notifikasi -->
+    </div>
+
+    <script>
+        // Mengirim status ke JavaScript
+        window.failed = {{ json_encode(session('failed', false)) }};
+        window.message = "Password salah"; // Pesan bisa diubah sesuai kebutuhan
+    </script>
+
 </div>
 <script src="//unpkg.com/alpinejs" defer></script>
-
-<script>
-    window.sessionMessage = @json(session('failed'));
-</script>
+{{-- @vite('resources/js/App.tsx') --}}
+@vite('resources/js/app.js')
 
 </body>
 </html>
