@@ -86,50 +86,48 @@ class AuditController extends Controller
     
     public function update(Request $request, $tahun = null, $id = null) 
     {    
-        // Mengambil inventory dengan pengecekan
+
         $inventory = Inventory::findOrFail($id);
         
-        // Mengupdate data
         $inventory->nama_barang = $request->input('nama_barang');
         $inventory->sumber_dana = $request->input('sumber_dana');
         $inventory->editor = session('username');
         $inventory->jumlah = $request->input('jumlah');
         $inventory->tanggal = $request->input('tanggal');
-
-        if ($request->file('gambar')->getSize() > 2048000) { 
-            
-            session()->flash('success', [
-                'pesan' => 'Data gagal diperbarui, ukuran gambar lebih dari 2 mb',
-                'warna' => 'red',
-            ]);
-
-            return "<script>
-                window.history.back();
-            </script>";
-        }
-
-        // Menangani gambar
+        
         if ($request->hasFile('gambar')) {
-            // Menghapus gambar lama jika ada
+
+            if ($request->file('gambar')->getSize() > 2048000) { 
+                
+                session()->flash('success', [
+                    'pesan' => 'Data gagal diperbarui, ukuran gambar lebih dari 2 mb',
+                    'warna' => 'red',
+                ]);
+
+                return "<script>
+                    window.history.back();
+                </script>";
+            }
+            
             if ($inventory->gambar) {
+
                 Storage::delete($inventory->gambar);
+
             }
 
-            // Menyimpan gambar baru
             $gambarPath = $request->file('gambar')->store('images', 'public'); 
+
             $inventory->gambar = $gambarPath; 
+
         } else {
-            // Menggunakan gambar lama jika tidak ada gambar baru
+        
             $inventory->gambar = $request->input('gambarLama');
         }
-
-        // Menyimpan perubahan
+        
         $inventory->save();
-
-        // Mendapatkan tahun dari tanggal yang diupdate
+        
         $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y');
 
-        // Redirect dengan pesan sukses
         return redirect("/inventory/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
     }
 

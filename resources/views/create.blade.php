@@ -59,7 +59,7 @@
                         <label for="nama_barang" class="block text-sm font-medium leading-6 text-gray-900">Nama barang :</label>
                             <div class="mt-2">
                                 <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
-                                <input type="text" name="nama_barang" id="nama_barang" autocomplete="nama_barang" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan nama barang ">
+                                <input type="text" name="nama_barang" id="nama_barang" autocomplete="nama_barang" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan nama barang" required>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             <label for="sumber_dana" class="block text-sm font-medium leading-6 text-gray-900">Sumber Dana :</label>
                             <div class="mt-2">
                                 <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
-                                    <input type="text" name="sumber_dana" id="sumber_dana" autocomplete="sumber_dana" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan sumber dana ">
+                                    <input type="text" name="sumber_dana" id="sumber_dana" autocomplete="sumber_dana" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan sumber dana" required>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                             <label for="jumlah" class="block text-sm font-medium leading-6 text-gray-900">Jumlah :</label>
                             <div class="mt-2">
                                 <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
-                                    <input type="text" name="jumlah" id="jumlah" autocomplete="jumlah" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan jumlah barang ">
+                                    <input type="text" name="jumlah" id="jumlah" autocomplete="jumlah" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan jumlah barang" required>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                             <label for="tanggal" class="block text-sm font-medium leading-6 text-gray-900">Tanggal Masuk :</label>
                             <div class="mt-2">
                                 <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
-                                    <input type="date" name="tanggal" id="tanggal" autocomplete="tanggal" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">
+                                    <input type="date" name="tanggal" id="tanggal" autocomplete="tanggal" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" required>
                                 </div>
                             </div>
                         </div>
