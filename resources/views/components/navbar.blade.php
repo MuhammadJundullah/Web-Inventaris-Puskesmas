@@ -10,8 +10,8 @@
               
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <x-nav-link href="/dashboard" :active="request()->is('dashboard') || request()->is('inventory/*')">Data</x-nav-link>
-              <x-nav-link href="/audit/tambah" :active="request()->is('audit/tambah')">Tambah Data</x-nav-link>              
-              <x-nav-link href="#" :active="request()->is('audit/edit/*')">Ubah Data</x-nav-link>              
+              <x-nav-link href="/audit/tambah" :active="request()->is('audit/tambah')">Tambah data</x-nav-link>              
+              <x-nav-link href="#" :active="request()->is('audit/edit/*')">Ubah data</x-nav-link>              
               <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>         
             </div>
           </div>
@@ -40,6 +40,7 @@
                <!-- Active: "bg-gray-100", Not Active: "" -->
                 <a href="/registered-account" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-0">Akun yang terdaftar</a>
                 <a href="/signup" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-1">Tambah akun</a>
+                <a href="/pengaturan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-1">Pengaturan</a>
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                     @csrf
                 </form>
@@ -48,13 +49,10 @@
             </div>
 
             <!-- Solid -->
-
-              <span class="whitespace-nowrap rounded-full bg-slate-200 px-2.5 py-0.5 text-sm text-dark ml-3 ">
-                {{ $slot }}
-              </span>
-
+                <span class="whitespace-nowrap rounded-full bg-slate-200 px-2.5 py-0.5 text-sm text-dark ml-3 ">
+                  {{ $slot }}
+                </span>
             <!-- Outlined -->
-
 
           </div>
         </div>
@@ -84,9 +82,9 @@
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
 
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Data</x-nav-link>
-        <x-nav-link href="/audit/tambah" :active="request()->is('/audit/tambah')">Tambah Data</x-nav-link>
-        <x-nav-link href="#" :active="request()->is('/audit/edit/*')">Ubah Data</x-nav-link>
+        <x-nav-link href="/dashboard" :active="request()->is('dashboard') || request()->is('inventory/*')">Data</x-nav-link>
+        <x-nav-link href="/audit/tambah" :active="request()->is('audit/tambah')">Tambah data</x-nav-link>
+        <x-nav-link href="#" :active="request()->is('/audit/edit/*')">Ubah data</x-nav-link>
         <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
      </div>
       <div class="border-t border-gray-700 pb-3 pt-4">
@@ -94,8 +92,12 @@
           <div class="flex-shrink-0">
             <a href="/dashboard"><img class="h-10 w-10 rounded-full" src="{{ asset('img/akun.jpg') }}" alt="Logo Puskesmas"></a>
           </div>
-          <div class="ml-3">
-            <div class="text-base font-medium leading-none text-white">{{$slot}}</div>
+          <div>
+            <!-- Solid -->
+              <span class="whitespace-nowrap rounded-full bg-slate-200 px-2.5 py-0.5 text-sm text-dark ml-3 ">
+                {{ $slot }}
+              </span>
+            <!-- Outlined -->
           </div>
         </div>
         <div class="mt-3 space-y-1 px-2">

@@ -129,9 +129,9 @@
                                 </svg>
                             </div>
                             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Apakah Anda yakin untuk menghapus data ?</h3>
+                                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Apakah anda yakin untuk menghapus data ?</h3>
                                 <div class="mt-2">
-                                    <p class="text-sm text-gray-500">Are you sure you want to delete your account? All of your data will be permanently removed. This action cannot be undone.</p>
+                                    <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus data ini? Data ini akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.</p>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
 
         {{-- table --}}
             <div class=" sm:mx-auto sm:w-full">
-                    <div class="flex min-h-full flex-col justify-center mx-6 py-12 lg:p">
+                    <div class="flex min-h-full flex-col justify-center py-12 lg:p">
 
                 {{-- modal berhasil --}}
                     @if (session("success"))
@@ -166,61 +166,82 @@
                     @endif
                 {{-- modal berhasil --}}
 
-                {{-- data filter --}}
-                    <div class="flex sm:ml-20">
-                        <div class="relative">
-                            <details class="group [&_summary::-webkit-details-marker]:hidden">
-                                <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
-                                    <span class="text-sm font-medium"> Filter </span>
-                                    <span class="transition group-open:-rotate-180">
+                {{-- data filter dan cari barang --}}
+                    <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                        
+                        {{-- cari barang --}}
+                            <div class="relative ml-20">
+                                <label for="Search" class="sr-only"> Search </label>
+                                <input type="text" id="Search" placeholder="Cari barang" class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"/>
+                                <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                                    <button type="button" class="text-gray-600 hover:text-gray-700">
+                                        <span class="sr-only">Search</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
                                         </svg>
-                                    </span>
-                                </summary>
+                                    </button>
+                                </span>
+                            </div>
+                        {{-- cari barang --}}
+                    
+                        {{-- data filter --}}
+                            <div class="flex sm:ml-10">
+                                <div class="relative">
+                                    <details class="group [&_summary::-webkit-details-marker]:hidden">
+                                        <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+                                            <span class="text-sm font-medium"> Filter </span>
+                                            <span class="transition group-open:-rotate-180">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                </svg>
+                                            </span>
+                                        </summary>
 
-                                <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
-                                    <div class="w-96 rounded border border-gray-200 bg-white">
-                                        <header class="items-center justify-between p-4">
-                                            <span class="">Filter Bulan</span>
-                                            <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
-                                                <option value="">--Pilih Bulan--</option>
-                                                <option value="01">Januari</option>
-                                                <option value="02">Februari</option>
-                                                <option value="03">Maret</option>
-                                                <option value="04">April</option>
-                                                <option value="05">Mei</option>
-                                                <option value="06">Juni</option>
-                                                <option value="07">Juli</option>
-                                                <option value="08">Agustus</option>
-                                                <option value="09">September</option>
-                                                <option value="10">Oktober</option>
-                                                <option value="11">November</option>
-                                                <option value="12">Desember</option>
-                                            </select>
-                                        </header>
-                                        <header class="flex items-center justify-between p-4">
-                                            <div class="items-center text-center">
-                                                <span class="mr-2">Sumber Dana</span>
-                                                <input type="text" id="searchInput" class="border border-gray-300 rounded p-1 w-32" placeholder="Cari" onkeyup="filterTable()">
+                                        <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
+                                            <div class="w-96 rounded border border-gray-200 bg-white">
+                                                <header class="items-center justify-between p-4">
+                                                    <span class="">Filter Bulan</span>
+                                                    <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
+                                                        <option value="">--Pilih Bulan--</option>
+                                                        <option value="01">Januari</option>
+                                                        <option value="02">Februari</option>
+                                                        <option value="03">Maret</option>
+                                                        <option value="04">April</option>
+                                                        <option value="05">Mei</option>
+                                                        <option value="06">Juni</option>
+                                                        <option value="07">Juli</option>
+                                                        <option value="08">Agustus</option>
+                                                        <option value="09">September</option>
+                                                        <option value="10">Oktober</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">Desember</option>
+                                                    </select>
+                                                </header>
+                                                <header class="flex items-center justify-between p-4">
+                                                    <div class="items-center text-center">
+                                                        <span class="mr-2">Sumber Dana</span>
+                                                        <input type="text" id="searchInput" class="border border-gray-300 rounded p-1 w-32" placeholder="Cari" onkeyup="filterTable()">
+                                                    </div>
+                                                </header>
+                                                <div class="flex justify-end p-4">
+                                                    <button id="resetButton" class="bg-gray-200 p-2 rounded hover:bg-gray-300" onclick="resetFilters()">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                                                            </svg>
+                                                        </button>
+                                                </div>
                                             </div>
-                                        </header>
-                                        <div class="flex justify-end p-4">
-                                            <button id="resetButton" class="bg-gray-200 p-2 rounded hover:bg-gray-300" onclick="resetFilters()">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-                                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
-                                                    </svg>
-                                                </button>
                                         </div>
-                                    </div>
+                                    </details>
                                 </div>
-                            </details>
-                        </div>
+                            </div>
+                        {{-- data filter --}}
                     </div>
-                {{-- data filter --}}
-                
-                        <div class="my-5 sm:mx-auto sm:w-full">
+                {{-- data filter dan cari --}}
+
+
+                        <div class="my-5 sm:mx-auto sm:w-full">                            
                             <div class="mx-auto mt-11 text-center">
                                 <div class="overflow-x-auto">
                                     <table>
@@ -229,7 +250,7 @@
                                                 <th class="border-b text-center py-2">No</th>
                                                 <th class="border-b text-center py-2">Barang</th>
                                                 <th class="border-b text-center py-2">Sumber Dana</th>
-                                                <th class="border-b text-center py-2">Jumlah</th>
+                                                {{-- <th class="border-b text-center py-2">Jumlah</th> --}}
                                                 <th class="border-b text-center py-2">
                                                     <div class="relative inline-flex items-center justify-center">
                                                         <span class="ml-2">Tanggal Masuk</span>
@@ -249,10 +270,10 @@
                                                 <td class="py-2 text-center">{{$i}}</td>
                                                 <td class="py-2 text-center">{{$post->nama_barang}}</td>
                                                 <td class="py-2 text-center">{{$post->sumber_dana}}</td>
-                                                <td class="py-2 text-center">{{$post->jumlah}}</td>
+                                                {{-- <td class="py-2 text-center">{{$post->jumlah}}</td> --}}
                                                 <td class="py-2 text-center">{{$post->tanggal}}</td>
                                                 <td class="py-2">
-                                                    <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
+                                                    <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
                                                         <a href="/audit/edit/{{$tahun}}/{{$post->id}}">
                                                             <button class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
@@ -274,7 +295,7 @@
 
                                                         <button
                                                             onclick="openDeleteModal('{{ $tahun }}', {{$post->id}})"
-                                                            class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-blue-500 focus:relative">
+                                                            class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-red-500 focus:relative">
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/>
                                                             </svg>

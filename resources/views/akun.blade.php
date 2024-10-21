@@ -34,7 +34,7 @@
   {{-- modal --}}
 
   {{-- table --}}
-    <div class="flex min-h-full flex-col justify-center px-10 lg:p">      
+    <div class="flex min-h-full flex-col justify-center sm:px-10 px-5 lg:p">      
       <div class="my-10 sm:mx-auto sm:w-full"> 
 
           {{-- modal alert --}}

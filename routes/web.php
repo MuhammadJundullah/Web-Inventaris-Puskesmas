@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\InventoryControllerController;
+use App\Http\Controllers\pengaturanController;
 use App\Models\Inventory;
 use Illuminate\Support\Facades\Auth;
 
@@ -66,6 +67,9 @@ Route::middleware(['auth'])->group(function () {
     
     // route hapus akun yang terdaftar
     Route::get('/hapus/{id?}', [AkunController::class, 'destroy']);
+    
+    // route hapus akun yang terdaftar
+    Route::get('/pengaturan', [pengaturanController::class, 'index']);
 
 });
 
