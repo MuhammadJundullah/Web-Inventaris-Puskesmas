@@ -54,6 +54,8 @@
                     {{-- container --}}
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         
+                        <input type="hidden" name="editor" value={{session("username")}}>
+                        
                         {{-- input nama barang --}}
                         <div class="sm:col-span-4">
                         <label for="nama_barang" class="block text-sm font-medium leading-6 text-gray-900">Nama barang :</label>

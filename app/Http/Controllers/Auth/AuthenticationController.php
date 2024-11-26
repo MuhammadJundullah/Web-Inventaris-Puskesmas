@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cookie;
+
+class AuthenticationController extends Controller
+{
+    public function showLoginForm()
+    {
+        if (Auth::Check()) {
+            return redirect("dashboard");
+        }
+        
+        return view('/login');
+    }
+
+    public function login(Request $request) 
+    {
+        
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials)) {
+
+            session()->put("username", $request->username);
+
+            return redirect('/dashboard');
+
+        } else {
+
+            return back()->withInput()->with('failed', 'Username atau password tidak valid!');
+
+        }
+
+    }
+    
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        return redirect('login');
+    }
+}

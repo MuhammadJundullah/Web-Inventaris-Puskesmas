@@ -16,22 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'password' => 'user',
-        //     'password' => 'test@example.com',
-        // ]);
-   
         User::create([
             'username' => 'admin',
             'password' => Hash::make('admin'),
         ]);
 
         $faker = Faker::create();
-
-        // Buat 50 entri data acak
-        foreach (range(1, 10000) as $index) {
+        
+        foreach (range(1, 100) as $index) {
             Inventory::create([
                 'nama_barang' => $faker->word(),
                 'sumber_dana' => $faker->word(),

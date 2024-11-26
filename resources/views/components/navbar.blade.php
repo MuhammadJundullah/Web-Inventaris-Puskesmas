@@ -19,6 +19,12 @@
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
 
+            <!-- Solid -->
+                <span class="whitespace-nowrap rounded-full bg-slate-200 px-2.5 py-0.5 text-sm text-dark ml-3 ">
+                  Anda login sebagai <span class="text-red-900">{{ $slot }}</span>
+                </span>
+            <!-- Outlined -->
+
             <!-- Profile dropdown -->
             <div class="relative ml-3" x-data="{ isOpen: false }" @click.away="isOpen = false">
               <div>
@@ -40,20 +46,15 @@
                <!-- Active: "bg-gray-100", Not Active: "" -->
                 <a href="/registered-account" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-0">Akun yang terdaftar</a>
                 <a href="/signup" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-1">Tambah akun</a>
-                <a href="/pengaturan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-1">Pengaturan</a>
+                
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                     @csrf
                 </form>
-                <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
+                <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a> 
               </div>
             </div>
-
-            <!-- Solid -->
-                <span class="whitespace-nowrap rounded-full bg-slate-200 px-2.5 py-0.5 text-sm text-dark ml-3 ">
-                  {{ $slot }}
-                </span>
-            <!-- Outlined -->
-
+            <!-- End Profile dropdown -->
+            
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">

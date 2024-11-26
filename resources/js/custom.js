@@ -104,3 +104,40 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// // untuk mengelola token
+// const token = getCookie('token'); // Menggunakan fungsi untuk mendapatkan cookie
+
+// // Fungsi untuk mengambil cookie berdasarkan namanya
+// function getCookie(name) {
+//     const value = `; ${document.cookie}`;
+//     const parts = value.split(`; ${name}=`);
+//     if (parts.length === 2) return parts.pop().split(';').shift();
+// }
+
+// fetch("/dashboard", {
+//     method: "GET",
+//     headers: {
+//         Authorization: `Bearer ${token}`,
+//     },
+// })
+    
+// .then((response) => {
+//     console.log("Response Status:", response.status); // Log status respons
+//     if (response.status === 401) {
+//         // Jika status 401, redirect ke login
+//         window.location.href = "/login"; // Redirect ke login
+//     } else if (!response.ok) {
+//         throw new Error("Unexpected response");
+//     }
+//     return response.text();
+// })
+// .then((data) => {
+//     document.body.innerHTML += data; // Tampilkan konten
+// })
+// .catch((error) => {
+//     console.error("Error:", error);
+//     alert("Unable to access dashboard. Please log in again.");
+// });
+
+

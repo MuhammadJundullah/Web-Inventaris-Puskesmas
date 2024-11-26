@@ -1,5 +1,6 @@
 <x-layout>
-    <x-slot:title>{{$title}}</x-slot:title>
+
+    <x-slot:title>{{$data['title']}}</x-slot:title>
     <x-slot:username>{{$username}}</x-slot:username>
 
 {{-- custom css --}}
@@ -118,31 +119,31 @@
 {{-- modal --}}
     <div class="relative z-10 hidden" id="deleteModal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity backdrop-filter backdrop-blur-sm" aria-hidden="true"></div>
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                    <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        <div class="sm:flex sm:items-start">
-                            <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-                                </svg>
-                            </div>
-                            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Apakah anda yakin untuk menghapus data ?</h3>
-                                <div class="mt-2">
-                                    <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus data ini? Data ini akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.</p>
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                            <div class="sm:flex sm:items-start">
+                                <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                    <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                                    </svg>
+                                </div>
+                                <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                    <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Apakah anda yakin untuk menghapus data ?</h3>
+                                    <div class="mt-2">
+                                        <p class="text-sm text-gray-500">Apakah Anda yakin ingin menghapus data ini? Data ini akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <a id="confirmDeleteButton" href="#" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Hapus</a>
+                        <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onclick="closeDeleteModal()">Batal</button>
                     </div>
-                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <a id="confirmDeleteButton" href="#" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Hapus</a>
-                    <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" onclick="closeDeleteModal()">Batal</button>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 {{-- modal --}}
 
@@ -240,7 +241,6 @@
                     </div>
                 {{-- data filter dan cari --}}
 
-
                         <div class="my-5 sm:mx-auto sm:w-full">                            
                             <div class="mx-auto mt-11 text-center">
                                 <div class="overflow-x-auto">
@@ -250,7 +250,7 @@
                                                 <th class="border-b text-center py-2">No</th>
                                                 <th class="border-b text-center py-2">Barang</th>
                                                 <th class="border-b text-center py-2">Sumber Dana</th>
-                                                {{-- <th class="border-b text-center py-2">Jumlah</th> --}}
+                                                <th class="border-b text-center py-2">Jumlah</th>
                                                 <th class="border-b text-center py-2">
                                                     <div class="relative inline-flex items-center justify-center">
                                                         <span class="ml-2">Tanggal Masuk</span>
@@ -262,19 +262,16 @@
                                         </thead>
                                         <tbody id="tableBody">
                                             @php $i = 1; @endphp
-                                            @foreach ($posts as $post)
-                                            @php
-                                            $tahun = \Carbon\Carbon::parse($post->tanggal)->format('Y');
-                                            @endphp
-                                            <tr class="border-b hover:bg-gray-100" data-date="{{ \Carbon\Carbon::parse($post->tanggal)->format('Y-m') }}">
+                                            @foreach ($data['data'] as $post)
+                                            <tr class="border-b hover:bg-gray-100">
                                                 <td class="py-2 text-center">{{$i}}</td>
-                                                <td class="py-2 text-center">{{$post->nama_barang}}</td>
-                                                <td class="py-2 text-center">{{$post->sumber_dana}}</td>
-                                                {{-- <td class="py-2 text-center">{{$post->jumlah}}</td> --}}
-                                                <td class="py-2 text-center">{{$post->tanggal}}</td>
+                                                <td class="py-2 text-center">{{$post['nama']}}</td>
+                                                <td class="py-2 text-center">{{$post['sumber']}}</td>
+                                                <td class="py-2 text-center">{{$post['jumlah']}}</td>
+                                                <td class="py-2 text-center">{{$post['tanggal']}}</td>
                                                 <td class="py-2">
                                                     <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
-                                                        <a href="/audit/edit/{{$tahun}}/{{$post->id}}">
+                                                        <a href="/audit/edit/{{$data['tahun']}}/{{$post['id']}}">
                                                             <button class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
@@ -283,7 +280,7 @@
                                                             </button>
                                                         </a>
 
-                                                        <a href="/inventory/{{$tahun}}/{{$post->id}}">
+                                                        <a href="/inventory/{{$data['tahun']}}/{{$post['id']}}">
                                                             <button class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
@@ -294,7 +291,7 @@
                                                         </a>
 
                                                         <button
-                                                            onclick="openDeleteModal('{{ $tahun }}', {{$post->id}})"
+                                                            onclick="openDeleteModal('{{ $data['tahun']}}', {{$post['id']}})"
                                                             class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-red-500 focus:relative">
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"/>

@@ -1,75 +1,68 @@
 <?php
 
-use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuditController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\InventoryControllerController;
+use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CRUDController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\pengaturanController;
-use App\Models\Inventory;
-use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\Auth\AuthenticationController;
 
 // route untuk menampilkan halaman /login
-Route::get('login', [LoginController::class, 'showloginform'])->name('login');
-
-// Route::get('/login', [LoginController::class, 'showloginform']);
+Route::get('login', [AuthenticationController::class, 'showloginform'])->name('login');
 
 // rute untuk autentikasi
-Route::post('login', [LoginController::class, 'login']);
+Route::post('login', [AuthenticationController::class, 'login']);
 
 //  rute yang dilindungin oleh auth
-Route::middleware(['auth'])->group(function () {
+Route::middleware("auth")->group(function () {
     
-    // route untuk menampilkan halaman login
-    Route::get('/', [DashboardController::class, 'index']);
-    
-    // route logout
-    Route::post('/logout', [LoginController::class, 'logout']);
-    
+    // method get
+    Route::get('/', [PostsController::class, 'posts']);
+
     // route dashboard 
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [PostsController::class, 'posts']);
     
     // route about 
-    Route::get('/about', [DashboardController::class, 'showAbout']);
+    Route::get('/about', [AboutController::class, 'index']);
     
-    // route halaman inventory per tahun 
-    Route::get('/inventory/{year?}', [InventoryController::class, 'index']);
-
-    // route halaman detail inventory
-    Route::get('/inventory/{tahun?}/{id?}', [InventoryController::class, 'show']);
+    // route halaman Posts per tahun 
+    Route::get('/inventory/{year?}', [PostsController::class, 'postsByYear']);
     
     // route halaman tambah data 
-    Route::get('/audit/tambah', [AuditController::class, 'index']);
+    Route::get('/audit/tambah', [CRUDController::class, 'index']);
    
-    // route halaman tambah data 
-    Route::get('/audit/edit/{tahun?}/{id?}', [AuditController::class, 'showUpdatePage']);
+    // route halaman detail Posts
+    Route::get('/inventory/{tahun?}/{id?}', [PostsController::class, 'show']);
     
     // route halaman tambah data 
-    Route::post('/audit/edit/{tahun?}/{id?}', [AuditController::class, 'Update']);
-    
-    // route insert data 
-    Route::post('/audit/tambah', [AuditController::class, 'insert']);
+    Route::get('/audit/edit/{tahun?}/{id?}', [CRUDController::class, 'showUpdatePage']);
   
     // route hapus data 
-    Route::get('/audit/hapus/{tahun?}/{id?}', [InventoryController::class, 'destroy']);
+    Route::get('/audit/hapus/{tahun?}/{id?}', [PostsController::class, 'destroy']);
   
     // route halaman daftar 
-    Route::get('/signup', [AkunController::class, 'showRegistrationForm']);
-     
+    Route::get('/signup', [AccountsController::class, 'showRegistrationForm']);
+    
+    // route halaman Accounts yang terdaftar
+    Route::get('/registered-account', [AccountsController::class, 'index']);
+    
+    // route hapus Accounts yang terdaftar
+    Route::get('/hapus/{id?}', [AccountsController::class, 'destroy']);
+
+    // method post
+         
     // route insert data pendaftaran
-    Route::post('/signup', [AkunController::class, 'register']);
+    Route::post('/signup', [AccountsController::class, 'register']);
+
+    // route halaman tambah data 
+    Route::post('/audit/edit/{tahun?}/{id?}', [CRUDController::class, 'Update']);
     
-    // route halaman akun yang terdaftar
-    Route::get('/registered-account', [AkunController::class, 'index']);
-    
-    // route hapus akun yang terdaftar
-    Route::get('/hapus/{id?}', [AkunController::class, 'destroy']);
-    
-    // route hapus akun yang terdaftar
-    Route::get('/pengaturan', [pengaturanController::class, 'index']);
+    // route insert data 
+    Route::post('/audit/tambah', [CRUDController::class, 'insert']);
+        
+    // route logout
+    Route::post('/logout', [AuthenticationController::class, 'logout']);
 
 });
 

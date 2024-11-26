@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use function Laravel\Prompts\alert;
-use Monolog\Processor\WebProcessor;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
-class AuditController extends Controller
+class CRUDController extends Controller
 {
 
     public function insert(Request $request)
@@ -18,48 +16,35 @@ class AuditController extends Controller
             'nama_barang' => 'required|string',
             'sumber_dana' => 'required|string',
             'jumlah' => 'required|string',
+            'editor' => 'required|string',
             'tanggal' => 'required|date',
-            'gambar' => 'nullable',
+            'gambar' => 'nullable|file|max:2048',
         ]);
 
-        $imagePath = $request->hasFile('gambar') ? $request->file('gambar')->store('images', 'public') : null;
-
-        try {
-            if ($request->file('gambar')->getSize() > 2048000) { 
-                
-                session()->flash('info', [
-                    'pesan' => 'Data gagal ditambahkann, ukuran gambar lebih dari 2 mb.',
-                    'warna' => 'red',
-                ]);
-
-                return "<script>
-                    window.history.back();
-                </script>";
-        }
-
-        Inventory::create([
+        $data = [
             'nama_barang' => $request->input('nama_barang'),
             'sumber_dana' => $request->input('sumber_dana'),
             'jumlah' => $request->input('jumlah'),
-            'editor' => session('username'),
+            'editor' => $request->input('editor'),
             'tanggal' => $request->input('tanggal'),
-            'gambar' => $imagePath, 
-        ]);
+            'gambar' => $request->file('gambar'),
+        ];
 
-        session()->flash('info', [
-            'pesan' => 'Data berhasil ditambahkan.',
-            'warna' => 'green',
-        ]);
-            
-        return response("<script>
-                    window.location.href = '/audit/tambah';
-                </script>")->header('Contaent-Type', 'text/html');
+        $response = Http::attach('gambar', file_get_contents($request->file('gambar')), $request->file('gambar')->getClientOriginalName())
+                        ->post('http://inventaris-puskesmas.test/api/insert', $data);
 
-        } catch (\Exception $e) {
-            return "<script>
-                alert('Gagal menyimpan data: " . addslashes($e->getMessage()) . "');
-                window.history.back();
-            </script>";
+        if ($response->successful()) {
+            session()->flash('info', [
+                'pesan' => 'Data berhasil ditambahkan.',
+                'warna' => 'green',
+            ]);
+            return redirect('/audit/tambah');
+        } else {
+            session()->flash('info', [
+                'pesan' => 'Gagal menyimpan data: ' . $response->json()['error'],
+                'warna' => 'red',
+            ]);
+            return redirect()->back();
         }
     }
 

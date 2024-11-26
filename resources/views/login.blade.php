@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login - Manajemen Inventaris Puskesmas</title>
         @vite('resources/css/app.css')
+        
 
     </head>
 {{-- heading --}}
@@ -68,6 +69,7 @@
 {{-- form --}}
 
 </div>
+@vite('resources/js/app.js')
 {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
 
 </body>
