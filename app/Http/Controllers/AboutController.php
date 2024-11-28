@@ -11,7 +11,7 @@ class AboutController extends Controller
 
         $username = session("username");
 
-        return view("about", compact("title", "username"));
+        return view("inventaris-about", compact("title", "username"));
     }
 
 }

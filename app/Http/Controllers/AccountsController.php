@@ -14,7 +14,7 @@ class AccountsController extends Controller
         $accounts = User::All();
         $username = session("username");
         $title = 'Akun yang terdaftar';
-        return view('akun', compact('accounts', 'title', 'username'));
+        return view('inventaris-akun', compact('accounts', 'title', 'username'));
     }
 
     public function destroy(string $id)
@@ -60,7 +60,7 @@ class AccountsController extends Controller
 
         $username = session("username");
 
-        return view('signup', compact('title', 'username'));
+        return view('inventaris-signup', compact('title', 'username'));
     }
 
     public function register(Request $request)

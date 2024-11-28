@@ -13,10 +13,10 @@ class AuthenticationController extends Controller
     public function showLoginForm()
     {
         if (Auth::Check()) {
-            return redirect("dashboard");
+            return redirect("/inventaris/dashboard");
         }
         
-        return view('/login');
+        return view('inventaris-login');
     }
 
     public function login(Request $request) 
@@ -33,7 +33,7 @@ class AuthenticationController extends Controller
 
             session()->put("username", $request->username);
 
-            return redirect('/dashboard');
+            return redirect('/inventaris/dashboard');
 
         } else {
 
@@ -49,6 +49,6 @@ class AuthenticationController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('login');
+        return redirect('/inventaris/login');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+
 use Illuminate\Support\Facades\Storage;
 
 class CRUDController extends Controller
@@ -12,7 +12,6 @@ class CRUDController extends Controller
 
     public function insert(Request $request)
     {
-
 
         $request->validate([
             'nama_barang' => 'required|string',
@@ -39,7 +38,7 @@ class CRUDController extends Controller
                 'pesan' => 'Data berhasil ditambahkan.',
                 'warna' => 'green',
             ]);
-            return redirect('/audit/tambah');
+            return redirect('/inventaris/audit/tambah');
             
         } catch (\Exception $e) {
             session()->flash('info', [
@@ -56,7 +55,7 @@ class CRUDController extends Controller
 
         $username = session('username');
 
-        return view('create', compact("title", "username"));
+        return view('inventaris-create', compact("title", "username"));
     
     }
 
@@ -68,7 +67,7 @@ class CRUDController extends Controller
 
         $username = session("username");
 
-        return view("update", compact( "inventory", "title", "username"));
+        return view("inventaris-update", compact( "inventory", "title", "username"));
     }
     
     public function update(Request $request, $tahun = null, $id = null) 
@@ -115,7 +114,7 @@ class CRUDController extends Controller
         
         $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y');
 
-        return redirect("/inventory/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
+        return redirect("/inventaris/inventory/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
     }
 
 

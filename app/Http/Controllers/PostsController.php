@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
 use App\Http\Resources\PostResource;
-use Illuminate\Support\Facades\Http;
-use App\Http\Resources\YearPostsResource;
 
 class PostsController extends Controller
 {
@@ -20,7 +18,7 @@ class PostsController extends Controller
 
         $username = session('username');
 
-        return view('dashboard', compact('post', 'title', 'username'));
+        return view('inventaris-dashboard', compact('post', 'title', 'username'));
     }
 
 
@@ -33,7 +31,7 @@ class PostsController extends Controller
 
         $username = session("username");
 
-        return view('inventory', compact('postsByYear', 'title', 'username', 'year'));
+        return view('inventaris-inventory', compact('postsByYear', 'title', 'username', 'year'));
     }
 
     public function show($tahun = null, $id = null)
@@ -44,7 +42,7 @@ class PostsController extends Controller
 
         $username = session("username");
 
-        return view('details', compact('postById', 'title', 'username', 'tahun'));
+        return view('inventaris-details', compact('postById', 'title', 'username', 'tahun'));
     }
 
     public function destroy($tahun = null, $id = null)
@@ -56,7 +54,7 @@ class PostsController extends Controller
         session()->flash('success','Berhasil menghapus data.');
 
         return response("<script>
-                    window.location.href = '/inventory/$tahun';
+                    window.location.href = '/inventaris/inventory/$tahun';
                 </script>")
                 ->header('Content-Type', 'text/html');
     }
