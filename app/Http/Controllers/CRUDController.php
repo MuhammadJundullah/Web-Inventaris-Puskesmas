@@ -12,6 +12,8 @@ class CRUDController extends Controller
 
     public function insert(Request $request)
     {
+
+
         $request->validate([
             'nama_barang' => 'required|string',
             'sumber_dana' => 'required|string',
@@ -21,31 +23,31 @@ class CRUDController extends Controller
             'gambar' => 'nullable|file|max:2048',
         ]);
 
-        $data = [
-            'nama_barang' => $request->input('nama_barang'),
-            'sumber_dana' => $request->input('sumber_dana'),
-            'jumlah' => $request->input('jumlah'),
-            'editor' => $request->input('editor'),
-            'tanggal' => $request->input('tanggal'),
-            'gambar' => $request->file('gambar'),
-        ];
+        try {
+            $imagePath = $request->hasFile('gambar') ? $request->file('gambar')->store('images', 'public') : null;
 
-        $response = Http::attach('gambar', file_get_contents($request->file('gambar')), $request->file('gambar')->getClientOriginalName())
-                        ->post('http://inventaris-puskesmas.test/api/insert', $data);
+            Inventory::create([
+                'nama_barang' => $request->input('nama_barang'),
+                'sumber_dana' => $request->input('sumber_dana'),
+                'jumlah' => $request->input('jumlah'),
+                'editor' => $request->input('editor'),
+                'tanggal' => $request->input('tanggal'),
+                'gambar' => $imagePath,
+            ]);
 
-        if ($response->successful()) {
             session()->flash('info', [
                 'pesan' => 'Data berhasil ditambahkan.',
                 'warna' => 'green',
             ]);
             return redirect('/audit/tambah');
-        } else {
+            
+        } catch (\Exception $e) {
             session()->flash('info', [
-                'pesan' => 'Gagal menyimpan data: ' . $response->json()['error'],
+                'pesan' => 'Gagal menyimpan data: ' . $e->getMessage(),
                 'warna' => 'red',
             ]);
             return redirect()->back();
-        }
+        };
     }
 
     public function index() 

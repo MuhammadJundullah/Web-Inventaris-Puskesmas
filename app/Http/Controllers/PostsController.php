@@ -14,49 +14,37 @@ class PostsController extends Controller
     public function posts(Request $request)
     {
 
-        $url = 'http://inventaris-puskesmas.test/api/posts';
-
-        $response = Http::get($url);
-        
-        if ($response->successful()) {
-
-            $data = $response->json();
-
-        } else {
-
-            return redirect('/login')->with('error', 'Failed to fetch posts. Please log in again.');
-        }
+        $post = Inventory::selectRaw('YEAR(tanggal) as year')->distinct()->orderBy('year', 'desc') ->pluck('year');
+    
+        $title = "Data Inventaris Puskesmas Muara Satu";
 
         $username = session('username');
 
-        return view('dashboard', compact('data', 'username'));
+        return view('dashboard', compact('post', 'title', 'username'));
     }
 
 
     public function postsByYear($year = null)
     {  
-        $url = 'http://inventaris-puskesmas.test/api/posts/' . $year;
 
-        $response = Http::get($url);
-
-        $data = $response->json();
+        $postsByYear = Inventory::whereYear('tanggal', $year)->get();
+            
+        $title = 'Data Inventaris tahun ' . $year;
 
         $username = session("username");
 
-        return view('inventory', compact('data', 'username'));
+        return view('inventory', compact('postsByYear', 'title', 'username', 'year'));
     }
 
     public function show($tahun = null, $id = null)
     {
-        $url = 'http://inventaris-puskesmas.test/api/post/' . $tahun . '/' . $id;
+        $postById = Inventory::find($id);
 
-        $response = Http::get($url);
-
-        $data = $response->json();
+        $title = 'Details';
 
         $username = session("username");
 
-        return view('details', compact('data', 'username'));
+        return view('details', compact('postById', 'title', 'username', 'tahun'));
     }
 
     public function destroy($tahun = null, $id = null)
