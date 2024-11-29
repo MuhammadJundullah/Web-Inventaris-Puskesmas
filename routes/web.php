@@ -8,7 +8,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Middleware\inventaris;
 
-Route::middleware("guest")->group(function () {
+
     
     // route untuk menampilkan halaman /login
     Route::get('/inventaris/login', [AuthenticationController::class, 'showLoginForm'])->name('login');
@@ -18,9 +18,9 @@ Route::middleware("guest")->group(function () {
     
     Route::get('/', function () {
         return view('home');
-    });
+    })->name('home');
     
-});
+
 
 //  rute yang dilindungin oleh auth
 Route::middleware([inventaris::class])->group(function () {

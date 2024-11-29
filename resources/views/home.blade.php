@@ -18,51 +18,24 @@
         Website Information System Puskesmas Muara Satu.
       </h2>
 
-      <p class="hidden md:mt-4 md:block text-start">
+      <div class="hidden md:mt-4 md:block text-justify leading-10">
         Website ini dirancang untuk memudahkan pengelolaan inventaris dan data staf di puskesmas. Dengan sistem yang terintegrasi, kami bertujuan untuk meningkatkan efisiensi dalam mengelola aset dan informasi tenaga kesehatan.
         <span>Fitur-fitur utama dalam website ini meliputi:</span>
         <ol class="text-start my-3">
           <li class="my-2">
-            <b>Manajemen Inventaris:</b> Pencatatan dan pelacakan barang medis dan non-medis secara real-time.
+            <b class="bg-emerald-600 hover:bg-emerald-700 text-white transition p-1 px-2 rounded shadow-sm"><a href="/inventaris/login">Manajemen Inventaris</a></b> Pencatatan dan pelacakan barang medis dan non-medis secara real-time.
           </li>
           <li>
-            <b>Pengelolaan Data Staf:</b> Informasi lengkap tentang tenaga kesehatan yang mempermudah administrasi.
+            <b class="bg-emerald-600 hover:bg-emerald-700 text-white transition p-1 px-2 rounded shadow-sm"><a href="#">Pengelolaan Data Staff</a></b> Informasi lengkap tentang tenaga kesehatan yang mempermudah administrasi.
           </li>
           <li class="my-2">
-            <b>Laporan Terintegrasi:</b> Kemudahan dalam menghasilkan laporan yang akurat dan terpercaya.
+            <b class="bg-emerald-600 hover:bg-emerald-700 text-white transition p-1 px-2 rounded shadow-sm"><a href="#">Laporan Terintegrasi</a></b> Kemudahan dalam menghasilkan laporan yang akurat dan terpercaya.
           </li>
         </ol>
 
-        <div class="text-start">
+        <div>
           <span>Kami percaya bahwa teknologi dapat menjadi solusi untuk mendukung pelayanan kesehatan yang lebih baik dan terorganisir.</span>
           <span>Terima kasih telah menggunakan sistem ini. Semoga dapat memberikan manfaat bagi semua pihak yang terlibat dalam pelayanan kesehatan masyarakat.</span>
-        </div>
-      </p>
-
-      <div class="flex gap-x-3">
-        <div class="mt-4 md:mt-8">
-          <a
-            href="/inventaris/login"
-            class="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
-          >
-            Pengelolaan Inventaris
-          </a>
-        </div>
-        <div class="mt-4 md:mt-8">
-          <a
-            href="#"
-            class="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
-          >
-            Pengelolaan Staff
-          </a>
-        </div>
-        <div class="mt-4 md:mt-8">
-          <a
-            href="#"
-            class="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
-          >
-            Beri Masukan
-          </a>
         </div>
       </div>
 
@@ -72,10 +45,11 @@
   <img
     alt=""
     src="{{asset('img/puskesmas.jpg')}}"
-    class="h-full w-full object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-ss-[30px] md:h-[calc(100%_-_4rem)] md:rounded-ss-[60px]"
+    class="h-full w-full object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-ss-[30px] md:h-[calc(100%_-_4rem)] md:rounded-ss-[60px] shadow-lg"
   />
 </section>
 
+<x-footer></x-footer>
 </div>
     
 @vite('resources/js/app.js')
