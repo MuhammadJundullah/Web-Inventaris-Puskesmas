@@ -50,7 +50,7 @@
                 <form id="logout-form" action="/inventaris/logout" method="POST" style="display: none;">
                     @csrf
                 </form>
-                <a href="/inventaris/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a> 
+                <a href="inventaris.logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a> 
               </div>
             </div>
             <!-- End Profile dropdown -->

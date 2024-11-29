@@ -42,7 +42,7 @@
   <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
 
     {{-- input username --}}
-    <form id='loginForm' class="space-y-6" action="/login" method="POST">
+    <form id='loginForm' class="space-y-6" action="/inventaris/login" method="POST">
       @csrf
       <div>
       <label for="username" class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-blue-600">

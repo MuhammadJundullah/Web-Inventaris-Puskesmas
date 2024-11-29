@@ -6,7 +6,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CRUDController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Auth\AuthenticationController;
-
+use App\Http\Middleware\inventaris;
 
 Route::middleware("guest")->group(function () {
     
@@ -16,10 +16,14 @@ Route::middleware("guest")->group(function () {
     // rute untuk autentikasi
     Route::post('/inventaris/login', [AuthenticationController::class, 'login']);
     
+    Route::get('/', function () {
+        return view('home');
+    });
+    
 });
 
 //  rute yang dilindungin oleh auth
-Route::middleware("auth")->group(function () {
+Route::middleware([inventaris::class])->group(function () {
     
     // method get
     Route::get('/inventaris', [PostsController::class, 'posts']);
@@ -66,7 +70,7 @@ Route::middleware("auth")->group(function () {
     Route::post('/inventaris/audit/tambah', [CRUDController::class, 'insert']);
         
     // route logout
-    Route::post('/inventaris/logout', [AuthenticationController::class, 'logout']);
+    Route::post('/inventaris/logout', [AuthenticationController::class, 'logout'])->name('inventaris.logout');
 
 });
 
