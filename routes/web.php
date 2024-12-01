@@ -20,6 +20,9 @@ use App\Http\Middleware\inventaris;
         return view('home');
     })->name('home');
     
+    Route::get('/masukan', function () {
+        return view('masukan');
+    })->name('masukan');
 
 
 //  rute yang dilindungin oleh auth

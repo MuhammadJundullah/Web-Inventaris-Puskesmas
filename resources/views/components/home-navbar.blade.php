@@ -1,9 +1,9 @@
-<nav class="bg-gray-800" x-data="{ isOpen: false }">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<nav class="bg-gray-800 fixed w-full top-0 z-50 opacity-80 hover:opacity-90 transition" x-data="{ isOpen: false }">
+    <div class=" mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center gap-10 text-balance sm:text-start">
           <div class="flex-shrink-0">
-            <a href="/dashboard"><img class="h-8" src="{{ asset('img/logo-puskesmas.png') }}" alt="Logo Puskesmas"></a>
+            <a href="/"><img class="h-8" src="{{ asset('img/logo-puskesmas.png') }}" alt="Logo Puskesmas"></a>
           </div>
           <div>
             <h1 class="text-lg text-white font-bold">Sistem informasi Puskesmas Muara Satu</h1>
@@ -11,9 +11,9 @@
           <div class="hidden md:block">
            <div class="ml-10 flex items-baseline space-x-4">              
               <x-nav-link href="/" :active="request()->is('/') || request()->is('/')">Home</x-nav-link>
-              <x-nav-link href="/inventaris/login" :active="request()->is('inventaris/login')">Pengelolaan Inventaris</x-nav-link>              
-              <x-nav-link href="#" :active="request()->is('bendahara/login')">Pengelolan Bendahara</x-nav-link>         
-              <x-nav-link href="#" :active="request()->is('masukan')">Beri Masukan</x-nav-link>         
+              <x-nav-link href="/inventaris/login" :active="request()->is('inventaris/login')">Pengelolaan inventaris</x-nav-link>              
+              <x-nav-link href="#" :active="request()->is('bendahara/login')">Pengelolan bendahara</x-nav-link>         
+              <x-nav-link href="/masukan" :active="request()->is('masukan')">Beri Masukan</x-nav-link>         
             </div>
           </div>
         </div>
@@ -45,8 +45,8 @@
         </div>
         <div class="mt-3 space-y-1 px-2">
           <a href="/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Home</a>
-          <a href="/inventaris/login" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Pengelolaan Inventaris</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Pengelolaan Bendahara</a>
+          <a href="/inventaris/login" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Pengelolaan inventaris</a>
+          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Pengelolaan bendahara</a>
           <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Beri Masukan</a>
         </div>
       </div>
