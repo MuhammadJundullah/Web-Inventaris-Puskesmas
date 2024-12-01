@@ -1,42 +1,34 @@
 <x-home-layout>
   
-<section
-  class="overflow-hidden bg-cover bg-top bg-no-repeat h-screen"
-  style="background-image: url('{{ asset('img/puskesmas.jpg') }}')"
->
-  <div class="bg-black/50 p-8 md:p-12 lg:px-16 lg:py-24 h-full">
-    <div class="text-center ltr:sm:text-left rtl:sm:text-rightsm:mt-10 mt-28">
-      <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl mb-20">Selamat datang di Sistem informasi Puskesmas Muara Satu</h2>
+<section class="overflow-hidden bg-cover bg-top bg-no-repeat h-screen" style="background-image: url('{{ asset('img/puskesmas.jpg') }}')">
+  <div class="bg-black/50">
+    <div class="lg:py-24 h-full mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8 lg:pt-24">
+      <div class="text-start ltr:sm:text-left rtl:sm:text-rightsm:mt-10 mt-28 max-w-md sm:mx-48 md:mx-10">
+        <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl mb-20">Selamat datang di Sistem informasi Puskesmas Muara Satu</h2>
 
-      <div class="bg-gray-200 p-3 pb-10 rounded-xl opacity-90">
-        <p class=" text-gray-700 md:mt-6 md:block md:text-lg md:leading-relaxed">
-         Website ini dirancang untuk memudahkan pengelolaan inventaris dan data staf di puskesmas. Dengan sistem yang terintegrasi, kami bertujuan untuk meningkatkan efisiensi dalam mengelola aset dan informasi tenaga kesehatan. Kami percaya bahwa teknologi dapat menjadi solusi untuk mendukung pelayanan kesehatan yang lebih baik dan terorganisir. Terima kasih telah menggunakan sistem ini. Semoga dapat memberikan manfaat bagi semua pihak yang terlibat dalam pelayanan kesehatan masyarakat.
-        </p>
+          <p class="text-gray-100 md:block md:text-lg md:leading-relaxed font-extralight">
+          Website ini dirancang untuk memudahkan pengelolaan inventaris dan data staf di puskesmas. Dengan sistem yang terintegrasi, kami bertujuan untuk meningkatkan efisiensi dalam mengelola aset dan informasi tenaga kesehatan. Kami percaya bahwa teknologi dapat menjadi solusi untuk mendukung pelayanan kesehatan yang lebih baik dan terorganisir. Terima kasih telah menggunakan sistem ini. Semoga dapat memberikan manfaat bagi semua pihak yang terlibat dalam pelayanan kesehatan masyarakat.
+          </p>
+
       </div>
-
     </div>
   </div>
+  
 </section>
   
 <footer class="bg-white">
   <div class="mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8 lg:pt-24">
-    <div class="text-center">
-      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-5xl">Kritik dan saran</h2>
+    <div class="text-start">
+      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-5xl ml-4 md:mx-14 lg:mx-12">Kritik dan saran</h2>
 
-      <p class="mx-auto mt-4 max-w-sm text-gray-500">
+      <p class="mx-4 mt-4 text-gray-500 text-start md:mx-14 lg:mx-12 font-light">
         Kami sangat menghargai setiap masukan yang diberikan. Kritik dan saran Anda sangat berarti bagi kami untuk terus memperbaiki dan mengembangkan sistem ini agar dapat memberikan manfaat yang lebih besar bagi semua pihak yang terlibat dalam pelayanan kesehatan masyarakat. Terima kasih atas partisipasi dan kepercayaannya.
       </p>
 
-      <a
-        href="/masukan"
-        class="mt-8 inline-block rounded-full border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
-      >
-        Beri Masukan
-      </a>
     </div>
 
     <div
-      class="mt-16 border-t border-gray-100 pt-8 sm:flex sm:items-center sm:justify-between lg:mt-24"
+      class="mt-16 border-t border-gray-100 pt-8 sm:flex sm:items-center sm:justify-between lg:mt-24 lg:mx-12"
     >
       <ul class="flex flex-wrap justify-center gap-4 text-xs lg:justify-end">
         <li>

@@ -1,15 +1,15 @@
 <nav class="bg-gray-800 fixed w-full top-0 z-50 opacity-80 hover:opacity-90 transition" x-data="{ isOpen: false }">
-    <div class=" mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
-      <div class="flex h-16 items-center justify-between">
-        <div class="flex items-center gap-10 text-balance sm:text-start">
-          <div class="flex-shrink-0">
-            <a href="/"><img class="h-8" src="{{ asset('img/logo-puskesmas.png') }}" alt="Logo Puskesmas"></a>
-          </div>
+    <div class="mx-3 md:mx-16 lg:px-56 py-3 md:py-4">
+      <div class="flex h-16 items-center">
+        <div class="mr-4 font-semibold">
+          <a href="/"><img class="h-8" src="{{ asset('img/logo-puskesmas.png') }}" alt="Logo Puskesmas"></a>
+        </div>
+        <div class="flex items-center sm:gap-48 md:gap-10 text-balance sm:text-start">
           <div>
-            <h1 class="text-lg text-white font-bold">Sistem informasi Puskesmas Muara Satu</h1>
+            <h1 class="text-lg text-white font-bold sm:font-medium">Sistem informasi Puskesmas Muara Satu</h1>
           </div>
           <div class="hidden md:block">
-           <div class="ml-10 flex items-baseline space-x-4">              
+           <div class="flex gap-x-4 items-center">              
               <x-nav-link href="/" :active="request()->is('/') || request()->is('/')">Home</x-nav-link>
               <x-nav-link href="/inventaris/login" :active="request()->is('inventaris/login')">Pengelolaan inventaris</x-nav-link>              
               <x-nav-link href="#" :active="request()->is('bendahara/login')">Pengelolan bendahara</x-nav-link>         
@@ -17,7 +17,7 @@
             </div>
           </div>
         </div>
-        <div class="-mr-2 flex md:hidden">
+        <div class="-mr-2 flex sm:hidden">
 
           <!-- Mobile menu button -->
           <button @click="isOpen = !isOpen" type="button" class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-controls="mobile-menu" aria-expanded="false">
@@ -39,7 +39,7 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div x-show="isOpen" class="md:hidden" id="mobile-menu">
+    <div x-show="isOpen" class="sm:hidden" id="mobile-menu">
       <div class="border-t border-gray-700 pb-3">
         <div class="flex items-center px-5">
         </div>
@@ -47,13 +47,10 @@
           <a href="/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Home</a>
           <a href="/inventaris/login" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Pengelolaan inventaris</a>
           <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Pengelolaan bendahara</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Beri Masukan</a>
+          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Beri masukan</a>
         </div>
       </div>
     </div>
   </nav>
-
-
-
 
 
