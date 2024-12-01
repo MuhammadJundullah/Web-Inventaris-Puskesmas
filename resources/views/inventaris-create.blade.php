@@ -6,7 +6,7 @@
     <div class="mt-10 mx-5 sm:mx-5 sm:px-20">
         
     {{-- form --}}
-        <form class="mb-10" action="/audit/tambah" method="POST" enctype="multipart/form-data">
+        <form class="mb-10" action="/inventaris/audit/tambah" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="space-y-5">
 
@@ -122,7 +122,7 @@
                 </div>
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
-                <a href="/dashboard"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
+                <a href="/inventaris/dashboard"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
                 <button type="submit" class="group inline-flex items-center gap-1 text-sm font-medium text-blue-600">
                     Tambah data
                     <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">

@@ -41,7 +41,7 @@ Route::middleware([inventaris::class])->group(function () {
     Route::get('/inventaris/audit/tambah', [CRUDController::class, 'index']);
    
     // route halaman detail Posts
-    Route::get('/inventaris/inventory/{tahun?}/{id?}', [PostsController::class, 'show']);
+    Route::get('/inventaris/barang/{tahun?}/{id?}', [PostsController::class, 'show']);
     
     // route halaman tambah data 
     Route::get('/inventaris/audit/edit/{tahun?}/{id?}', [CRUDController::class, 'showUpdatePage']);

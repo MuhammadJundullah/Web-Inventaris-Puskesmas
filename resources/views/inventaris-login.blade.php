@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full bg-white">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login - Manajemen Inventaris Puskesmas</title>
-    @vite('resources/css/app.css')
-</head>
+<x-home-layout>
 
-<body class="flex flex-col min-h-screen" x-data="alertComponent()">
-  <div class="flex-grow flex flex-col justify-center px-6 py-12 lg:px-8">
+  <body class="flex flex-col min-h-screen" x-data="alertComponent()">
+  <div class="flex-grow flex flex-col justify-center px-6 py-36 lg:px-8 bg-gray-50">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-20 w-auto" src="{{ asset('img/logo-puskesmas.png') }}" alt="Your Company">
+      <img class="mx-auto h-20 w-auto" src="{{ asset('img/logo-puskesmas.png') }}" alt="logo puskesmas">
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login ke Manajemen Inventaris Puskesmas Muara Satu</h2>
 
       {{-- modal untuk password salah --}}
@@ -54,12 +46,11 @@
         <div class="mt-5">
           <button type="submit" name="submit" class="flex m-auto w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Masuk</button>
         </div>
+
       </form>
     </div>
     {{-- form --}}
   </div>
-
-  <x-footer class="items-"></x-footer>
-  @vite('resources/js/app.js')
 </body>
-</html>
+
+</x-home-layout>

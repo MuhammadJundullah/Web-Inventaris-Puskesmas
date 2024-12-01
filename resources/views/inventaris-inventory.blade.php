@@ -104,14 +104,6 @@
                 padding: 5px;
             }
         }
-
-        /* Ubah warna teks input pencarian menjadi hitam */
-        #searchInput {
-            color: black;
-            border: 1px solid #ccc;
-            padding: 5px;
-            border-radius: 5px;
-        }
     </style>
 {{-- custom css --}}
 
@@ -150,7 +142,7 @@
     <div class="flex min-h-full flex-col justify-center px-6 lg:p">
 
         {{-- table --}}
-            <div class=" sm:mx-auto sm:w-full">
+            <div class="sm:mx-auto sm:w-full">
                     <div class="flex min-h-full flex-col justify-center py-12 lg:p">
 
                 {{-- modal berhasil --}}
@@ -167,80 +159,58 @@
                 {{-- modal berhasil --}}
 
                 {{-- data filter dan cari barang --}}
-                    <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-                        
-                        {{-- cari barang --}}
-                            <div class="relative ml-20">
-                                <label for="Search" class="sr-only"> Search </label>
-                                <input type="text" id="Search" placeholder="Cari barang" class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"/>
-                                <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
-                                    <button type="button" class="text-gray-600 hover:text-gray-700">
-                                        <span class="sr-only">Search</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-                                        </svg>
-                                    </button>
-                                </span>
-                            </div>
-                        {{-- cari barang --}}
-                    
-                        {{-- data filter --}}
-                            <div class="flex sm:ml-10">
-                                <div class="relative">
-                                    <details class="group [&_summary::-webkit-details-marker]:hidden">
-                                        <summary class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
-                                            <span class="text-sm font-medium"> Filter </span>
-                                            <span class="transition group-open:-rotate-180">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                                </svg>
-                                            </span>
-                                        </summary>
+                     <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                        <div class="relative ml-20">
+                            <label for="Search" class="sr-only"> Search </label>
+                            <input type="text" id="searchInput" placeholder="Cari barang" class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"/>
+                            <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                                <button type="button" class="text-gray-600 hover:text-gray-700">
+                                    <span class="sr-only">Search</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                                    </svg>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
 
-                                        <div class="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
-                                            <div class="w-96 rounded border border-gray-200 bg-white">
-                                                <header class="items-center justify-between p-4">
-                                                    <span class="">Filter Bulan</span>
-                                                    <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
-                                                        <option value="">--Pilih Bulan--</option>
-                                                        <option value="01">Januari</option>
-                                                        <option value="02">Februari</option>
-                                                        <option value="03">Maret</option>
-                                                        <option value="04">April</option>
-                                                        <option value="05">Mei</option>
-                                                        <option value="06">Juni</option>
-                                                        <option value="07">Juli</option>
-                                                        <option value="08">Agustus</option>
-                                                        <option value="09">September</option>
-                                                        <option value="10">Oktober</option>
-                                                        <option value="11">November</option>
-                                                        <option value="12">Desember</option>
-                                                    </select>
-                                                </header>
-                                                <header class="flex items-center justify-between p-4">
-                                                    <div class="items-center text-center">
-                                                        <span class="mr-2">Sumber Dana</span>
-                                                        <input type="text" id="searchInput" class="border border-gray-300 rounded p-1 w-32" placeholder="Cari" onkeyup="filterTable()">
-                                                    </div>
-                                                </header>
-                                                <div class="flex justify-end p-4">
-                                                    <button id="resetButton" class="bg-gray-200 p-2 rounded hover:bg-gray-300" onclick="resetFilters()">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                                                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-                                                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
-                                                            </svg>
-                                                        </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </details>
-                                </div>
+                    <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                        <div class="relative sm:ml-14">
+                            <div class="items-center justify-between p-4">
+                                <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
+                                    <option value="">Filter Bulan</option>
+                                    <option value="01">Januari</option>
+                                    <option value="02">Februari</option>
+                                    <option value="03">Maret</option>
+                                    <option value="04">April</option>
+                                    <option value="05">Mei</option>
+                                    <option value="06">Juni</option>
+                                    <option value="07">Juli</option>
+                                    <option value="08">Agustus</option>
+                                    <option value="09">September</option>
+                                    <option value="10">Oktober</option>
+                                    <option value="11">November</option>
+                                    <option value="12">Desember</option>
+                                </select>
                             </div>
-                        {{-- data filter --}}
+                        </div>
+                    </div>
+
+                    <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                        <div class="relative sm:ml-20">
+                            <div class="justify-start flex">
+                                <button id="resetButton" class="bg-gray-200 p-2 rounded hover:bg-gray-300" onclick="resetFilters()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 {{-- data filter dan cari --}}
 
-                        <div class="my-5 sm:mx-auto sm:w-full">                            
+                        <div class="sm:mx-auto sm:w-full">                            
                             <div class="mx-auto mt-11 text-center">
                                 <div class="overflow-x-auto">
                                     <table>
@@ -270,7 +240,7 @@
                                                 <td class="py-2 text-center">{{$post['tanggal']}}</td>
                                                 <td class="py-2">
                                                     <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
-                                                        <a href="/audit/edit/{{$year}}/{{$post['id']}}">
+                                                        <a href="/inventaris/audit/edit/{{$year}}/{{$post['id']}}">
                                                             <button class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
@@ -279,7 +249,7 @@
                                                             </button>
                                                         </a>
 
-                                                        <a href="/inventory/{{$year}}/{{$post['id']}}">
+                                                        <a href="/inventaris/barang/{{$year}}/{{$post['id']}}">
                                                             <button class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
                                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
@@ -314,79 +284,75 @@
 {{-- isi --}}
 
 {{-- custom js --}}
-    <script>
-        function filterTable() {
-            const input = document.getElementById("searchInput");
-            const filter = input.value.toUpperCase();
-            const monthValue = document.getElementById("monthDropdown").value;
-            const table = document.querySelector("tbody");
-            const tr = table.getElementsByTagName("tr");
+   <script>
+    function filterTable() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toUpperCase();
+        const monthValue = document.getElementById("monthDropdown").value;
+        const table = document.querySelector("tbody");
+        const tr = table.getElementsByTagName("tr");
 
-            let visibleCount = 0;
+        let visibleCount = 0;
 
-            for (let i = 0; i < tr.length; i++) {
-                const tdSource = tr[i].getElementsByTagName("td")[2]; // Column for Sumber Dana
-                const dateCell = tr[i].getElementsByTagName("td")[4]; // Column for Tanggal
-                let displayRow = true;
+        for (let i = 0; i < tr.length; i++) {
+            const tdSource = tr[i].getElementsByTagName("td")[2]; // Kolom Sumber Dana
+            const tdSource1 = tr[i].getElementsByTagName("td")[1]; // Kolom Nama Barang
+            const dateCell = tr[i].getElementsByTagName("td")[4]; // Kolom Tanggal
+            let displayRow = true;
 
-                // Filter based on Sumber Dana
-                if (tdSource) {
-                    const txtValue = tdSource.textContent || tdSource.innerText;
-                    if (filter && !txtValue.toUpperCase().includes(filter)) {
+            // Filter berdasarkan Sumber Dana atau Nama Barang
+            if (tdSource || tdSource1) {
+                const txtValueSource = tdSource ? (tdSource.textContent || tdSource.innerText) : "";
+                const txtValueSource1 = tdSource1 ? (tdSource1.textContent || tdSource1.innerText) : "";
+                const txtValue = txtValueSource + " " + txtValueSource1;
+                if (filter && !txtValue.toUpperCase().includes(filter)) {
+                    displayRow = false;
+                }
+            }
+
+            // Filter berdasarkan bulan
+            if (dateCell) {
+                const dateValue = dateCell.textContent || dateCell.innerText;
+                if (monthValue !== "") {
+                    const monthFromDate = dateValue.substring(5, 7);
+                    if (monthFromDate !== monthValue) {
                         displayRow = false;
                     }
                 }
-
-                // Filter based on month selection
-                if (dateCell) {
-                    const dateValue = dateCell.textContent || dateCell.innerText;
-                    if (monthValue !== "") {
-                        const monthFromDate = dateValue.substring(5, 7);
-                        if (monthFromDate !== monthValue) {
-                            displayRow = false;
-                        }
-                    }
-                }
-
-                // Display or hide the row
-                if (displayRow) {
-                    tr[i].style.display = "";
-                    visibleCount++;
-                    tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Update row number
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-            // reset filter data 
-            function resetFilters() {
-            
-                document.getElementById('monthDropdown').selectedIndex = 0;
-
-                document.getElementById('searchInput').value = '';
-
-                filterTable();
             }
 
-        // Event listeners for input and dropdown changes
-        document.getElementById("searchInput").addEventListener("keyup", filterTable);
-        document.getElementById("monthDropdown").addEventListener("change", filterTable);
-
-        // javascript untuk mengirimkan data id ke modal 
-        let id;
-        let tahun;
-
-        function openDeleteModal(tahun, id) {            
-            document.getElementById('deleteModal').classList.remove('hidden');
-            document.getElementById('confirmDeleteButton').setAttribute('href', '/audit/hapus/' + tahun + '/' + id);
+            // Tampilkan atau sembunyikan baris
+            if (displayRow) {
+                tr[i].style.display = "";
+                visibleCount++;
+                tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Perbarui nomor baris
+            } else {
+                tr[i].style.display = "none";
+            }
         }
+    }
 
+    // Reset filter
+    function resetFilters() {
+        document.getElementById('monthDropdown').selectedIndex = 0;
+        document.getElementById('searchInput').value = '';
+        filterTable();
+    }
 
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').classList.add('hidden');
-        }
- 
-        // javascript untuk mengirimkan data id ke modal 
-    </script>
+    // Event listener untuk input dan dropdown
+    document.getElementById("searchInput").addEventListener("keyup", filterTable);
+    document.getElementById("monthDropdown").addEventListener("change", filterTable);
+
+    // Modal Delete
+    function openDeleteModal(tahun, id) {            
+        document.getElementById('deleteModal').classList.remove('hidden');
+        document.getElementById('confirmDeleteButton').setAttribute('href', '/audit/hapus/' + tahun + '/' + id);
+    }
+
+    function closeDeleteModal() {
+        document.getElementById('deleteModal').classList.add('hidden');
+    }
+</script>
+
 {{-- custom js --}}
 </x-layout>

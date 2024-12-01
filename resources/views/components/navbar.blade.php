@@ -11,7 +11,7 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <x-nav-link href="/inventaris/dashboard" :active="request()->is('inventaris/dashboard') || request()->is('inventaris/inventory/*')">Data</x-nav-link>
               <x-nav-link href="/inventaris/audit/tambah" :active="request()->is('inventaris/audit/tambah')">Tambah data</x-nav-link>              
-              <x-nav-link href="#" :active="request()->is('inventaris/audit/edit/*')">Ubah data</x-nav-link>              
+              {{-- <x-nav-link href="#" :active="request()->is('inventaris/audit/edit/*')">Ubah data</x-nav-link>               --}}
               <x-nav-link href="/inventaris/about" :active="request()->is('inventaris/about')">About</x-nav-link>         
             </div>
           </div>
@@ -85,7 +85,7 @@
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <x-nav-link href="/inventaris/dashboard" :active="request()->is('inventaris/dashboard') || request()->is('inventory/*')">Data</x-nav-link>
         <x-nav-link href="/inventaris/audit/tambah" :active="request()->is('inventaris/audit/tambah')">Tambah data</x-nav-link>
-        <x-nav-link href="#" :active="request()->is('inventaris/audit/edit/*')">Ubah data</x-nav-link>
+        {{-- <x-nav-link href="#" :active="request()->is('inventaris/audit/edit/*')">Ubah data</x-nav-link> --}}
         <x-nav-link href="/inventaris/about" :active="request()->is('inventaris/about')">About</x-nav-link>
      </div>
       <div class="border-t border-gray-700 pb-3 pt-4">
@@ -102,8 +102,8 @@
           </div>
         </div>
         <div class="mt-3 space-y-1 px-2">
-          <a href="/registered-account" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Lihat akun yang terdaftar</a>
-          <a href="/signup" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Tambah akun</a>
+          <a href="/inventaris/registered-account" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Lihat akun yang terdaftar</a>
+          <a href="/inventaris/signup" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Tambah akun</a>
 
           <form id="logout-form" action="/logout" method="POST" style="display: none;">
               @csrf

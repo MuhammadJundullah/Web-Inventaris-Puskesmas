@@ -114,7 +114,7 @@ class CRUDController extends Controller
         
         $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y');
 
-        return redirect("/inventaris/inventory/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
+        return redirect("/inventaris/barang/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
     }
 
 

@@ -7,8 +7,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="flex flex-col min-h-screen">
-    <x-navbar>{{$username}}</x-navbar>
-    <x-header>{{$title}}</x-header>
+    <x-home-navbar></x-home-navbar>
     <main class="flex-grow">
         {{$slot}}
     </main>
