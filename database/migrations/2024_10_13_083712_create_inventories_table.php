@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nama_barang')->nullable();
             $table->string('sumber_dana')->nullable();
+            $table->string('merek')->nullable();
             $table->string('jumlah')->nullable();
+            $table->string('kondisi')->nullable();
+            $table->string('tempat_barang')->nullable();
             $table->string('editor')->nullable();
             $table->string('tanggal')->nullable();
             $table->string('gambar')->nullable();

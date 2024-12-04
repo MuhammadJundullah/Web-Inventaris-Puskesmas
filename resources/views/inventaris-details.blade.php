@@ -64,12 +64,24 @@
                         <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$postById['sumber_dana']}}</dd>
                     </div>
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="font-medium leading-6 text-gray-900">Merek barang</dt>
+                        <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$postById['merek']}}</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt class="font-medium leading-6 text-gray-900">Tanggal masuk</dt>
                         <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$postById['tanggal']}}</dd>
                     </div>
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt class="font-medium leading-6 text-gray-900">Jumlah barang</dt>
                         <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$postById['jumlah']}}</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="font-medium leading-6 text-gray-900">Kondisi barang</dt>
+                        <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$postById['kondisi']}}</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="font-medium leading-6 text-gray-900">Tempat barang</dt>
+                        <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$postById['kondisi']}}</dd>
                     </div>
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt class="font-medium leading-6 text-gray-900">Editor</dt>
@@ -82,6 +94,10 @@
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt class="font-medium leading-6 text-gray-900">Terakhir di ubah</dt>
                         <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{\Carbon\Carbon::parse($postById['updated_at'])->diffForHumans()}}</dd>
+                    </div>
+                    <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                        <dt class="font-medium leading-6 text-gray-900">QR barang</dt>
+                        <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{!! $qrCode !!}</dd>
                     </div>
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt class="font-medium leading-6 text-gray-900">Foto Inventaris</dt>
@@ -133,9 +149,8 @@
 
         function openDeleteModal(tahun, id) {            
             document.getElementById('deleteModal').classList.remove('hidden');
-            document.getElementById('confirmDeleteButton').setAttribute('href', '/audit/hapus/' + tahun + '/' + id);
+            document.getElementById('confirmDeleteButton').setAttribute('href', '/inventaris/audit/hapus/' + tahun + '/' + id);
         }
-
 
         function closeDeleteModal() {
             document.getElementById('deleteModal').classList.add('hidden');

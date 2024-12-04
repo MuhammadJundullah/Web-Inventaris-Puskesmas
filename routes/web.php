@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Middleware\inventaris;
 
 
+    Route::get('/scan/inventaris/barang/{tahun?}/{id?}', [PostsController::class, 'showScanPage']);
     
     // route untuk menampilkan halaman /login
     Route::get('/inventaris/login', [AuthenticationController::class, 'showLoginForm'])->name('login');

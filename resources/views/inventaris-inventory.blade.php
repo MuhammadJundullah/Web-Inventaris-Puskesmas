@@ -346,7 +346,7 @@
     // Modal Delete
     function openDeleteModal(tahun, id) {            
         document.getElementById('deleteModal').classList.remove('hidden');
-        document.getElementById('confirmDeleteButton').setAttribute('href', '/audit/hapus/' + tahun + '/' + id);
+        document.getElementById('confirmDeleteButton').setAttribute('href', '/inventaris/audit/hapus/' + tahun + '/' + id);
     }
 
     function closeDeleteModal() {
