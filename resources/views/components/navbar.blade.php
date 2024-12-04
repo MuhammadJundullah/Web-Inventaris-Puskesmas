@@ -21,7 +21,7 @@
 
             <!-- Solid -->
                 <span class="whitespace-nowrap rounded-full bg-slate-200 px-2.5 py-0.5 text-sm text-dark ml-3 ">
-                  Anda login sebagai <span class="text-red-900">{{ $slot }}</span>
+                  <span class="text-red-900">{{ $slot }}</span>
                 </span>
             <!-- Outlined -->
 

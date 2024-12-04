@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PostsController extends Controller
@@ -54,6 +55,8 @@ class PostsController extends Controller
         $inventory = Inventory::find($id);
 
         $inventory->delete();
+        
+        Storage::disk('public')->delete($inventory->gambar);
 
         session()->flash('success','Berhasil menghapus data.');
 

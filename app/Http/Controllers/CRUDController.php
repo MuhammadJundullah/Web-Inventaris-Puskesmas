@@ -28,7 +28,10 @@ class CRUDController extends Controller
             Inventory::create([
                 'nama_barang' => $request->input('nama_barang'),
                 'sumber_dana' => $request->input('sumber_dana'),
+                'merek' => $request->input('merek'),
                 'jumlah' => $request->input('jumlah'),
+                'kondisi' => $request->input('kondisi'),
+                'tempat_barang' => $request->input('tempat_barang'),
                 'editor' => $request->input('editor'),
                 'tanggal' => $request->input('tanggal'),
                 'gambar' => $imagePath,
@@ -73,48 +76,52 @@ class CRUDController extends Controller
     public function update(Request $request, $tahun = null, $id = null) 
     {    
 
+        // Validasi input
+        $validatedData = $request->validate([
+            'nama_barang' => 'required|string|max:255',
+            'sumber_dana' => 'required|string|max:255',
+            'merek' => 'required|string|max:255',
+            'jumlah' => 'required|integer|min:1',
+            'kondisi' => 'required|string|max:255',
+            'tempat_barang' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'gambar' => 'nullable|image|max:2048', // Maksimal 2 MB
+        ]);
+
+        // Cari data berdasarkan ID
         $inventory = Inventory::findOrFail($id);
-        
-        $inventory->nama_barang = $request->input('nama_barang');
-        $inventory->sumber_dana = $request->input('sumber_dana');
+
+        // Update data
+        $inventory->nama_barang = $validatedData['nama_barang'];
+        $inventory->sumber_dana = $validatedData['sumber_dana'];
         $inventory->editor = session('username');
-        $inventory->jumlah = $request->input('jumlah');
-        $inventory->tanggal = $request->input('tanggal');
-        
+        $inventory->merek = $validatedData['merek'];
+        $inventory->jumlah = $validatedData['jumlah'];
+        $inventory->kondisi = $validatedData['kondisi'];
+        $inventory->tempat_barang = $validatedData['tempat_barang'];
+        $inventory->tanggal = $validatedData['tanggal'];
+
         if ($request->hasFile('gambar')) {
 
-            if ($request->file('gambar')->getSize() > 2048000) { 
-                
-                session()->flash('success', [
-                    'pesan' => 'Data gagal diperbarui, ukuran gambar lebih dari 2 mb',
-                    'warna' => 'red',
-                ]);
-
-                return "<script>
-                    window.history.back();
-                </script>";
-            }
-            
+            // Hapus gambar lama jika ada
             if ($inventory->gambar) {
-
-                Storage::delete($inventory->gambar);
-
+                Storage::disk('public')->delete($inventory->gambar);
             }
 
-            $gambarPath = $request->file('gambar')->store('images', 'public'); 
+        // Simpan gambar baru
+        $gambarPath = $request->file('gambar')->store('images', 'public');
+        $inventory->gambar = $gambarPath;
+    }
 
-            $inventory->gambar = $gambarPath; 
-
-        } else {
-        
-            $inventory->gambar = $request->input('gambarLama');
-        }
-        
+        // Simpan perubahan
         $inventory->save();
-        
+
+        // Ambil tahun dari tanggal
         $tahun = \Carbon\Carbon::parse($inventory->tanggal)->format('Y');
 
-        return redirect("/inventaris/barang/{$tahun}/{$inventory->id}")->with('success', 'Data berhasil diperbarui.');
+        // Redirect ke halaman detail dengan pesan sukses
+        return redirect("/inventaris/barang/{$tahun}/{$inventory->id}")
+            ->with('success', 'Data berhasil diperbarui.');
     }
 
 
