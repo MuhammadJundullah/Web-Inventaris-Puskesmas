@@ -2,12 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Inventory;
 use App\Models\User;
+use App\Models\Inventory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Treasurers;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,8 +23,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'inventaris'
         ]);
 
+        User::create([
+            'username' => 'bendahara',
+            'password' => Hash::make('bendahara'),
+            'role' => 'bendahara'
+        ]);
+
         $faker = Faker::create();
-        
+
         foreach (range(1, 100) as $index) {
             Inventory::create([
                 'nama_barang' => $faker->word(),
@@ -33,7 +40,19 @@ class DatabaseSeeder extends Seeder
                 'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('Y-m-d'),
                 'gambar' => $faker->word(),
             ]);
-        }
 
+            $faker = Faker::create();
+
+            foreach (range(1, 100) as $index) {
+                Treasurers::create([
+                    'nama_pegawai' => $faker->name(),
+                    'id_pegawai' => $faker->numberBetween(100, 500),
+                    'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('Y-m-d'),
+                    'kegiatan' => $faker->name(),
+                    'dana_yang_digunakan' => $faker->numberBetween(10000, 999999),
+                    'jumlah' => $faker->word(),
+                ]);
+            }
+        }
     }
 }
