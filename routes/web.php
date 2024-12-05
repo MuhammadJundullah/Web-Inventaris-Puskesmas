@@ -25,6 +25,9 @@ use App\Http\Controllers\Auth\AuthenticationController;
     Route::get('/masukan', function () {
         return view('masukan');
     })->name('masukan');
+
+
+    
     
     
     //  rute yang dilindungin oleh auth
