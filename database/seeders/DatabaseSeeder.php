@@ -50,10 +50,10 @@ class DatabaseSeeder extends Seeder
                 Treasurers::create([
                     'nama_pegawai' => $faker->name(),
                     'id_pegawai' => $faker->numberBetween(100, 500),
-                    'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('Y-m-d'),
+                    'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('d-m-Y'),
                     'kegiatan' => $faker->name(),
                     'dana_yang_digunakan' => $faker->numberBetween(10000, 999999),
-                    'jumlah' => $faker->word(),
+                    // 'jumlah' => $faker->numberBetween(100, 500),
                 ]);
             }
         }
