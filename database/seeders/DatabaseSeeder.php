@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
                     'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('Y-m-d'),
                     'kegiatan' => $faker->name(),
                     'dana_yang_digunakan' => $faker->numberBetween(10000, 999999),
-                    'jumlah' => $faker->word(),
+                    'jumlah' => $faker->numberBetween(1, 100),
                 ]);
             }
         }

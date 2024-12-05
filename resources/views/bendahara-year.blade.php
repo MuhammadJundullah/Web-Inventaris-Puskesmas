@@ -106,12 +106,12 @@
         }
 
         /* Ubah warna teks input pencarian menjadi hitam */
-        #searchInput {
+        /* #searchInput {
             color: black;
             border: 1px solid #ccc;
             padding: 5px;
             border-radius: 5px;
-        }
+        } */
     </style>
     {{-- custom css --}}
 
@@ -279,6 +279,7 @@
                                         <th class="border-b text-center py-2">Kegiatan</th>
                                         <th class="border-b text-center py-2">Dana</th>
                                         <th class="border-b text-center py-2">Jumlah</th>
+                                        <th class="border-b text-center py-2"></th>
                                         <th class="border-b text-center py-2">
                                             <div class="relative inline-flex items-center justify-center">
                                                 <span class="ml-2">Menu</span>
@@ -303,7 +304,7 @@
                                     <td class="py-2 text-center">{{ $post['jumlah'] }}</td>
                                     <td class="py-2 text-center">{{ $post['uploated_at'] }}</td>
                                     <td class="py-2">
-                                      np  <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
+                                      <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
                                             <a href="/audit/edit/{{ $year }}/{{ $post['id'] }}">
                                                 <button
                                                     class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
