@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -71,5 +72,16 @@ class PostsController extends Controller
         $postById = Inventory::find($id);
 
         return view('inventaris-scanPage', compact('postById', 'tahun'));
+    }
+
+    public function generateQrCodePdf($tahun, $id)
+    {
+        $url = url("/scan/inventaris/barang/$tahun/$id");
+
+        $qrCode = QrCode::size(500)->generate($url);
+        
+        $pdf = Pdf::loadView('inventaris-cetakQr', compact('qrCode'));
+
+        return view('inventaris-cetakQr', compact('qrCode'));
     }
 }

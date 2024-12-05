@@ -10,7 +10,6 @@ use App\Http\Controllers\BendaharaController;
 use App\Http\Controllers\Auth\AuthenticationController;
 
 
-
     Route::get('/scan/inventaris/barang/{tahun?}/{id?}', [PostsController::class, 'showScanPage']);
     
     // route untuk menampilkan halaman /login
@@ -26,20 +25,12 @@ use App\Http\Controllers\Auth\AuthenticationController;
     Route::get('/masukan', function () {
         return view('masukan');
     })->name('masukan');
-
-    //bendahara login
-Route::get('/bendahara/login', [BendaharaController::class, 'login']);
-
-Route::get('/bendahara/dashboard', [BendaharaController::class, 'dashboard']);
-
-Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
-
-Route::post('bendahara/loginbendahara', [BendaharaController::class, 'loginbendahara']);
-
-
-//  rute yang dilindungin oleh auth
-Route::middleware([inventaris::class])->group(function () {
-
+    
+    
+    //  rute yang dilindungin oleh auth
+    Route::middleware([inventaris::class])->group(function () {
+    
+        
     // method get
     Route::get('/inventaris', [PostsController::class, 'posts']);
 
@@ -87,4 +78,9 @@ Route::middleware([inventaris::class])->group(function () {
 
     // route logout
     Route::post('/inventaris/logout', [AuthenticationController::class, 'logout'])->name('inventaris.logout');
+
+    // route cekta kode qr
+    Route::get('/scan/cetak/{tahun?}/{id?}', [PostsController::class, 'generateQrCodePdf']);
+
 });
+
