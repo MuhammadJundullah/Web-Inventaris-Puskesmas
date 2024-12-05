@@ -23,8 +23,8 @@ class BendaharaController extends Controller
     public function postbyyear($year)
     {
         $postByYear = Treasurers::whereYear('tanggal', $year)->get();
-        $title = 'bendahara' . $year;
-
+        
+        $title = 'Bendahara ' . $year;
 
         return view('bendahara-year', compact('postByYear', 'title', 'year'));
     }
