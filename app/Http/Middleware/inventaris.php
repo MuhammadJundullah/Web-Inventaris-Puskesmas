@@ -16,12 +16,11 @@ class inventaris
      */
     public function handle(Request $request, Closure $next): Response
     {
-            if (Auth::Check()) {
-                if (Auth::user()->role == 'inventaris') {
-                    return $next($request);
-                }
-                
+        if (Auth::Check()) {
+            if (Auth::user()->role == 'inventaris') {
+                return $next($request);
             }
-            return redirect()->route('login');
+        }
+        return redirect()->route('login');
     }
 }

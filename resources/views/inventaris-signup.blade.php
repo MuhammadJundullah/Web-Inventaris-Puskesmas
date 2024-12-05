@@ -27,7 +27,7 @@
 
 {{-- form --}}
     {{-- input username --}}
-    <form class="space-y-6" action='/signup' method="POST">
+    <form class="space-y-6" action='/inventaris/signup' method="POST">
       @csrf
       <div>
         <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username :</label>

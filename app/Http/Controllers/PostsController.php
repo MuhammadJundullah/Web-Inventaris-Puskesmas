@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use Illuminate\Http\Request;
-use App\Http\Resources\PostResource;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PostsController extends Controller
 {
@@ -38,11 +39,15 @@ class PostsController extends Controller
     {
         $postById = Inventory::find($id);
 
+        $url = url("/scan/inventaris/barang/$tahun/$id");
+
+        $qrCode = QrCode::size(200)->generate($url);
+
         $title = 'Details';
 
         $username = session("username");
 
-        return view('inventaris-details', compact('postById', 'title', 'username', 'tahun'));
+        return view('inventaris-details', compact('postById', 'title', 'username', 'tahun', 'qrCode'));
     }
 
     public function destroy($tahun = null, $id = null)
@@ -50,6 +55,8 @@ class PostsController extends Controller
         $inventory = Inventory::find($id);
 
         $inventory->delete();
+        
+        Storage::disk('public')->delete($inventory->gambar);
 
         session()->flash('success','Berhasil menghapus data.');
 
@@ -57,5 +64,12 @@ class PostsController extends Controller
                     window.location.href = '/inventaris/inventory/$tahun';
                 </script>")
                 ->header('Content-Type', 'text/html');
+    }
+
+    public function showScanPage($tahun = null, $id = null)
+    {
+        $postById = Inventory::find($id);
+
+        return view('inventaris-scanPage', compact('postById', 'tahun'));
     }
 }

@@ -40,7 +40,7 @@
                 <div>
                     <label for="username"
                         class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-blue-600">
-                        <input type="text" name='username' id="username" placeholder="Username"
+                        <input type="text" name='username' id="username" placeholder="Username" autocomplete="off"
                             class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                             required />
                         <span

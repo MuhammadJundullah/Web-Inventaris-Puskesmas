@@ -12,7 +12,10 @@ class Inventory extends Model
 protected $fillable = [
         'nama_barang',
         'sumber_dana',
+        'merek',
         'jumlah',
+        'kondisi',
+        'tempat_barang',
         'editor',
         'tanggal',
         'gambar',

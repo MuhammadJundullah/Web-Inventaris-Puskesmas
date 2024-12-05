@@ -33,12 +33,15 @@ class DatabaseSeeder extends Seeder
 
         foreach (range(1, 100) as $index) {
             Inventory::create([
-                'nama_barang' => $faker->word(),
-                'sumber_dana' => $faker->word(),
+                'nama_barang' => 'nama barang',
+                'sumber_dana' => 'APBN',
+                'merek' => 'Merk barang',
                 'jumlah' => $faker->numberBetween(1, 100),
+                'kondisi' => 'kondisi barang',
+                'tempat_barang' => 'TU',
                 'editor' => 'admin',
                 'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('Y-m-d'),
-                'gambar' => $faker->word(),
+                'gambar' => 'gambar.jpg',
             ]);
 
             $faker = Faker::create();

@@ -12,7 +12,7 @@
     {{-- parse tanggal untuk mengambil tahun --}}
         
     {{-- form --}}
-        <form class="mb-10" action="/audit/edit/{{$tahun}}/{{$inventory->id}}" method="POST" enctype="multipart/form-data">
+        <form class="mb-10" action="/inventaris/audit/edit/{{$tahun}}/{{$inventory->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="space-y-5">
 
@@ -64,6 +64,36 @@
                             </div>
                         </div>
 
+                        {{-- input merek barang --}}
+                        <div class="sm:col-span-4">
+                            <label for="merek" class="block text-sm font-medium leading-6 text-gray-900">Merek :</label>
+                            <div class="mt-2">
+                                <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
+                                    <input type="text" name="merek" id="merek" autocomplete="merek" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan merek barang", value="{{$inventory->merek}}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- input kondisi barang --}}
+                        <div class="sm:col-span-4">
+                            <label for="kondisi" class="block text-sm font-medium leading-6 text-gray-900">Kondisi barang :</label>
+                            <div class="mt-2">
+                                <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
+                                    <input type="text" name="kondisi" id="kondisi" autocomplete="kondisi" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan kondisi barang", value="{{$inventory->kondisi}}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- input tempat barang --}}
+                        <div class="sm:col-span-4">
+                            <label for="tempat_barang" class="block text-sm font-medium leading-6 text-gray-900">Tempat barang :</label>
+                            <div class="mt-2">
+                                <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
+                                    <input type="text" name="tempat_barang" id="tempat_barang" autocomplete="tempat_barang" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan tempat barang", value="{{$inventory->tempat_barang}}" required>
+                                </div>
+                            </div>
+                        </div>
+
                         {{-- input jumlah barang --}}
                         <div class="sm:col-span-4">
                             <label for="jumlah" class="block text-sm font-medium leading-6 text-gray-900">Jumlah :</label>
@@ -111,7 +141,7 @@
                 </div>
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
-                <a href="/dashboard"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
+                <a href="/inventaris/dashboard"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
                 <button type="submit" class="group inline-flex items-center gap-1 text-sm font-medium text-blue-600">
                     Simpan
                     <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">

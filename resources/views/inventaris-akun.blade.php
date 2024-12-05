@@ -103,7 +103,7 @@
         function openDeleteModal(accountId) {
             accountIdToDelete = accountId;
             document.getElementById('deleteModal').classList.remove('hidden');
-            document.getElementById('confirmDeleteButton').setAttribute('href', '/hapus/' + accountId);
+            document.getElementById('confirmDeleteButton').setAttribute('href', '/inventaris/hapus/' + accountId);
         }
 
         function closeDeleteModal() {

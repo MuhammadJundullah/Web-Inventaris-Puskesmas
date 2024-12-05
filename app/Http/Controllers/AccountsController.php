@@ -27,7 +27,7 @@ class AccountsController extends Controller
             session()->flash('failed', 'Tidak bisa menghapus akun satu satunya !');
 
             return response("<script>
-                    window.location.href = '/registered-account';
+                    window.location.href = '/inventaris/registered-account';
                 </script>")->header('Contaent-Type', 'text/html');
         }
 
@@ -79,7 +79,7 @@ class AccountsController extends Controller
         ]);
             
         return response("<script>
-                    window.location.href = '/signup';
+                    window.location.href = '/inventaris/signup';
                 </script>")->header('Contaent-Type', 'text/html');
         }
 
@@ -91,7 +91,7 @@ class AccountsController extends Controller
         ]);
             
         return response("<script>
-            window.location.href = '/signup';
+            window.location.href = '/inventaris/signup';
         </script>");
         
     }
@@ -99,6 +99,7 @@ class AccountsController extends Controller
         $user = User::create([
             'username' => $request->username,
             'password' => bcrypt($request->password), 
+            'role' => "inventaris",
         ]);
 
         session()->flash('info', [
@@ -107,7 +108,7 @@ class AccountsController extends Controller
         ]);
         
         return response("<script>
-                    window.location.href = '/signup';
+                    window.location.href = '/inventaris/signup';
                 </script>")->header('Contaent-Type', 'text/html');
 
     }
