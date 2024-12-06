@@ -42,7 +42,7 @@
                             class="absolute start-0 top-2 -translate-y-1/2 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Username</span>
                     </label>
                 </div>
-
+                
                 <div>
                     <label for="password"
                         class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-white">
