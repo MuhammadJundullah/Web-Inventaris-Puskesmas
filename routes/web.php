@@ -9,36 +9,38 @@ use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\BendaharaController;
 use App\Http\Controllers\Auth\AuthenticationController;
 
-    Route::get('/scan/inventaris/barang/{tahun?}/{id?}', [PostsController::class, 'showScanPage']);
-    
-    // route untuk menampilkan halaman /login
-    Route::get('/inventaris/login', [AuthenticationController::class, 'showLoginForm'])->name('login');
-    
-    // rute untuk autentikasi
-    Route::post('/inventaris/login', [AuthenticationController::class, 'login']);
-    
-    Route::get('/', function () {
-        return view('home');
-    })->name('home');
-    
-    Route::get('/masukan', function () {
-        return view('masukan');
-    })->name('masukan');
+Route::get('/scan/inventaris/barang/{tahun?}/{id?}', [PostsController::class, 'showScanPage']);
 
-    //bendahara login
-    Route::get('/bendahara/login', [BendaharaController::class, 'login']);
+// route untuk menampilkan halaman /login
+Route::get('/inventaris/login', [AuthenticationController::class, 'showLoginForm'])->name('login');
 
-    Route::get('/bendahara/dashboard', [BendaharaController::class, 'dashboard']);
+// rute untuk autentikasi
+Route::post('/inventaris/login', [AuthenticationController::class, 'login']);
 
-    Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
-    Route::post('bendahara/loginbendahara', [BendaharaController::class, 'loginbendahara']);
-    
-    
-    //  rute yang dilindungin oleh auth
-    Route::middleware([inventaris::class])->group(function () {
-    
-        
+Route::get('/masukan', function () {
+    return view('masukan');
+})->name('masukan');
+
+//bendahara login
+Route::get('/bendahara/login', [BendaharaController::class, 'login']);
+
+Route::get('/bendahara/dashboard', [BendaharaController::class, 'dashboard']);
+
+Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
+
+Route::post('/bendahara/loginbendahara', [BendaharaController::class, 'loginbendahara']);
+
+Route::get('/bendahara/username/{year?}/{username?}', [BendaharaController::class, 'postbyusername']);
+
+
+//  rute yang dilindungin oleh auth
+Route::middleware([inventaris::class])->group(function () {
+
+
     // method get
     Route::get('/inventaris', [PostsController::class, 'posts']);
 
@@ -56,7 +58,7 @@ use App\Http\Controllers\Auth\AuthenticationController;
 
     // route halaman detail Posts
     Route::get('/inventaris/barang/{tahun?}/{id?}', [PostsController::class, 'show']);
-    
+
     // route halaman tambah data 
     Route::get('/inventaris/audit/edit/{tahun?}/{id?}', [CRUDController::class, 'showUpdatePage']);
 
@@ -89,6 +91,4 @@ use App\Http\Controllers\Auth\AuthenticationController;
 
     // route cekta kode qr
     Route::get('/scan/cetak/{tahun?}/{id?}', [PostsController::class, 'generateQrCodePdf']);
-
 });
-

@@ -15,7 +15,9 @@ class BendaharaController extends Controller
 
     public function dashboard()
     {
-        $post = Treasurers::selectRaw('YEAR(tanggal) as year')->distinct()->orderBy('year', 'desc')->pluck('year');
+        $post = Treasurers::selectRaw('Year(tanggal) as year')->distinct()->orderBy('year', 'desc')->pluck('year');
+        // $post = Treasurers::all();
+        // dd($post);
         $title = 'bendahara dashboard';
         return view('bendahara-dashboard', compact('title', 'post'));
     }
@@ -23,7 +25,7 @@ class BendaharaController extends Controller
     public function postbyyear($year)
     {
         $postByYear = Treasurers::whereYear('tanggal', $year)->get();
-        
+
         $title = 'Bendahara ' . $year;
 
         return view('bendahara-year', compact('postByYear', 'title', 'year'));
@@ -48,5 +50,16 @@ class BendaharaController extends Controller
 
             return back()->withInput()->with('failed', 'Username atau password tidak valid!');
         }
+    }
+
+    public function postbyusername($year, $username)
+    {
+        $postByYear = Treasurers::where('nama_pegawai', $username)->whereYear('tanggal', $year)->get();
+
+        $title = "Arsip kegiatan " . $username;
+
+        $year = "2024";
+        
+        return view('bendahara-year', compact('postByYear', 'title', 'year'));
     }
 }
