@@ -18,7 +18,7 @@ class BendaharaController extends Controller
     {
         $post = Treasurers::selectRaw('Year(tanggal) as year')->distinct()->orderBy('year', 'desc')->pluck('year');
 
-        $title = 'bendahara dashboard';
+        $title = 'Bendahara dashboard';
 
         return view('bendahara-dashboard', compact('title', 'post'));
     }
@@ -99,5 +99,15 @@ class BendaharaController extends Controller
         $title = 'Akun yang terdaftar';
         
         return view('inventaris-akun', compact('accounts', 'title', 'username'));
+    }
+
+    public function tambah() 
+    {
+        $title = "Tambah Data Arsip Bendahara";
+
+        $username = session('username');
+
+        return view('bendahara-create', compact("title", "username"));
+    
     }
 }

@@ -24,7 +24,7 @@ class AccountsController extends Controller
     {
         $user = User::find($id);
 
-        $userCount = User::count();
+        $userCount = User::where('role', 'inventaris')->count();
 
         if ($userCount == 1) {
             session()->flash('failed', 'Tidak bisa menghapus akun satu satunya !');

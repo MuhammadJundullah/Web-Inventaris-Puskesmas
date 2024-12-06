@@ -33,14 +33,14 @@
           @csrf
           <div>
             <label for="username" class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-gray-100">
-              <input type="text" name='username' id="username" placeholder="Username" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm text-white" required/>
+              <input type="text" name='username' id="username" placeholder="Username" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm text-white" required autocomplete="off"/>
               <span class="absolute start-0 top-2 -translate-y-1/2 text-xs text-gray-100 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Username</span>
             </label>
           </div>
 
           <div>
             <label for="password" class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-gray-100">
-              <input type="password" name='password' id="password" placeholder="password" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm text-white" required/>
+              <input type="password" name='password' id="password" placeholder="password" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm text-white" required autocomplete="off"/>
               <span class="absolute start-0 top-2 -translate-y-1/2 text-xs text-gray-100 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">Password</span>
             </label>
           </div>
