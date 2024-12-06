@@ -32,8 +32,9 @@ Route::get('/bendahara/dashboard', [BendaharaController::class, 'dashboard']);
 
 Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
 
-Route::post('bendahara/loginbendahara', [BendaharaController::class, 'loginbendahara']);
+Route::post('/bendahara/loginbendahara', [BendaharaController::class, 'loginbendahara']);
 
+Route::get('/bendahara/username/{username?}', [BendaharaController::class, 'postbyusername']);
 
 
 //  rute yang dilindungin oleh auth

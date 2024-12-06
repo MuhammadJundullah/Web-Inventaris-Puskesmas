@@ -46,12 +46,35 @@ class DatabaseSeeder extends Seeder
 
             $faker = Faker::create();
 
+            $fixedNames = [
+                'John Doe',
+                'Jane Smith',
+                'Alice Johnson',
+                'Robert Brown',
+                'Emily Davis',
+                'Michael Wilson',
+                'Sarah Miller',
+                'David Taylor',
+                'Laura Martinez',
+                'James Anderson',
+                'Linda Thomas',
+                'Charles Lee',
+                'Emma White',
+                'Daniel Harris',
+                'Sophia Clark',
+                'Matthew Lewis',
+                'Olivia Hall',
+                'Christopher Walker',
+                'Isabella Young',
+                'Joshua Allen'
+            ];
+
             foreach (range(1, 100) as $index) {
                 Treasurers::create([
-                    'nama_pegawai' => $faker->name(),
+                    'nama_pegawai' => $faker->randomElement($fixedNames), // Pilih dari daftar nama tetap
                     'id_pegawai' => $faker->numberBetween(100, 500),
-                    'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('d-m-Y'),
-                    'kegiatan' => $faker->name(),
+                    'tanggal' => $faker->dateTimeBetween('2000-01-01', '2025-12-31')->format('Y-m-d'),
+                    'kegiatan' => $faker->word(), // Ubah menjadi kata acak untuk kegiatan
                     'dana_yang_digunakan' => $faker->numberBetween(10000, 999999),
                     'jumlah' => $faker->numberBetween(1, 100),
                 ]);
