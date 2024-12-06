@@ -54,6 +54,7 @@ class BendaharaController extends Controller
 
     public function postbyusername($username, $year)
     {
+    
         $postByYear = Treasurers::where('nama_pegawai', $username)->whereYear('tanggal', $year)->get();
         
         $title = "Arsip kegiatan " . $username;
