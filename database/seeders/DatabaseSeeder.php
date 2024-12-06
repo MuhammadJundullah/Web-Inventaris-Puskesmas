@@ -55,18 +55,7 @@ class DatabaseSeeder extends Seeder
                 'Michael Wilson',
                 'Sarah Miller',
                 'David Taylor',
-                'Laura Martinez',
-                'James Anderson',
-                'Linda Thomas',
-                'Charles Lee',
-                'Emma White',
-                'Daniel Harris',
-                'Sophia Clark',
-                'Matthew Lewis',
-                'Olivia Hall',
-                'Christopher Walker',
-                'Isabella Young',
-                'Joshua Allen'
+              
             ];
 
             foreach (range(1, 100) as $index) {
