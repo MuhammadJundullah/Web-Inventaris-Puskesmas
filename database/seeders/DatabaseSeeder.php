@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
                 'Joshua Allen'
             ];
 
-            foreach (range(1, 100) as $index) {
+            foreach (range(1, 20) as $index) {
                 Treasurers::create([
                     'nama_pegawai' => $faker->randomElement($fixedNames), // Pilih dari daftar nama tetap
                     'id_pegawai' => $faker->numberBetween(100, 500),

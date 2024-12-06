@@ -297,7 +297,7 @@
                                     {{-- {{ dd($post) }} --}}
                                     <td class="py-2 text-center">{{ $i }}</td>
                                     <td class="py-2 text-center"><a
-                                            href="/bendahara/username/{{ $post['nama_pegawai'] }}">{{ $post['nama_pegawai'] }}</a>
+                                            href="/bendahara/username/{{$year}}/{{ $post['nama_pegawai'] }}">{{ $post['nama_pegawai'] }}</a>
                                     </td>
                                     <td class="py-2 text-center">{{ $post['id_pegawai'] }}</td>
                                     <td class="py-2 text-center">{{ $post['tanggal'] }}</td>

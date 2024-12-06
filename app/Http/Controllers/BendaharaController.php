@@ -52,12 +52,14 @@ class BendaharaController extends Controller
         }
     }
 
-    public function postbyusername($username)
+    public function postbyusername($year, $username)
     {
+        $postByYear = Treasurers::where('nama_pegawai', $username)->whereYear('tanggal', $year)->get();
 
-        $postByYear = Treasurers::where('nama_pegawai', $username)->get();
         $title = "Arsip kegiatan " . $username;
+
         $year = "2024";
+        
         return view('bendahara-year', compact('postByYear', 'title', 'year'));
     }
 }
