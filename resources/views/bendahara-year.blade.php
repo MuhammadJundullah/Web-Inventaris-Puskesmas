@@ -283,17 +283,17 @@
                                         <th class="border-b text-center py-2">
                                             <div class="relative inline-flex items-center justify-center">
                                                 <span class="ml-2">Menu</span>
-                                        <th class="border-b text-center py-2"></th>
-
-                        </div>
-                        </th>
-                        <th></th>
-                        </tr>
-                        </thead>
+                                                <th class="border-b text-center py-2"></th>
+                                            </div>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
                         <tbody id="tableBody">
                             @php $i = 1; @endphp
                             @foreach ($postByYear as $post)
                                 <tr class="border-b hover:bg-gray-100">
+
                                     {{-- {{ dd($post) }} --}}
                                     <td class="py-2 text-center">{{ $i }}</td>
                                     <td class="py-2 text-center"><a

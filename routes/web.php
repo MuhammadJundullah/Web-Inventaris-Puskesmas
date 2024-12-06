@@ -34,8 +34,7 @@ Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
 
 Route::post('/bendahara/loginbendahara', [BendaharaController::class, 'loginbendahara']);
 
-Route::get('/bendahara/arsip-by/{year?}/{username?}', [BendaharaController::class, 'postbyusername']);
-
+Route::get('/bendahara/arsip-by/{username?}/{year?}', [BendaharaController::class, 'postbyusername']);
 
 //  rute yang dilindungin oleh auth
 Route::middleware([inventaris::class])->group(function () {
