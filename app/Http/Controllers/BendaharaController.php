@@ -57,8 +57,6 @@ class BendaharaController extends Controller
         $postByYear = Treasurers::where('nama_pegawai', $username)->whereYear('tanggal', $year)->get();
 
         $title = "Arsip kegiatan " . $username;
-
-        $year = "2024";
         
         return view('bendahara-year', compact('postByYear', 'title', 'year'));
     }
