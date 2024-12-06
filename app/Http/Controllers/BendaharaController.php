@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Treasurers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,9 @@ class BendaharaController extends Controller
     public function dashboard()
     {
         $post = Treasurers::selectRaw('Year(tanggal) as year')->distinct()->orderBy('year', 'desc')->pluck('year');
-        // $post = Treasurers::all();
-        // dd($post);
+
         $title = 'bendahara dashboard';
+
         return view('bendahara-dashboard', compact('title', 'post'));
     }
 
@@ -43,9 +44,18 @@ class BendaharaController extends Controller
 
         if (Auth::attempt($credentials)) {
 
+            if (Auth::user()->role != 'bendahara') {
+                
+                $request->session()->invalidate();
+
+                return back()->withInput()->with('failed', 'Username atau password tidak valid!');
+            
+            }
+
             session()->put("username", $request->username);
 
             return redirect('/bendahara/dashboard');
+
         } else {
 
             return back()->withInput()->with('failed', 'Username atau password tidak valid!');
@@ -60,5 +70,34 @@ class BendaharaController extends Controller
         $title = "Arsip kegiatan " . $username;
 
         return view('bendahara-year', compact('postByYear', 'title', 'year'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/bendahara/login');
+    }
+
+    public function about()
+    {
+        $title = "About this site";
+
+        $username = session("username");
+
+        return view('bendahara-about', compact('title', 'username'));
+    }
+
+    public function registered_accounts()
+    {
+        $accounts = User::where('role', 'bendahara')->get();
+
+        $username = session("username");
+
+        $title = 'Akun yang terdaftar';
+        
+        return view('inventaris-akun', compact('accounts', 'title', 'username'));
     }
 }

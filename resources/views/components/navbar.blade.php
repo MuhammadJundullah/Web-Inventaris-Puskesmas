@@ -9,10 +9,10 @@
             <div class="ml-10 flex items-baseline space-x-4">
               
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <x-nav-link href="/inventaris/dashboard" :active="request()->is('inventaris/dashboard') || request()->is('inventaris/inventory/*')">Data</x-nav-link>
-              <x-nav-link href="/inventaris/audit/tambah" :active="request()->is('inventaris/audit/tambah')">Tambah data</x-nav-link>              
+              <x-nav-link href="/{{Auth::User()->role}}/dashboard" :active="request()->is('{{Auth::User()->role}}/dashboard') || request()->is('inventaris/inventory/*')">Data</x-nav-link>
+              <x-nav-link href="/{{Auth::User()->role}}/audit/tambah" :active="request()->is('{{Auth::User()->role}}/audit/tambah')">Tambah data</x-nav-link>              
               {{-- <x-nav-link href="#" :active="request()->is('inventaris/audit/edit/*')">Ubah data</x-nav-link>               --}}
-              <x-nav-link href="/inventaris/about" :active="request()->is('inventaris/about')">About</x-nav-link>         
+              <x-nav-link href="/{{Auth::User()->role}}/about" :active="request()->is('{{Auth::User()->role}}/about')">About</x-nav-link>         
             </div>
           </div>
         </div>
@@ -44,13 +44,13 @@
                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 
                <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="/inventaris/registered-account" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-0">Akun yang terdaftar</a>
-                <a href="/inventaris/signup" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-1">Tambah akun</a>
+                <a href="/{{Auth::User()->role}}/registered-account" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-0">Akun yang terdaftar</a>
+                <a href="/{{Auth::User()->role}}/signup" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-1">Tambah akun</a>
                 
-                <form id="logout-form" action="/inventaris/logout" method="POST" style="display: none;">
+                <form id="logout-form" action="/{{Auth::User()->role}}/logout" method="POST" style="display: none;">
                     @csrf
                 </form>
-                <a href="inventaris.logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a> 
+                <a href="{{Auth::User()->role}}/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200" role="menuitem" tabindex="-1" id="user-menu-item-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a> 
               </div>
             </div>
             <!-- End Profile dropdown -->
@@ -83,15 +83,15 @@
       <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
 
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <x-nav-link href="/inventaris/dashboard" :active="request()->is('inventaris/dashboard') || request()->is('inventory/*')">Data</x-nav-link>
-        <x-nav-link href="/inventaris/audit/tambah" :active="request()->is('inventaris/audit/tambah')">Tambah data</x-nav-link>
+        <x-nav-link href="/{{Auth::User()->role}}/dashboard" :active="request()->is('{{Auth::User()->role}}/dashboard') || request()->is('inventory/*')">Data</x-nav-link>
+        <x-nav-link href="/{{Auth::User()->role}}/audit/tambah" :active="request()->is('{{Auth::User()->role}}/audit/tambah')">Tambah data</x-nav-link>
         {{-- <x-nav-link href="#" :active="request()->is('inventaris/audit/edit/*')">Ubah data</x-nav-link> --}}
-        <x-nav-link href="/inventaris/about" :active="request()->is('inventaris/about')">About</x-nav-link>
+        <x-nav-link href="/{{Auth::User()->role}}/about" :active="request()->is('{{Auth::User()->role}}/about')">About</x-nav-link>
      </div>
       <div class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">
           <div class="flex-shrink-0">
-            <a href="/inventaris/dashboard"><img class="h-10 w-10 rounded-full" src="{{ asset('img/akun.jpg') }}" alt="Logo Puskesmas"></a>
+            <a href="/{{Auth::User()->role}}/dashboard"><img class="h-10 w-10 rounded-full" src="{{ asset('img/akun.jpg') }}" alt="Logo Puskesmas"></a>
           </div>
           <div>
             <!-- Solid -->
@@ -102,14 +102,14 @@
           </div>
         </div>
         <div class="mt-3 space-y-1 px-2">
-          <a href="/inventaris/registered-account" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Lihat akun yang terdaftar</a>
-          <a href="/inventaris/signup" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Tambah akun</a>
+          <a href="/{{Auth::User()->role}}/registered-account" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Lihat akun yang terdaftar</a>
+          <a href="/{{Auth::User()->role}}/signup" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Tambah akun</a>
 
-          <form id="logout-form" action="/logout" method="POST" style="display: none;">
+          <form id="logout-form" action="{{Auth::User()->role}}/logout" method="POST" style="display: none;">
               @csrf
           </form>
 
-          <a href="/inventaris/logout" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
+          <a href="/{{Auth::User()->role}}/logout" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a>
         </div>
       </div>
     </div>

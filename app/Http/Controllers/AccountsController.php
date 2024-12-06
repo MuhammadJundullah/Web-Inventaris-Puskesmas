@@ -12,8 +12,11 @@ class AccountsController extends Controller
     public function index()
     {
         $accounts = User::where('role', 'inventaris')->get();
+
         $username = session("username");
+
         $title = 'Akun yang terdaftar';
+        
         return view('inventaris-akun', compact('accounts', 'title', 'username'));
     }
 

@@ -31,6 +31,14 @@ class AuthenticationController extends Controller
 
         if (Auth::attempt($credentials)) {
 
+            if (Auth::user()->role != 'inventaris') {
+
+                $request->session()->invalidate();
+            
+                return back()->withInput()->with('failed', 'Username atau password tidak valid!');
+            
+            }
+
             session()->put("username", $request->username);
 
             return redirect('/inventaris/dashboard');

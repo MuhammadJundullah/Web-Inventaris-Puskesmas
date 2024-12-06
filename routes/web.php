@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\bendahara;
 use App\Http\Middleware\inventaris;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CRUDController;
@@ -25,20 +26,29 @@ Route::get('/masukan', function () {
     return view('masukan');
 })->name('masukan');
 
-//bendahara login
-Route::get('/bendahara/login', [BendaharaController::class, 'login']);
-
-Route::get('/bendahara/dashboard', [BendaharaController::class, 'dashboard']);
-
-Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
+Route::get('/bendahara/login', [BendaharaController::class, 'login'])->name('bendahara.login');
 
 Route::post('/bendahara/loginbendahara', [BendaharaController::class, 'loginbendahara']);
 
-Route::get('/bendahara/arsip-by/{username?}/{year?}', [BendaharaController::class, 'postbyusername']);
+Route::middleware([bendahara::class])->group(function () {
+    
+    //bendahara login
+    Route::get('/bendahara/dashboard', [BendaharaController::class, 'dashboard']);
+
+    Route::get('/bendahara/registered-account', [BendaharaController::class, 'registered_accounts']);
+
+    Route::get('/bendahara/about', [BendaharaController::class, 'about']);
+
+    Route::post('/bendahara/logout', [BendaharaController::class, 'logout']);
+
+    Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
+
+    Route::get('/bendahara/arsip-by/{username?}/{year?}', [BendaharaController::class, 'postbyusername']);
+    
+});
 
 //  rute yang dilindungin oleh auth
 Route::middleware([inventaris::class])->group(function () {
-
 
     // method get
     Route::get('/inventaris', [PostsController::class, 'posts']);
