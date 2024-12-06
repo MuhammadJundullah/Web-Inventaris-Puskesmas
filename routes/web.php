@@ -41,6 +41,8 @@ Route::middleware([bendahara::class])->group(function () {
     
     Route::get('/bendahara/about', [BendaharaController::class, 'about']);
 
+    Route::post('/bendahara/audit/tambah', [BendaharaController::class, 'insert']);
+
     Route::post('/bendahara/logout', [BendaharaController::class, 'logout']);
 
     Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);

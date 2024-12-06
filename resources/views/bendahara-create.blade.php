@@ -6,7 +6,7 @@
     <div class="mt-10 mx-5 sm:mx-5 sm:px-20">
         
     {{-- form --}}
-        <form class="mb-10" action="/inventaris/audit/tambah" method="POST" enctype="multipart/form-data">
+        <form class="mb-10" action="/bendahara/audit/tambah" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="space-y-5">
 

@@ -110,4 +110,26 @@ class BendaharaController extends Controller
         return view('bendahara-create', compact("title", "username"));
     
     }
+
+
+    public function insert(Request $request)
+    {
+        $request->validate([
+            'nama_pegawai' => 'required',
+            'tanggal' => 'required|date',
+            'kegiatan' => 'required',
+            'dana_yang_digunakan' => 'required|numeric',
+        ]);
+
+        $data = $request->only('nama_pegawai', 'tanggal', 'kegiatan', 'dana_yang_digunakan');
+
+        Treasurers::create($data);
+
+        session()->flash('info', [
+            'pesan' => 'Data berhasil ditambahkan.',
+            'warna' => 'green',
+        ]);
+
+        return redirect('/bendahara/audit/tambah');
+    }
 }

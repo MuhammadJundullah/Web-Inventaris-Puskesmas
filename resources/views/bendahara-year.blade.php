@@ -278,7 +278,7 @@
                                         <th class="border-b text-center py-2">Tanggal</th>
                                         <th class="border-b text-center py-2">Kegiatan</th>
                                         <th class="border-b text-center py-2">Dana</th>
-                                        <th class="border-b text-center py-2">Jumlah</th>
+                                        {{-- <th class="border-b text-center py-2">Jumlah</th> --}}
                                         <th class="border-b text-center py-2"></th>
                                         <th class="border-b text-center py-2">
                                             <div class="relative inline-flex items-center justify-center">
@@ -303,7 +303,7 @@
                                     <td class="py-2 text-center">{{ $post['tanggal'] }}</td>
                                     <td class="py-2 text-center">{{ $post['kegiatan'] }}</td>
                                     <td class="py-2 text-center">{{ $post['dana_yang_digunakan'] }}</td>
-                                    <td class="py-2 text-center">{{ $post['jumlah'] }}</td>
+                                    {{-- <td class="py-2 text-center">{{ $post['jumlah'] }}</td> --}}
                                     <td class="py-2 text-center">{{ $post['uploated_at'] }}</td>
                                     <td class="py-2">
                                         <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
