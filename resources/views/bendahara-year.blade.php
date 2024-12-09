@@ -264,6 +264,16 @@
                     </div>
                     {{-- data filter --}}
                 </div>
+
+                {{-- untuk jumlah --}}
+                <div id="totalAmountContainer" class="max-w-xs ml-20 pt-3">
+                    <label for="totalAmount" class="font-semibold">Total Dana:</label>
+                    <input type="text" id="totalAmount"
+                        class="w-full rounded-md border-gray-200 py-2.5 shadow-sm sm:text-sm" readonly
+                        value="0" />
+                </div>
+                {{-- untuk jumlah --}}
+
                 {{-- data filter dan cari --}}
 
                 <div class="my-5 sm:mx-auto sm:w-full">
@@ -283,12 +293,12 @@
                                         <th class="border-b text-center py-2">
                                             <div class="relative inline-flex items-center justify-center">
                                                 <span class="ml-2">Menu</span>
-                                                <th class="border-b text-center py-2"></th>
-                                            </div>
-                                        </th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
+                                        <th class="border-b text-center py-2"></th>
+                        </div>
+                        </th>
+                        <th></th>
+                        </tr>
+                        </thead>
                         <tbody id="tableBody">
                             @php $i = 1; @endphp
                             @foreach ($postByYear as $post)
@@ -297,7 +307,7 @@
                                     {{-- {{ dd($post) }} --}}
                                     <td class="py-2 text-center">{{ $i }}</td>
                                     <td class="py-2 text-center"><a
-                                            href="/bendahara/arsip-by/{{ $post['nama_pegawai'] }}/{{$year}}">{{ $post['nama_pegawai'] }}</a>
+                                            href="/bendahara/arsip-by/{{ $post['nama_pegawai'] }}/{{ $year }}">{{ $post['nama_pegawai'] }}</a>
                                     </td>
                                     <td class="py-2 text-center">{{ $post['id_pegawai'] }}</td>
                                     <td class="py-2 text-center">{{ $post['tanggal'] }}</td>
@@ -375,26 +385,22 @@
             let visibleCount = 0;
 
             for (let i = 0; i < tr.length; i++) {
-                const tdName = tr[i].getElementsByTagName("td")[1]; // Column for nama pegawai
-                // const tdId = tr[i].getElementsByTagName("td")[2]; // Column for id pegawai
-                const dateCell = tr[i].getElementsByTagName("td")[4]; // Column for Tanggal
+                const tdSource = tr[i].getElementsByTagName("td")[5]; // Kolom Sumber Dana
+                const tdSource1 = tr[i].getElementsByTagName("td")[1]; // Kolom Nama Barang
+                const dateCell = tr[i].getElementsByTagName("td")[3]; // Kolom Tanggal
                 let displayRow = true;
 
-                // Filter based on Sumber Dana
-                if (tdName) {
-                    const txtValue = tdName.textContent || tdName.innerText;
+                // Filter berdasarkan Sumber Dana atau Nama Barang
+                if (tdSource || tdSource1) {
+                    const txtValueSource = tdSource ? (tdSource.textContent || tdSource.innerText) : "";
+                    const txtValueSource1 = tdSource1 ? (tdSource1.textContent || tdSource1.innerText) : "";
+                    const txtValue = txtValueSource + " " + txtValueSource1;
                     if (filter && !txtValue.toUpperCase().includes(filter)) {
                         displayRow = false;
                     }
                 }
-                // if (tdId) {
-                //     const idValue = tdId.textContent || tdId.innerText;
-                //     if (filter && !idValue.toUpperCase().includes(filter)) {
-                //         displayRow = false;
-                //     }
-                // }
 
-                // Filter based on month selection
+                // Filter berdasarkan bulan
                 if (dateCell) {
                     const dateValue = dateCell.textContent || dateCell.innerText;
                     if (monthValue !== "") {
@@ -405,45 +411,38 @@
                     }
                 }
 
-                // Display or hide the row
+                // Tampilkan atau sembunyikan baris
                 if (displayRow) {
                     tr[i].style.display = "";
                     visibleCount++;
-                    tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Update row number
+                    tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Perbarui nomor baris
                 } else {
                     tr[i].style.display = "none";
                 }
             }
         }
-        // reset filter data 
+
+        // Reset filter
         function resetFilters() {
-
             document.getElementById('monthDropdown').selectedIndex = 0;
-
             document.getElementById('searchInput').value = '';
-
             filterTable();
         }
 
-        // Event listeners for input and dropdown changes
+        // Event listener untuk input dan dropdown
         document.getElementById("searchInput").addEventListener("keyup", filterTable);
         document.getElementById("monthDropdown").addEventListener("change", filterTable);
 
-        // javascript untuk mengirimkan data id ke modal 
-        let id;
-        let tahun;
-
+        // Modal Delete
         function openDeleteModal(tahun, id) {
             document.getElementById('deleteModal').classList.remove('hidden');
-            document.getElementById('confirmDeleteButton').setAttribute('href', '/audit/hapus/' + tahun + '/' + id);
+            document.getElementById('confirmDeleteButton').setAttribute('href', '/inventaris/audit/hapus/' + tahun + '/' +
+                id);
         }
-
 
         function closeDeleteModal() {
             document.getElementById('deleteModal').classList.add('hidden');
         }
-
-        // javascript untuk mengirimkan data id ke modal 
     </script>
     {{-- custom js --}}
 </x-layout>
