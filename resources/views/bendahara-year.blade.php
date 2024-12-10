@@ -204,7 +204,7 @@
                         <div class="relative">
                             <details class="group [&_summary::-webkit-details-marker]:hidden">
                                 <summary
-                                    class="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+                                    class="hidden sm:block lg:block flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
                                     <span class="text-sm font-medium"> Filter </span>
                                     <span class="transition group-open:-rotate-180">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -266,12 +266,9 @@
                 </div>
 
                 {{-- untuk jumlah --}}
-                <div id="totalAmountContainer" class="max-w-lg ml-20 pt-10">
-                    <p class="text-xl font-light">Total dana yang digunakan : Rp 10.000.000</p>
-                    {{-- <label for="totalAmount" class="font-semibold">Total Dana:</label>
-                    <input type="text" id="totalAmount"
-                        class="w-full rounded-md border-gray-200 py-2.5 shadow-sm sm:text-sm" readonly
-                        value="0" /> --}}
+                <div id="totalAmountContainer" class="max-w-lg ml-20 sm:pt-10 text-2xl">
+                    <p class="text-start font-bold">Total dana digunakan :</p>
+                    <p id="totalAmount" class="text-start font-light">Rp 0</p>
                 </div>
                 {{-- untuk jumlah --}}
 
@@ -441,9 +438,10 @@
                 }
             }
 
-            // Format hasil total ke Rupiah dan tampilkan di input
-            const totalAmountInput = document.getElementById("totalAmount");
-            totalAmountInput.value = formatRupiah(total);
+// Format hasil total ke Rupiah dan tampilkan di elemen HTML
+const totalAmountElement = document.getElementById("totalAmount");
+totalAmountElement.innerText = formatRupiah(total);
+
         }
 
 

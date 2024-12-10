@@ -160,11 +160,52 @@ class BendaharaController extends Controller
         
         $data->delete();
 
-        return redirect("/bendahara/$tahun");
+        return redirect("/bendahara/$tahun")->with('success', 'Data berhasil dihapus.');;
         } else {
             return response()->json([
                 'message' => 'Data tidak ditemukan!',
             ], 404);
         }
+    }
+
+    public function viewEditData($tahun, $id)
+    {
+        $data = Treasurers::find($id);
+
+        $title = "Edit Data Arsip Bendahara";
+
+        if ($data) {
+
+            return view('bendahara-update', compact('data', 'title'));
+
+        } else {
+
+            return response()->json([
+                'message' => 'Data tidak ditemukan!',
+            ], 404);
+
+        }
+    }
+
+    public function EditData(Request $request) 
+    {
+        // Cari data berdasarkan ID
+        $data = Treasurers::findOrFail($request['id']);
+
+        // Update data
+        $data->nama_pegawai = $request['nama_pegawai'];
+        $data->id_pegawai = $request['id_pegawai'];
+        $data->kegiatan = $request['kegiatan'];
+        $data->dana_yang_digunakan = $request['dana_yang_digunakan'];
+        $data->tanggal = $request['tanggal'];
+
+        $data->save();
+
+        // Ambil tahun dari tanggal
+        $tahun = \Carbon\Carbon::parse($data->tanggal)->format('Y');
+
+        // Redirect ke halaman detail dengan pesan sukses
+        return redirect("/bendahara/{$tahun}")
+            ->with('success', 'Data berhasil diperbarui.');
     }
 }
