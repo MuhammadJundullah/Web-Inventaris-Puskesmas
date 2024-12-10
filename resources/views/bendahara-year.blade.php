@@ -383,6 +383,8 @@
             const tr = table.getElementsByTagName("tr");
 
             let visibleCount = 0;
+            let totalDana = 0; // Initialize total dana variable
+
 
             for (let i = 0; i < tr.length; i++) {
                 const tdSource = tr[i].getElementsByTagName("td")[5]; // Kolom Sumber Dana
@@ -416,11 +418,44 @@
                     tr[i].style.display = "";
                     visibleCount++;
                     tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Perbarui nomor baris
+
+                    // Ambil nilai dana dari kolom dan tambahkan ke total dana
+                    const danaValue = parseFloat(tdSource.textContent || tdSource.innerText) || 0;
+                    totalDana += danaValue;
                 } else {
                     tr[i].style.display = "none";
                 }
+                // Tampilkan total dana di input box
+                document.getElementById("totalAmount").value = totalDana.toFixed(2); // Format ke 2 decimal
             }
         }
+
+        function formatRupiah(angka) {
+            return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function calculateTotalDana() {
+            const table = document.querySelector("tbody");
+            const rows = table.getElementsByTagName("tr");
+            let total = 0;
+
+            for (let i = 0; i < rows.length; i++) {
+                const danaCell = rows[i].getElementsByTagName("td")[5]; // Kolom 'Dana'
+                if (danaCell) {
+                    const danaValue = danaCell.textContent || danaCell.innerText;
+                    const danaNumber = parseInt(danaValue.replace(/[^\d]/g, ""), 10); // Hapus simbol non-numerik
+                    if (!isNaN(danaNumber)) {
+                        total += danaNumber;
+                    }
+                }
+            }
+
+            // Format hasil total ke Rupiah dan tampilkan di input
+            const totalAmountInput = document.getElementById("totalAmount");
+            totalAmountInput.value = formatRupiah(total);
+        }
+
+
 
         // Reset filter
         function resetFilters() {
@@ -443,6 +478,12 @@
         function closeDeleteModal() {
             document.getElementById('deleteModal').classList.add('hidden');
         }
+
+        // Panggil fungsi ini setiap kali filter diubah
+        document.getElementById("searchInput").addEventListener("keyup", calculateTotalDana);
+        document.getElementById("monthDropdown").addEventListener("change", calculateTotalDana);
+
+        window.onload = calculateTotalDana;
     </script>
     {{-- custom js --}}
 </x-layout>
