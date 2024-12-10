@@ -66,6 +66,16 @@
                             </div>
                         </div>
 
+                        {{-- input Nama Pegawai --}}
+                        <div class="sm:col-span-4">
+                        <label for="id_pegawai" class="block text-sm font-medium leading-6 text-gray-900">NIP Pegawai :</label>
+                            <div class="mt-2">
+                                <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
+                                <input type="text" name="id_pegawai" id="nama_pegawai" autocomplete="nip_pegawai" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan NIP Pegawai" required>
+                                </div>
+                            </div>
+                        </div>
+
                         {{-- input Kegiatan --}}
                         <div class="sm:col-span-4">
                             <label for="kegiatan" class="block text-sm font-medium leading-6 text-gray-900">Kegiatan :</label>
@@ -100,7 +110,9 @@
                 </div>
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
-                <a href="/inventaris/dashboard"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
+                <a href="javascript:history.back()">
+                    <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+                </a>
                 <button type="submit" class="group inline-flex items-center gap-1 text-sm font-medium text-blue-600">
                     Tambah data
                     <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">

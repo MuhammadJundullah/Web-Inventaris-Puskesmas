@@ -116,12 +116,13 @@ class BendaharaController extends Controller
     {
         $request->validate([
             'nama_pegawai' => 'required',
+            'id_pegawai' => 'required',
             'tanggal' => 'required|date',
             'kegiatan' => 'required',
             'dana_yang_digunakan' => 'required|numeric',
         ]);
 
-        $data = $request->only('nama_pegawai', 'tanggal', 'kegiatan', 'dana_yang_digunakan');
+        $data = $request->only('nama_pegawai', 'id_pegawai', 'tanggal', 'kegiatan', 'dana_yang_digunakan');
 
         Treasurers::create($data);
 
@@ -131,5 +132,39 @@ class BendaharaController extends Controller
         ]);
 
         return redirect('/bendahara/audit/tambah');
+    }
+
+    public function duplikat($tahun, $id)
+    {
+        $data = Treasurers::find($id);
+
+        if ($data) {
+        
+        $duplicatedData = $data->replicate();
+        
+        $duplicatedData->save();
+
+        return redirect("/bendahara/$tahun");
+        } else {
+            return response()->json([
+                'message' => 'Data tidak ditemukan!',
+            ], 404);
+        }
+    }
+
+    public function hapus_data($tahun, $id)
+    {
+        $data = Treasurers::find($id);
+
+        if ($data) {
+        
+        $data->delete();
+
+        return redirect("/bendahara/$tahun");
+        } else {
+            return response()->json([
+                'message' => 'Data tidak ditemukan!',
+            ], 404);
+        }
     }
 }

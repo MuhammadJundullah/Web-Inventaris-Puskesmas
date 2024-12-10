@@ -266,11 +266,12 @@
                 </div>
 
                 {{-- untuk jumlah --}}
-                <div id="totalAmountContainer" class="max-w-xs ml-20 pt-3">
-                    <label for="totalAmount" class="font-semibold">Total Dana:</label>
+                <div id="totalAmountContainer" class="max-w-lg ml-20 pt-10">
+                    <p class="text-xl font-light">Total dana yang digunakan : Rp 10.000.000</p>
+                    {{-- <label for="totalAmount" class="font-semibold">Total Dana:</label>
                     <input type="text" id="totalAmount"
                         class="w-full rounded-md border-gray-200 py-2.5 shadow-sm sm:text-sm" readonly
-                        value="0" />
+                        value="0" /> --}}
                 </div>
                 {{-- untuk jumlah --}}
 
@@ -288,17 +289,11 @@
                                         <th class="border-b text-center py-2">Tanggal</th>
                                         <th class="border-b text-center py-2">Kegiatan</th>
                                         <th class="border-b text-center py-2">Dana</th>
-                                        {{-- <th class="border-b text-center py-2">Jumlah</th> --}}
                                         <th class="border-b text-center py-2"></th>
-                                        <th class="border-b text-center py-2">
-                                            <div class="relative inline-flex items-center justify-center">
-                                                <span class="ml-2">Menu</span>
-                                        <th class="border-b text-center py-2"></th>
-                        </div>
-                        </th>
-                        <th></th>
-                        </tr>
-                        </thead>
+                                        <th class="border-b text-center py-2">Menu</th>
+                                    </tr>
+                                </thead>
+                        
                         <tbody id="tableBody">
                             @php $i = 1; @endphp
                             @foreach ($postByYear as $post)
@@ -313,11 +308,10 @@
                                     <td class="py-2 text-center">{{ $post['tanggal'] }}</td>
                                     <td class="py-2 text-center">{{ $post['kegiatan'] }}</td>
                                     <td class="py-2 text-center">{{ $post['dana_yang_digunakan'] }}</td>
-                                    {{-- <td class="py-2 text-center">{{ $post['jumlah'] }}</td> --}}
                                     <td class="py-2 text-center">{{ $post['uploated_at'] }}</td>
                                     <td class="py-2">
                                         <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
-                                            <a href="/audit/edit/{{ $year }}/{{ $post['id'] }}">
+                                            <a href="/bendahara/audit/edit/{{ $year }}/{{ $post['id']}}">
                                                 <button
                                                     class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -329,22 +323,19 @@
                                                     Edit
                                                 </button>
                                             </a>
-
-                                            <a href="/inventory/{{ $year }}/{{ $post['id'] }}">
+             
+                                            <a href="/bendahara/audit/duplikat/{{$year}}/{{ $post['id'] }}">
                                                 <button
-                                                    class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
+                                                    class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                         class="size-4">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                     </svg>
-                                                    View
+                                                    Duplikat
                                                 </button>
                                             </a>
-
                                             <button
                                                 onclick="openDeleteModal('{{ $year }}', {{ $post['id'] }})"
                                                 class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-red-500 focus:relative">
@@ -436,8 +427,7 @@
         // Modal Delete
         function openDeleteModal(tahun, id) {
             document.getElementById('deleteModal').classList.remove('hidden');
-            document.getElementById('confirmDeleteButton').setAttribute('href', '/inventaris/audit/hapus/' + tahun + '/' +
-                id);
+            document.getElementById('confirmDeleteButton').setAttribute('href', '/bendahara/audit/hapus/' + tahun + '/' + id);
         }
 
         function closeDeleteModal() {
