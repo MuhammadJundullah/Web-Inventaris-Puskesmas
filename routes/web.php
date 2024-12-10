@@ -35,9 +35,13 @@ Route::middleware([bendahara::class])->group(function () {
     //bendahara login
     Route::get('/bendahara/dashboard', [BendaharaController::class, 'dashboard']);
     
+    Route::get('/bendahara/audit/hapus/{tahun?}/{id?}', [BendaharaController::class, 'hapus_data']);
+    
     Route::get('/bendahara/registered-account', [BendaharaController::class, 'registered_accounts']);
     
     Route::get('/bendahara/audit/tambah', [BendaharaController::class, 'tambah']);
+    
+    Route::get('/bendahara/audit/duplikat/{year?}/{id?}', [BendaharaController::class, 'duplikat']);
     
     Route::get('/bendahara/about', [BendaharaController::class, 'about']);
 
