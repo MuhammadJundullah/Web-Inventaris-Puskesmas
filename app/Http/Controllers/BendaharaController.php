@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Treasurers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class BendaharaController extends Controller
 {
@@ -98,7 +99,7 @@ class BendaharaController extends Controller
 
         $title = 'Akun yang terdaftar';
         
-        return view('inventaris-akun', compact('accounts', 'title', 'username'));
+        return view('bendahara-akun', compact('accounts', 'title', 'username'));
     }
 
     public function tambah() 
@@ -207,5 +208,100 @@ class BendaharaController extends Controller
         // Redirect ke halaman detail dengan pesan sukses
         return redirect("/bendahara/{$tahun}")
             ->with('success', 'Data berhasil diperbarui.');
+    }
+
+    public function viewSignup() {
+
+        $title = "Daftar Bendahara";
+
+        return view('bendahara-signup', compact('title'));
+    }
+
+    public function signup(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'username' => 'required',
+            'password' => 'required',
+            'konfirmasi' => 'required|same:password',
+        ]);
+
+        if ($validator->fails()) {
+            session()->flash('info', [
+            'pesan' => 'Konfirmasi Password tidak sesuai !',
+            'warna' => 'red',
+        ]);
+            
+        return response("<script>
+                    window.location.href = '/bendahara/signup';
+                </script>")->header('Contaent-Type', 'text/html');
+        }
+
+        $username = $request->username;
+        if (User::where('username', $username)->exists()) {
+        session()->flash('info', [
+            'pesan' => 'Username sudah terdaftar !',
+            'warna' => 'red',
+        ]);
+            
+        return response("<script>
+            window.location.href = '/bendahara/signup';
+        </script>");
+        
+        }
+
+        $user = User::create([
+            'username' => $request->username,
+            'password' => bcrypt($request->password), 
+            'role' => "bendahara",
+        ]);
+
+        session()->flash('info', [
+            'pesan' => 'Akun berhasil di daftarkan !',
+            'warna' => 'green',
+        ]);
+        
+        return response("<script>
+                    window.location.href = '/bendahara/signup';
+                </script>")->header('Contaent-Type', 'text/html');
+
+    }
+
+    public function destroy($id) 
+    {
+        
+       $user = User::find($id);
+
+        $userCount = User::where('role', 'bendahara')->count();
+
+        if ($userCount == 1) {
+            session()->flash('failed', 'Tidak bisa menghapus akun satu satunya !');
+
+            return response("<script>
+                    window.location.href = '/bendahara/registered-account';
+                </script>")->header('Contaent-Type', 'text/html');
+        }
+
+        $username = session('username');
+
+        if ($username === $user->username) {
+            session()->flash('failed', "Akun tidak bisa di hapus karena sedang digunakan !");
+
+            return response("<script>
+                    window.location.href = '/bendahara/registered-account';
+                </script>")->header('Contaent-Type', 'text/html');
+        }
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
+
+        $user->delete();
+
+        session()->flash('berhasil', "Berhasil menghapus akun !");
+
+        return "<script>
+                window.location.href = '/bendahara/registered-account';
+            </script>";
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
+use App\Exports\DataExport;
 use App\Http\Middleware\bendahara;
 use App\Http\Middleware\inventaris;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CRUDController;
 use App\Http\Controllers\AboutController;
@@ -32,16 +34,14 @@ Route::post('/bendahara/loginbendahara', [BendaharaController::class, 'loginbend
 
 Route::middleware([bendahara::class])->group(function () {
     
-    //bendahara login
+    // method get
     Route::get('/bendahara/dashboard', [BendaharaController::class, 'dashboard']);
     
-    Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
+    Route::get('/bendahara/signup', [BendaharaController::class, 'viewSignup']);
     
     Route::get('/bendahara/audit/hapus/{tahun?}/{id?}', [BendaharaController::class, 'hapus_data']);
     
     Route::get('/bendahara/audit/edit/{tahun?}/{id?}', [BendaharaController::class, 'viewEditData']);
-    
-    Route::post('/bendahara/audit/edit', [BendaharaController::class, 'EditData']);
     
     Route::get('/bendahara/registered-account', [BendaharaController::class, 'registered_accounts']);
     
@@ -50,13 +50,21 @@ Route::middleware([bendahara::class])->group(function () {
     Route::get('/bendahara/audit/duplikat/{year?}/{id?}', [BendaharaController::class, 'duplikat']);
     
     Route::get('/bendahara/about', [BendaharaController::class, 'about']);
-
-    Route::post('/bendahara/audit/tambah', [BendaharaController::class, 'insert']);
-
-    Route::post('/bendahara/logout', [BendaharaController::class, 'logout']);
-
+        
     Route::get('/bendahara/arsip-by/{username?}/{year?}', [BendaharaController::class, 'postbyusername']);
     
+    Route::get('/bendahara/{year?}', [BendaharaController::class, 'postbyyear']);
+
+    Route::get('/bendahara/hapus/{id?}', [BendaharaController::class, 'destroy']);
+    
+    // method post
+    Route::post('/bendahara/signup', [BendaharaController::class, 'signup']);
+    
+    Route::post('/bendahara/audit/edit', [BendaharaController::class, 'EditData']);
+
+    Route::post('/bendahara/audit/tambah', [BendaharaController::class, 'insert']);
+    
+    Route::post('/bendahara/logout', [BendaharaController::class, 'logout']);
 });
 
 //  rute yang dilindungin oleh auth
@@ -94,6 +102,8 @@ Route::middleware([inventaris::class])->group(function () {
 
     // route hapus Accounts yang terdaftar
     Route::get('/inventaris/hapus/{id?}', [AccountsController::class, 'destroy']);
+
+Route::get('/inventaris/export/{year}', [PostsController::class, 'export'])->name('inventaris.export');
 
 
     // POST

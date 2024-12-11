@@ -85,24 +85,6 @@
 
         .tombol {
             background-color: #16a085;
-
-        }
-
-        /* Dropdown Styling */
-        select#monthDropdown {
-            margin-left: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            min-width: 150px;
-            color: black;
-        }
-
-        @media only screen and (max-width: 768px) {
-            select#monthDropdown {
-                margin-left: 5px;
-                padding: 5px;
-            }
         }
     </style>
 {{-- custom css --}}
@@ -143,7 +125,7 @@
 
         {{-- table --}}
             <div class="sm:mx-auto sm:w-full">
-                    <div class="flex min-h-full flex-col justify-center py-12 lg:p">
+                <div class="flex min-h-full flex-col justify-center py-12 gap-y-2">
 
                 {{-- modal berhasil --}}
                     @if (session("success"))
@@ -160,7 +142,7 @@
 
                 {{-- data filter dan cari barang --}}
                      <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-                        <div class="relative ml-20">
+                        <div class="relative sm:ml-20">
                             <label for="Search" class="sr-only"> Search </label>
                             <input type="text" id="searchInput" placeholder="Cari barang" class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"/>
                             <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
@@ -175,9 +157,8 @@
                     </div>
 
                     <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-                        <div class="relative sm:ml-14">
-                            <div class="items-center justify-between p-4">
-                                <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
+                        <div class="relative sm:ml-20">
+                                <select id="monthDropdown" class=" border border-gray-300 rounded">
                                     <option value="">Filter Bulan</option>
                                     <option value="01">Januari</option>
                                     <option value="02">Februari</option>
@@ -192,20 +173,12 @@
                                     <option value="11">November</option>
                                     <option value="12">Desember</option>
                                 </select>
-                            </div>
                         </div>
                     </div>
 
                     <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
                         <div class="relative sm:ml-20">
-                            <div class="justify-start flex">
-                                <button id="resetButton" class="bg-gray-200 p-2 rounded hover:bg-gray-300" onclick="resetFilters()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
-                                    </svg>
-                                </button>
-                            </div>
+                            <a href="/inventaris/export/{{$year}}">Export data</a>
                         </div>
                     </div>
                 {{-- data filter dan cari --}}

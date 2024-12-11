@@ -47,7 +47,7 @@
                   @endif
                 {{-- modal success --}}
 
-                <div class="border-b border-gray-900/10 pb-12">
+                <div class="border-b border-gray-900/10 pb-12 lg:mx-36">
                     <h2 class="text-base font-semibold leading-7 text-gray-900">Tambah Data Inventaris</h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
 
@@ -88,11 +88,14 @@
 
                         {{-- input kondisi barang --}}
                         <div class="sm:col-span-4">
-                            <label for="kondisi" class="block text-sm font-medium leading-6 text-gray-900">Kondisi barang :</label>
-                            <div class="mt-2">
-                                <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-green-600 sm:max-w-md">
-                                    <input type="text" name="kondisi" id="kondisi" autocomplete="kondisi" class="block flex-1 border-0 bg-transparent py-1.5 pl-2 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder=" Masukkan sumber dana" required>
-                                </div>
+                            <div class="sm:max-w-md">
+                                <label for="kondisi" class="block text-sm font-medium leading-6 text-gray-900">Kondisi barang :</label>
+                                <select id="kondisi" name="kondisi" class="mt-2 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                    <option value="" disabled selected>Pilih Kondisi</option>
+                                    <option value="sangat baik">Sangat Baik</option>
+                                    <option value="baik">Baik</option>
+                                    <option value="buruk">Buruk</option>
+                                </select>
                             </div>
                         </div>
 
@@ -151,7 +154,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-6 flex items-center justify-end gap-x-6">
+            <div class="mt-6 flex items-center justify-end gap-x-6 mx-36">
                 <a href="/inventaris/dashboard"><button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button></a>
                 <button type="submit" class="group inline-flex items-center gap-1 text-sm font-medium text-blue-600">
                     Tambah data
