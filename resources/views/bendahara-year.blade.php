@@ -89,7 +89,7 @@
         }
 
         /* Dropdown Styling */
-        select#monthDropdown {
+        /* select#monthDropdown {
             margin-left: 10px;
             padding: 5px;
             border-radius: 5px;
@@ -103,7 +103,7 @@
                 margin-left: 5px;
                 padding: 5px;
             }
-        }
+        } */
 
         /* Ubah warna teks input pencarian menjadi hitam */
         /* #searchInput {
