@@ -202,9 +202,9 @@
                 </div>
 
                 <header class="items-center justify-between pt-2 sm:ml-24">
-                    <span class="">Filter Bulan</span>
+                    {{-- <span class="">Filter Bulan</span> --}}
                     <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
-                        <option value="">--Pilih Bulan--</option>
+                        <option value="">Filter Bulan</option>
                         <option value="01">Januari</option>
                         <option value="02">Februari</option>
                         <option value="03">Maret</option>
@@ -219,6 +219,7 @@
                         <option value="12">Desember</option>
                     </select>
                 </header>
+
                 {{-- untuk jumlah --}}
                 <div id="totalAmountContainer" class="sm:ml-24 sm:pt-16 pt-10 text-2xl ">
                     <p class="text-start font-bold">Total dana digunakan : </p>
@@ -329,10 +330,10 @@
             let visibleCount = 0;
             let totalDana = 0; // Initialize total dana variable
 
-
             for (let i = 0; i < tr.length; i++) {
                 const tdSource = tr[i].getElementsByTagName("td")[2]; // Kolom Sumber Dana
                 const tdSource1 = tr[i].getElementsByTagName("td")[1]; // Kolom Nama 
+                const danaCell = tr[i].getElementsByTagName("td")[5]; // Kolom Dana
                 const dateCell = tr[i].getElementsByTagName("td")[3]; // Kolom Tanggal
                 let displayRow = true;
 
@@ -364,71 +365,22 @@
                     tr[i].getElementsByTagName("td")[0].innerText = visibleCount; // Perbarui nomor baris
 
                     // Ambil nilai dana dari kolom dan tambahkan ke total dana
-                    const danaValue = parseFloat(tdSource.textContent || tdSource.innerText) || 0;
+                    const danaValue = parseFloat(danaCell.textContent.replace(/[^\d.-]/g, "")) || 0;
                     totalDana += danaValue;
                 } else {
                     tr[i].style.display = "none";
                 }
-                // Tampilkan total dana di input box
-                document.getElementById("totalAmount").value = totalDana.toFixed(2); // Format ke 2 decimal
-            }
-        }
-
-        function formatRupiah(angka) {
-            return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-
-        function calculateTotalDana() {
-            const table = document.querySelector("tbody");
-            const rows = table.getElementsByTagName("tr");
-            let total = 0;
-
-            for (let i = 0; i < rows.length; i++) {
-                const danaCell = rows[i].getElementsByTagName("td")[5]; // Kolom 'Dana'
-                if (danaCell) {
-                    const danaValue = danaCell.textContent || danaCell.innerText;
-                    const danaNumber = parseInt(danaValue.replace(/[^\d]/g, ""), 10); // Hapus simbol non-numerik
-                    if (!isNaN(danaNumber)) {
-                        total += danaNumber;
-                    }
-                }
             }
 
-            // Format hasil total ke Rupiah dan tampilkan di elemen HTML
+            // Perbarui total dana di UI
             const totalAmountElement = document.getElementById("totalAmount");
-            totalAmountElement.innerText = formatRupiah(total);
-
+            totalAmountElement.innerText = `Rp ${totalDana.toLocaleString("id-ID")}`;
         }
 
-
-
-        // Reset filter
-        function resetFilters() {
-            document.getElementById('monthDropdown').selectedIndex = 0;
-            document.getElementById('searchInput').value = '';
-            filterTable();
-        }
-
-        // Event listener untuk input dan dropdown
-        document.getElementById("searchInput").addEventListener("keyup", filterTable);
+        // Tambahkan event listener untuk input pencarian dan dropdown filter
+        document.getElementById("searchInput").addEventListener("input", filterTable);
         document.getElementById("monthDropdown").addEventListener("change", filterTable);
-
-        // Modal Delete
-        function openDeleteModal(tahun, id) {
-            document.getElementById('deleteModal').classList.remove('hidden');
-            document.getElementById('confirmDeleteButton').setAttribute('href', '/bendahara/audit/hapus/' + tahun + '/' +
-                id);
-        }
-
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').classList.add('hidden');
-        }
-
-        // Panggil fungsi ini setiap kali filter diubah
-        document.getElementById("searchInput").addEventListener("keyup", calculateTotalDana);
-        document.getElementById("monthDropdown").addEventListener("change", calculateTotalDana);
-
-        window.onload = calculateTotalDana;
     </script>
+
     {{-- custom js --}}
 </x-layout>
