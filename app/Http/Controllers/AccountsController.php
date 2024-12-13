@@ -97,7 +97,7 @@ class AccountsController extends Controller
             window.location.href = '/inventaris/signup';
         </script>");
         
-    }
+        }
         
         $user = User::create([
             'username' => $request->username,

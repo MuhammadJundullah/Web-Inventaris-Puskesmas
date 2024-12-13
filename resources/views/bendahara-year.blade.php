@@ -89,7 +89,7 @@
         }
 
         /* Dropdown Styling */
-        select#monthDropdown {
+        /* select#monthDropdown {
             margin-left: 10px;
             padding: 5px;
             border-radius: 5px;
@@ -103,7 +103,7 @@
                 margin-left: 5px;
                 padding: 5px;
             }
-        }
+        } */
 
         /* Ubah warna teks input pencarian menjadi hitam */
         /* #searchInput {
@@ -180,9 +180,7 @@
 
                 {{-- data filter dan cari barang --}}
                 <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-
-                    {{-- cari barang --}}
-                    <div class="relative sm:ml-24">
+                    <div class="relative sm:ml-20 sm:pl-2">
                         <label for="Search" class="sr-only"> Search </label>
                         <input type="text" autocomplete="off" id="searchInput" placeholder="Cari Nama"
                             class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm" />
@@ -197,14 +195,18 @@
                             </button>
                         </span>
                     </div>
-                    {{-- cari barang --}}
-
                 </div>
 
+<<<<<<< HEAD
                 <header class="items-center justify-between pt-2 sm:ml-24">
                     {{-- <span class="">Filter Bulan</span> --}}
                     <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
                         <option value="">Filter Bulan</option>
+=======
+                <header class="items-center justify-between pt-5 sm:ml-20">
+                    <select id="monthDropdown" class="ml-2 border border-gray-300 rounded text-s">
+                        <option value="">Filter bulan</option>
+>>>>>>> 21a06ea6a3d662df4d764944ce7c57ecd0e8c71a
                         <option value="01">Januari</option>
                         <option value="02">Februari</option>
                         <option value="03">Maret</option>
@@ -221,16 +223,16 @@
                 </header>
 
                 {{-- untuk jumlah --}}
-                <div id="totalAmountContainer" class="sm:ml-24 sm:pt-16 pt-10 text-2xl ">
+                <div id="totalAmountContainer" class="sm:ml-24 sm:pt-14 pt-10 text-2xl ">
                     <p class="text-start font-bold">Total dana digunakan : </p>
                     <p id="totalAmount" class="text-start font-light">Rp 0</p>
                 </div>
                 {{-- untuk jumlah --}}
-
+                
                 {{-- data filter dan cari --}}
-
                 <div class="my-5 sm:mx-auto sm:w-full">
                     <div class="mx-auto mt-2 text-center">
+                        <p class="text-start sm:ml-20 text-gray-500">*Klik nama untuk filter berdasarkan nama</p>
                         <div class="overflow-x-auto">
                             <table>
                                 <thead>

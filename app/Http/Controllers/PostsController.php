@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventory;
+use App\Exports\DataExport;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -83,5 +85,11 @@ class PostsController extends Controller
         $pdf = Pdf::loadView('inventaris-cetakQr', compact('qrCode'));
 
         return view('inventaris-cetakQr', compact('qrCode'));
+    }
+
+    public function export($year)
+    {
+        // Menggunakan Excel untuk mengunduh data dalam format Excel
+        return Excel::download(new DataExport($year), 'inventaris_'.$year.'.xlsx');
     }
 }
