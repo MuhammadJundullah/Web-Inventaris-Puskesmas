@@ -196,17 +196,12 @@
                         </span>
                     </div>
                 </div>
+                
+                <header class="items-center justify-between pt-2 sm:ml-20">
 
-<<<<<<< HEAD
-                <header class="items-center justify-between pt-2 sm:ml-24">
                     {{-- <span class="">Filter Bulan</span> --}}
                     <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
                         <option value="">Filter Bulan</option>
-=======
-                <header class="items-center justify-between pt-5 sm:ml-20">
-                    <select id="monthDropdown" class="ml-2 border border-gray-300 rounded text-s">
-                        <option value="">Filter bulan</option>
->>>>>>> 21a06ea6a3d662df4d764944ce7c57ecd0e8c71a
                         <option value="01">Januari</option>
                         <option value="02">Februari</option>
                         <option value="03">Maret</option>
@@ -232,7 +227,6 @@
                 {{-- data filter dan cari --}}
                 <div class="my-5 sm:mx-auto sm:w-full">
                     <div class="mx-auto mt-2 text-center">
-                        <p class="text-start sm:ml-20 text-gray-500">*Klik nama untuk filter berdasarkan nama</p>
                         <div class="overflow-x-auto">
                             <table>
                                 <thead>
