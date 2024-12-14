@@ -140,8 +140,9 @@
                     @endif
                 {{-- modal berhasil --}}
 
-                {{-- data filter dan cari barang --}}
-                     <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                {{-- item atas --}}
+                <div class="lg:flex">
+                    <div>
                         <div class="relative sm:ml-20">
                             <label for="Search" class="sr-only"> Search </label>
                             <input type="text" id="searchInput" placeholder="Cari barang" class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"/>
@@ -156,7 +157,7 @@
                         </div>
                     </div>
 
-                    <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                    <div class="py-5 sm:py-0">
                         <div class="relative sm:ml-20">
                                 <select id="monthDropdown" class=" border border-gray-300 rounded">
                                     <option value="">Filter Bulan</option>
@@ -176,12 +177,35 @@
                         </div>
                     </div>
 
-                    <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                    <div>
                         <div class="relative sm:ml-20">
-                            <a href="/inventaris/export/{{$year}}">Export data</a>
+                            <a
+                            class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+                            href="/inventaris/export/{{$year}}"
+                            >
+                            <span class="absolute -start-full transition-all group-hover:start-4">
+                                <svg
+                                class="size-5 rtl:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                />
+                                </svg>
+                            </span>
+
+                            <span class="text-sm font-medium transition-all group-hover:ms-4"> Export data </span>
+                            </a>
                         </div>
                     </div>
-                {{-- data filter dan cari --}}
+                </div>
+                {{-- item atas --}}
 
                         <div class="sm:mx-auto sm:w-full">                            
                             <div class="mx-auto mt-11 text-center">

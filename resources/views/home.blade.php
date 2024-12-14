@@ -2,7 +2,7 @@
 <x-home-layout>
   
 <section class="overflow-hidden bg-cover bg-top bg-no-repeat h-screen -mb-4" style="background-image: url('{{ asset('img/puskesmas.jpg') }}')">
-  <div class="bg-black/50">
+  <div class="bg-black/50 h-full">
     <div class="lg:py-24 h-full mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8 lg:pt-24">
       <div class="text-start ltr:sm:text-left rtl:sm:text-rightsm:mt-10 mt-28 max-w-md sm:mx-48 md:mx-10">
         <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl mb-20">Selamat datang di Sistem informasi Puskesmas Muara Satu</h2>

@@ -6,7 +6,7 @@
             </div>
             <div class="flex items-center sm:gap-48 md:gap-10 text-balance sm:text-start">
                 <div>
-                    <h1 class="text-lg text-white font-bold sm:font-medium">Sistem informasi Puskesmas Muara Satu</h1>
+                    <h1 class="text-lg text-white font-bold sm:font-medium">Sistem Informasi Puskesmas Muara Satu</h1>
                 </div>
                 <div class="hidden md:block">
                     <div class="flex gap-x-4 items-center">
