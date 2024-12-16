@@ -138,6 +138,7 @@
             <div class="flex min-h-full flex-col justify-center py-12 gap-y-2">
 
                 {{-- modal berhasil --}}
+<<<<<<< HEAD
                 @if (session('success'))
                     <div role="alert" class="rounded border-s-4 border-green-500 bg-green-50 p-4 mb-5">
                         <span class="text-green-600 flex">
@@ -145,6 +146,13 @@
                                 stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+=======
+                    @if (session("success"))
+                        <div role="alert" class="sm:mx-20 rounded border-s-4 border-green-500 bg-green-50 p-4 mb-5">
+                            <span class="text-green-600 flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+>>>>>>> 94a9f8612be67d531111e8d9926097d8427cb463
                             </svg>
                             <strong class="block font-medium text-green-600 ml-2">{{ session('success') }}</strong>
                         </span>
@@ -152,6 +160,7 @@
                 @endif
                 {{-- modal berhasil --}}
 
+<<<<<<< HEAD
                 {{-- data filter dan cari barang --}}
                 <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
                     <div class="relative sm:ml-20">
@@ -211,6 +220,143 @@
                                         <th class="border-b text-center py-2">
                                             <div class="relative inline-flex items-center justify-center">
                                                 <span class="ml-2">Tanggal Masuk</span>
+=======
+                {{-- item atas --}}
+                <div class="lg:flex gap-x-2">
+
+                        <div class="relative sm:ml-20">
+                            <label for="Search" class="sr-only"> Search </label>
+                            <input type="text" id="searchInput" placeholder="Cari" class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"/>
+                            <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                                <button type="button" class="text-gray-600 hover:text-gray-700">
+                                    <span class="sr-only">Search</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+                                    </svg>
+                                </button>
+                            </span>
+                        </div>
+                
+                    {{-- filter bulan --}}
+                        <div class="relative">
+                                <select id="monthDropdown" class=" border border-gray-300 rounded" style="color: gray">
+                                    <option value="">Filter Bulan</option>
+                                    <option value="01">Januari</option>
+                                    <option value="02">Februari</option>
+                                    <option value="03">Maret</option>
+                                    <option value="04">April</option>
+                                    <option value="05">Mei</option>
+                                    <option value="06">Juni</option>
+                                    <option value="07">Juli</option>
+                                    <option value="08">Agustus</option>
+                                    <option value="09">September</option>
+                                    <option value="10">Oktober</option>
+                                    <option value="11">November</option>
+                                    <option value="12">Desember</option>
+                                </select>
+                        </div>
+                    {{-- filter bulan --}}
+
+                    <div>
+                        <div class="relative">
+                           <a
+                            class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+                            href="#"
+                            >
+                            <span class="absolute -start-full transition-all group-hover:start-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                            </svg>
+                            </span>
+
+                            <span class="text-sm font-medium transition-all group-hover:ms-4"> Reset Filter </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="relative">
+                            <a
+                            class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+                            href="/inventaris/export/{{$year}}"
+                            >
+                            <span class="absolute -start-full transition-all group-hover:start-4">
+                                <svg
+                                class="size-5 rtl:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                />
+                                </svg>
+                            </span>
+
+                            <span class="text-sm font-medium transition-all group-hover:ms-4"> Download data tahun {{$year}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{-- item atas --}}
+
+                        <div class="sm:mx-auto sm:w-full">                            
+                            <div class="mx-auto mt-11 text-center">
+                                <div class="overflow-x-auto">
+                                    <table>
+                                        <thead>
+                                            <tr id="header" class="bg-green-700">
+                                                <th class="border-b text-center py-2">No</th>
+                                                <th class="border-b text-center py-2">Barang</th>
+                                                <th class="border-b text-center py-2">Sumber Dana</th>
+                                                <th class="border-b text-center py-2">Merek</th>
+                                                <th class="border-b text-center py-2">Tanggal</th>
+                                                <th class="border-b text-center py-2">Kondisi</th>
+                                                <th class="border-b text-center py-2">Tempat</th>
+                                                <th class="border-b text-center py-2">Jumlah</th>
+                                                <th class="border-b text-center py-2">
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tableBody">
+                                            @php $i = 1; @endphp
+                                            @foreach ($postsByYear as $post)
+                                            <tr class="border-b hover:bg-gray-100">
+                                                <td class="py-2 text-center">{{$i}}</td>
+                                                <td class="py-2 text-center">{{$post['nama_barang']}}</td>
+                                                <td class="py-2 text-center">{{$post['sumber_dana']}}</td>
+                                                <td class="py-2 text-center">{{$post['merek']}}</td>
+                                                <td class="py-2 text-center">{{$post['tanggal']}}</td>
+                                                <td class="py-2 text-center">{{$post['kondisi']}}</td>
+                                                <td class="py-2 text-center">{{$post['tempat_barang']}}</td>
+                                                <td class="py-2 text-center">{{$post['jumlah']}}</td>
+                                                <td class="py-2">
+                                                    <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
+                                                        <a href="/inventaris/audit/edit/{{$year}}/{{$post['id']}}">
+                                                            <button class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
+                                                                </svg>
+                                                                Edit
+                                                            </button>
+                                                        </a>
+
+                                                        <a href="/inventaris/barang/{{$year}}/{{$post['id']}}">
+                                                            <button class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                                </svg>
+                                                                View
+                                                            </button>
+                                                        </a>
+>>>>>>> 94a9f8612be67d531111e8d9926097d8427cb463
 
                                             </div>
                                         </th>

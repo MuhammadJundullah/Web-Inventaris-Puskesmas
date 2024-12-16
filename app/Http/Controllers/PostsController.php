@@ -57,16 +57,25 @@ class PostsController extends Controller
     {
         $inventory = Inventory::find($id);
 
-        $inventory->delete();
-        
-        Storage::disk('public')->delete($inventory->gambar);
+        if ($inventory) {
 
-        session()->flash('success','Berhasil menghapus data.');
+            if (!empty($inventory->gambar) && Storage::disk('public')->exists($inventory->gambar)) {
 
-        return response("<script>
-                    window.location.href = '/inventaris/inventory/$tahun';
-                </script>")
-                ->header('Content-Type', 'text/html');
+                Storage::disk('public')->delete($inventory->gambar);
+            }
+
+            $inventory->delete();
+
+            session()->flash('success', 'Berhasil menghapus data.');
+
+            return response("<script>window.location.href = '/inventaris/inventory/$tahun'; </script>")->header('Content-Type', 'text/html');
+        } else {
+
+            session()->flash('error', 'Data tidak ditemukan.');
+
+            return response("<script>window.location.href = '/inventaris/inventory/$tahun'; </script>")->header('Content-Type', 'text/html');
+        }
+
     }
 
     public function showScanPage($tahun = null, $id = null)
@@ -89,7 +98,6 @@ class PostsController extends Controller
 
     public function export($year)
     {
-        // Menggunakan Excel untuk mengunduh data dalam format Excel
         return Excel::download(new DataExport($year), 'inventaris_'.$year.'.xlsx');
     }
 }
