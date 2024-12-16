@@ -98,7 +98,7 @@
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt class="font-medium leading-6 text-gray-900">QR barang</dt>
                         <dd class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{!! $qrCode !!}</dd>
-                        <a href='/scan/cetak/{{$tahun}}/{{$postById['id']}}' class="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0 text-end" target="_blank">Cetak kode QR </a>
+                        <a href='/scan/cetak/{{$tahun}}/{{$postById['id']}}' class="mt-1 leading-6 text-blue-600 sm:col-span-2 sm:mt-0 text-center hover:underline sm:ml-32" target="_blank">Cetak kode QR </a>
                     </div>
                     <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                         <dt class="font-medium leading-6 text-gray-900">Foto Inventaris</dt>

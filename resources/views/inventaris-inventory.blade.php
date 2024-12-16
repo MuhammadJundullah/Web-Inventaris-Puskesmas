@@ -200,7 +200,7 @@
                                 </svg>
                             </span>
 
-                            <span class="text-sm font-medium transition-all group-hover:ms-4"> Export data </span>
+                            <span class="text-sm font-medium transition-all group-hover:ms-4"> Download data tahun {{$year}}</span>
                             </a>
                         </div>
                     </div>

@@ -324,7 +324,7 @@
             const tr = table.getElementsByTagName("tr");
 
             let visibleCount = 0;
-            let totalDana = 0; // Initialize total dana variable
+            let totalDana = 0; 
 
             for (let i = 0; i < tr.length; i++) {
                 const tdSource = tr[i].getElementsByTagName("td")[2]; // Kolom Sumber Dana
@@ -376,7 +376,17 @@
         // Tambahkan event listener untuk input pencarian dan dropdown filter
         document.getElementById("searchInput").addEventListener("input", filterTable);
         document.getElementById("monthDropdown").addEventListener("change", filterTable);
-    </script>
 
+          // Modal Delete
+        function openDeleteModal(tahun, id) {            
+            document.getElementById('deleteModal').classList.remove('hidden');
+            document.getElementById('confirmDeleteButton').setAttribute('href', '/bendahara/audit/hapus/' + tahun + '/' + id);
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+        }
+    </script>
     {{-- custom js --}}
+    
 </x-layout>

@@ -89,7 +89,6 @@ class PostsController extends Controller
 
     public function export($year)
     {
-        // Menggunakan Excel untuk mengunduh data dalam format Excel
         return Excel::download(new DataExport($year), 'inventaris_'.$year.'.xlsx');
     }
 }
