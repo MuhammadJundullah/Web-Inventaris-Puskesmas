@@ -178,8 +178,9 @@
                 @endif
                 {{-- modal berhasil --}}
 
+
                 {{-- data filter dan cari barang --}}
-                <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                {{-- <div class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-4">
                     <div class="relative sm:ml-20 sm:pl-2">
                         <label for="Search" class="sr-only"> Search </label>
                         <input type="text" autocomplete="off" id="searchInput" placeholder="Cari Nama"
@@ -195,18 +196,11 @@
                             </button>
                         </span>
                     </div>
-                </div>
-
-<<<<<<< HEAD
-                <header class="items-center justify-between pt-2 sm:ml-24">
-                    {{-- <span class="">Filter Bulan</span> --}}
-                    <select id="monthDropdown" class="ml-2 border border-gray-300 rounded">
-                        <option value="">Filter Bulan</option>
-=======
-                <header class="items-center justify-between pt-5 sm:ml-20">
+                </div> --}}
+                {{-- bulan --}}
+                {{-- <header class="items-center justify-between pt-5 sm:ml-20">
                     <select id="monthDropdown" class="ml-2 border border-gray-300 rounded text-s">
                         <option value="">Filter bulan</option>
->>>>>>> 21a06ea6a3d662df4d764944ce7c57ecd0e8c71a
                         <option value="01">Januari</option>
                         <option value="02">Februari</option>
                         <option value="03">Maret</option>
@@ -220,103 +214,151 @@
                         <option value="11">November</option>
                         <option value="12">Desember</option>
                     </select>
-                </header>
+                </header> --}}
+            </div>
+            <section>
+                <div class="container mx-auto p-5">
+                    <!-- Flex Container -->
+                    <div class="flex flex-col lg:flex-row gap-5">
+                        <!-- Search Input -->
+                        <div
+                            class="sm:ml-20 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-5 lg:mx-0 lg:max-w-none lg:grid-cols-0">
+                            <div class="relative sm:ml-20 sm:pl-2 lg:-ml-24">
+                                <label for="Search" class="sr-only"> Search </label>
+                                <input type="text" autocomplete="off" id="searchInput" placeholder="Cari Nama"
+                                    class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm" />
+                                <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                                    <button type="button" class="text-gray-600 hover:text-gray-700">
+                                        <span class="sr-only">Search</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
 
-                {{-- untuk jumlah --}}
-                <div id="totalAmountContainer" class="sm:ml-24 sm:pt-14 pt-10 text-2xl ">
-                    <p class="text-start font-bold">Total dana digunakan : </p>
-                    <p id="totalAmount" class="text-start font-light">Rp 0</p>
+                        <!-- Dropdown Filter -->
+                        <div class="flex-shrink-0 w-full lg:w-auto">
+                            <select id="monthDropdown"
+                                class="border border-gray-300 rounded-md py-2 px-3 text-sm text-gray-600 w-32 lg:w-32">
+                                <option value="">Filter Bulan</option>
+                                <option value="01">Januari</option>
+                                <option value="02">Februari</option>
+                                <option value="03">Maret</option>
+                                <option value="04">April</option>
+                                <option value="05">Mei</option>
+                                <option value="06">Juni</option>
+                                <option value="07">Juli</option>
+                                <option value="08">Agustus</option>
+                                <option value="09">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">Desember</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                {{-- untuk jumlah --}}
-                
-                {{-- data filter dan cari --}}
-                <div class="my-5 sm:mx-auto sm:w-full">
-                    <div class="mx-auto mt-2 text-center">
-                        <p class="text-start sm:ml-20 text-gray-500">*Klik nama untuk filter berdasarkan nama</p>
-                        <div class="overflow-x-auto">
-                            <table>
-                                <thead>
-                                    <tr id="header" class="bg-green-700">
-                                        <th class="border-b text-center py-2">No</th>
-                                        <th class="border-b text-center py-2">Nama Pegawai</th>
-                                        <th class="border-b text-center py-2">Id Pegawai</th>
-                                        <th class="border-b text-center py-2">Tanggal</th>
-                                        <th class="border-b text-center py-2">Kegiatan</th>
-                                        <th class="border-b text-center py-2">Dana</th>
-                                        <th class="border-b text-center py-2"></th>
-                                        <th class="border-b text-center py-2">Menu</th>
-                                    </tr>
-                                </thead>
+            </section>
 
-                                <tbody id="tableBody">
-                                    @php $i = 1; @endphp
-                                    @foreach ($postByYear as $post)
-                                        <tr class="border-b hover:bg-gray-100">
 
-                                            {{-- {{ dd($post) }} --}}
-                                            <td class="py-2 text-center">{{ $i }}</td>
-                                            <td class="py-2 text-center"><a
-                                                    href="/bendahara/arsip-by/{{ $post['nama_pegawai'] }}/{{ $year }}">{{ $post['nama_pegawai'] }}</a>
-                                            </td>
-                                            <td class="py-2 text-center">{{ $post['id_pegawai'] }}</td>
-                                            <td class="py-2 text-center">{{ $post['tanggal'] }}</td>
-                                            <td class="py-2 text-center">{{ $post['kegiatan'] }}</td>
-                                            <td class="py-2 text-center">{{ $post['dana_yang_digunakan'] }}</td>
-                                            <td class="py-2 text-center">{{ $post['uploated_at'] }}</td>
-                                            <td class="py-2">
-                                                <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
-                                                    <a
-                                                        href="/bendahara/audit/edit/{{ $year }}/{{ $post['id'] }}">
-                                                        <button
-                                                            class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                viewBox="0 0 24 24" stroke-width="1.5"
-                                                                stroke="currentColor" class="size-4">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                            </svg>
-                                                            Edit
-                                                        </button>
-                                                    </a>
+            {{-- untuk jumlah --}}
+            <div id="totalAmountContainer" class="sm:ml-24 sm:pt-5 pt-10 text-2xl ">
+                <p class="text-start font-bold">Total dana digunakan : </p>
+                <p id="totalAmount" class="text-start font-light">Rp 0</p>
+            </div>
+            {{-- untuk jumlah --}}
 
-                                                    <a
-                                                        href="/bendahara/audit/duplikat/{{ $year }}/{{ $post['id'] }}">
-                                                        <button
-                                                            class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                viewBox="0 0 24 24" stroke-width="1.5"
-                                                                stroke="currentColor" class="size-4">
-                                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                            </svg>
-                                                            Duplikat
-                                                        </button>
-                                                    </a>
+            {{-- data filter dan cari --}}
+            <div class="my-5 sm:mx-auto sm:w-full">
+                <div class="mx-auto mt-2 text-center">
+                    {{-- <p class="text-start sm:ml-20 text-gray-500">*Klik nama untuk filter berdasarkan nama</p> --}}
+                    <div class="overflow-x-auto">
+                        <table>
+                            <thead>
+                                <tr id="header" class="bg-green-700">
+                                    <th class="border-b text-center py-2">No</th>
+                                    <th class="border-b text-center py-2">Nama Pegawai</th>
+                                    <th class="border-b text-center py-2">Id Pegawai</th>
+                                    <th class="border-b text-center py-2">Tanggal</th>
+                                    <th class="border-b text-center py-2">Kegiatan</th>
+                                    <th class="border-b text-center py-2">Dana</th>
+                                    <th class="border-b text-center py-2"></th>
+                                    <th class="border-b text-center py-2">Menu</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tableBody">
+                                @php $i = 1; @endphp
+                                @foreach ($postByYear as $post)
+                                    <tr class="border-b hover:bg-gray-100">
+
+                                        {{-- {{ dd($post) }} --}}
+                                        <td class="py-2 text-center">{{ $i }}</td>
+                                        <td class="py-2 text-center"><a
+                                                href="/bendahara/arsip-by/{{ $post['nama_pegawai'] }}/{{ $year }}">{{ $post['nama_pegawai'] }}</a>
+                                        </td>
+                                        <td class="py-2 text-center">{{ $post['id_pegawai'] }}</td>
+                                        <td class="py-2 text-center">{{ $post['tanggal'] }}</td>
+                                        <td class="py-2 text-center">{{ $post['kegiatan'] }}</td>
+                                        <td class="py-2 text-center">{{ $post['dana_yang_digunakan'] }}</td>
+                                        <td class="py-2 text-center">{{ $post['uploated_at'] }}</td>
+                                        <td class="py-2">
+                                            <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
+                                                <a
+                                                    href="/bendahara/audit/edit/{{ $year }}/{{ $post['id'] }}">
                                                     <button
-                                                        onclick="openDeleteModal('{{ $year }}', {{ $post['id'] }})"
-                                                        class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-red-500 focus:relative">
+                                                        class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5"
                                                             stroke="currentColor" class="size-4">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                         </svg>
-                                                        Delete
+                                                        Edit
                                                     </button>
-                                                </div>
-                                            </td>
-                                            {{-- <td class="py-2 text-center">{{ $post['created_at'] }}</td> --}}
-                                        </tr>
-                                        @php $i++; @endphp
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                                </a>
+
+                                                <a
+                                                    href="/bendahara/audit/duplikat/{{ $year }}/{{ $post['id'] }}">
+                                                    <button
+                                                        class="inline-flex items-left gap-2 rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor" class="size-4">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                        </svg>
+                                                        Duplikat
+                                                    </button>
+                                                </a>
+                                                <button
+                                                    onclick="openDeleteModal('{{ $year }}', {{ $post['id'] }})"
+                                                    class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-red-500 focus:relative">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="size-4">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                    </svg>
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                        {{-- <td class="py-2 text-center">{{ $post['created_at'] }}</td> --}}
+                                    </tr>
+                                    @php $i++; @endphp
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- table --}}
+    </div>
+    {{-- table --}}
     </div>
     {{-- isi --}}
 
