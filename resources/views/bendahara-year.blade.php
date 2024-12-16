@@ -165,7 +165,7 @@
 
                 {{-- modal berhasil --}}
                 @if (session('success'))
-                    <div role="alert" class="rounded border-s-4 border-green-500 bg-green-50 p-4 mb-5">
+                    <div role="alert" class="sm:mx-20 rounded border-s-4 border-green-500 bg-green-50 p-4 mb-5">
                         <span class="text-green-600 flex">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-6">

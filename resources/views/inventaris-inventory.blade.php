@@ -129,7 +129,7 @@
 
                 {{-- modal berhasil --}}
                     @if (session("success"))
-                        <div role="alert" class="rounded border-s-4 border-green-500 bg-green-50 p-4 mb-5">
+                        <div role="alert" class="sm:mx-20 rounded border-s-4 border-green-500 bg-green-50 p-4 mb-5">
                             <span class="text-green-600 flex">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -141,11 +141,11 @@
                 {{-- modal berhasil --}}
 
                 {{-- item atas --}}
-                <div class="lg:flex">
-                    <div>
+                <div class="lg:flex gap-x-2">
+
                         <div class="relative sm:ml-20">
                             <label for="Search" class="sr-only"> Search </label>
-                            <input type="text" id="searchInput" placeholder="Cari barang" class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"/>
+                            <input type="text" id="searchInput" placeholder="Cari" class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm"/>
                             <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
                                 <button type="button" class="text-gray-600 hover:text-gray-700">
                                     <span class="sr-only">Search</span>
@@ -155,11 +155,10 @@
                                 </button>
                             </span>
                         </div>
-                    </div>
-
-                    <div class="py-5 sm:py-0">
-                        <div class="relative sm:ml-20">
-                                <select id="monthDropdown" class=" border border-gray-300 rounded">
+                
+                    {{-- filter bulan --}}
+                        <div class="relative">
+                                <select id="monthDropdown" class=" border border-gray-300 rounded" style="color: gray">
                                     <option value="">Filter Bulan</option>
                                     <option value="01">Januari</option>
                                     <option value="02">Februari</option>
@@ -175,10 +174,28 @@
                                     <option value="12">Desember</option>
                                 </select>
                         </div>
+                    {{-- filter bulan --}}
+
+                    <div>
+                        <div class="relative">
+                           <a
+                            class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+                            href="#"
+                            >
+                            <span class="absolute -start-full transition-all group-hover:start-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                            </svg>
+                            </span>
+
+                            <span class="text-sm font-medium transition-all group-hover:ms-4"> Reset Filter </span>
+                            </a>
+                        </div>
                     </div>
 
                     <div>
-                        <div class="relative sm:ml-20">
+                        <div class="relative">
                             <a
                             class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
                             href="/inventaris/export/{{$year}}"
@@ -216,12 +233,12 @@
                                                 <th class="border-b text-center py-2">No</th>
                                                 <th class="border-b text-center py-2">Barang</th>
                                                 <th class="border-b text-center py-2">Sumber Dana</th>
+                                                <th class="border-b text-center py-2">Merek</th>
+                                                <th class="border-b text-center py-2">Tanggal</th>
+                                                <th class="border-b text-center py-2">Kondisi</th>
+                                                <th class="border-b text-center py-2">Tempat</th>
                                                 <th class="border-b text-center py-2">Jumlah</th>
                                                 <th class="border-b text-center py-2">
-                                                    <div class="relative inline-flex items-center justify-center">
-                                                        <span class="ml-2">Tanggal Masuk</span>
-                                                        
-                                                    </div>
                                                 </th>
                                                 <th></th>
                                             </tr>
@@ -233,8 +250,11 @@
                                                 <td class="py-2 text-center">{{$i}}</td>
                                                 <td class="py-2 text-center">{{$post['nama_barang']}}</td>
                                                 <td class="py-2 text-center">{{$post['sumber_dana']}}</td>
-                                                <td class="py-2 text-center">{{$post['jumlah']}}</td>
+                                                <td class="py-2 text-center">{{$post['merek']}}</td>
                                                 <td class="py-2 text-center">{{$post['tanggal']}}</td>
+                                                <td class="py-2 text-center">{{$post['kondisi']}}</td>
+                                                <td class="py-2 text-center">{{$post['tempat_barang']}}</td>
+                                                <td class="py-2 text-center">{{$post['jumlah']}}</td>
                                                 <td class="py-2">
                                                     <div class="inline-flex rounded-lg p-1 justify-end items-end sm:ml-20">
                                                         <a href="/inventaris/audit/edit/{{$year}}/{{$post['id']}}">

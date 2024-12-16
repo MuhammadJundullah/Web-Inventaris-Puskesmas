@@ -12,7 +12,7 @@
 
                 {{-- modal success --}}
                   @if (session('info'))
-                      <div role="alert" class="rounded-xl border border-gray-100 bg-white p-4 mb-4">
+                      <div role="alert" class="lg:mx-36 rounded-xl border border-gray-100 bg-white p-4 mb-4">
                           <div class="flex items-start gap-4">
                             
                             @if (session('info.warna') == 'green')

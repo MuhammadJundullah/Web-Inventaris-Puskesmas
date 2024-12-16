@@ -40,7 +40,7 @@ class AccountsController extends Controller
             session()->flash('failed', "Akun tidak bisa di hapus karena sedang digunakan !");
 
             return response("<script>
-                    window.location.href = '/registered-account';
+                    window.location.href = '/inventaris/registered-account';
                 </script>")->header('Contaent-Type', 'text/html');
         }
 
