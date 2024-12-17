@@ -176,11 +176,13 @@
                         </div>
                     {{-- filter bulan --}}
 
+                    {{-- reset filter --}}
                     <div>
                         <div class="relative">
                            <a
-                            class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+                            class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-gray-500"
                             href="#"
+                            onclick="resetFilters()"
                             >
                             <span class="absolute -start-full transition-all group-hover:start-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
@@ -193,11 +195,12 @@
                             </a>
                         </div>
                     </div>
+                    {{-- reset filter --}}
 
                     <div>
                         <div class="relative">
                             <a
-                            class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-indigo-500"
+                            class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-gray-500"
                             href="/inventaris/export/{{$year}}"
                             >
                             <span class="absolute -start-full transition-all group-hover:start-4">
