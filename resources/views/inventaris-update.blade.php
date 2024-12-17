@@ -80,9 +80,9 @@
                                 <label for="kondisi" class="block text-sm font-medium leading-6 text-gray-900">Kondisi barang :</label>
                                 <select id="kondisi" name="kondisi" class="mt-2 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                                     <option value="" disabled {{ is_null($inventory->kondisi) ? 'selected' : '' }}>Pilih Kondisi</option>
-                                    <option value="sangat baik" {{ $inventory->kondisi == 'sangat baik' ? 'selected' : '' }}>Sangat Baik</option>
-                                    <option value="baik" {{ $inventory->kondisi == 'baik' ? 'selected' : '' }}>Baik</option>
-                                    <option value="buruk" {{ $inventory->kondisi == 'buruk' ? 'selected' : '' }}>Buruk</option>
+                                    <option value="Sangat Baik" {{ $inventory->kondisi == 'Sangat Baik' ? 'selected' : '' }}>Sangat Baik</option>
+                                    <option value="Baik" {{ $inventory->kondisi == 'Baik' ? 'selected' : '' }}>Baik</option>
+                                    <option value="Buruk" {{ $inventory->kondisi == 'Buruk' ? 'selected' : '' }}>Buruk</option>
                                 </select>
                             </div>
                         </div>

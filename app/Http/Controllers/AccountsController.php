@@ -53,7 +53,7 @@ class AccountsController extends Controller
         session()->flash('berhasil', "Berhasil menghapus akun !");
 
         return "<script>
-                window.location.href = '/registered-account';
+                window.location.href = '/inventaris/registered-account';
             </script>";
     }
 
