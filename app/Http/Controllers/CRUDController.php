@@ -102,8 +102,8 @@ class CRUDController extends Controller
         return view("inventaris-update", compact( "inventory", "title", "username"));
     }
     
-    public function update(Request $request, $tahun = null, $id = null) 
-    {    
+    public function update(Request $request, $tahun = null, $id = null)
+    {
 
         // Validasi input
         $validatedData = $request->validate([
@@ -114,11 +114,10 @@ class CRUDController extends Controller
 
             'merek' => 'required|string|max:255',
 
-            'jumlah' => 'required|integer|min:1',
-
-            'kondisi' => 'required|string|max:255','tempat_barang' => 'required|string|max:255',
+            'jumlah' => 'required|integer|min:1','kondisi' => 'required|string|max:255',
+            'tempat_barang' => 'required|string|max:255',
             'tanggal' => 'required|date',
-            'gambar' => 'nullable|image|max:2048', 
+            'gambar' => 'nullable', 
         ]);
 
         // Cari data berdasarkan ID

@@ -157,7 +157,7 @@
                         </div>
                 
                     {{-- filter bulan --}}
-                        <div class="relative">
+                        <div class="relative my-2 sm:my-0">
                                 <select id="monthDropdown" class=" border border-gray-300 rounded" style="color: gray">
                                     <option value="">Filter Bulan</option>
                                     <option value="01">Januari</option>
@@ -178,7 +178,7 @@
 
                     {{-- reset filter --}}
                     <div>
-                        <div class="relative">
+                        <div class="relative my-2 sm:my-0">
                            <a
                             class="group relative inline-flex items-center overflow-hidden rounded bg-gray-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-gray-500"
                             href="#"
