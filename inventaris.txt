@@ -1,0 +1,1 @@
+nama, sumber dana, merek, tanggal, kondisi, tempat 
